@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="primaryBlue">#0B6E99</color>
+    <color name="successGreen">#16A34A</color>
+    <color name="dangerRed">#DC2626</color>
+    <color name="bgLight">#F6F8FB</color>
+    <color name="textDark">#111827</color>
+    <color name="textSoft">#6B7280</color>
+
+    <color name="primary">#0B6E99</color>
+    <color name="primary_variant">#004d71</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="secondary">#16A34A</color>
+    <color name="background">#F6F8FB</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="on_surface">#111827</color>
+    <color name="error">#DC2626</color>
+
+    <!-- UI Update Colors -->
+    <color name="primary_blue">#0B6E99</color>
+    <color name="primary_blue_dark">#085A7D</color>
+    <color name="success_green">#16A34A</color>
+    <color name="danger_red">#DC2626</color>
+    <color name="dashboard_bg">#F6F8FB</color>
+    <color name="text_primary">#111827</color>
+    <color name="text_secondary">#374151</color>
+    <color name="text_muted">#6B7280</color>
+
+    <color name="status_active">#16A34A</color>
+    <color name="status_upcoming">#FF9800</color>
+    <color name="status_expired">#DC2626</color>
+    <color name="status_completed">#2196F3</color>
+
+    <color name="md_theme_light_primary">#0B6E99</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+
+    <color name="gg_bg">#081223</color>
+    <color name="gg_card">#0F1C36</color>
+    <color name="gg_card_light">#101B34</color>
+    <color name="gg_border">#223A63</color>
+    <color name="gg_accent">#12CFF3</color>
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">684593258085-tfqd5rsivaacj3a3iade406i99i6c8jo.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">684593258085</string>
+    <string name="google_api_key" translatable="false">AIzaSyDsShKmCanYcsNYuJWxO9YHOO8_jcIfitk</string>
+    <string name="google_app_id" translatable="false">1:684593258085:android:2b8c9d76d984d55496708c</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDsShKmCanYcsNYuJWxO9YHOO8_jcIfitk</string>
+    <string name="google_storage_bucket" translatable="false">gateguard-80cbe.firebasestorage.app</string>
+    <string name="project_id" translatable="false">gateguard-80cbe</string>
+</resources>

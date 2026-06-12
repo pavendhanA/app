@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "684593258085",
+    "project_id": "gateguard-80cbe",
+    "storage_bucket": "gateguard-80cbe.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684593258085:android:2b8c9d76d984d55496708c",
+        "android_client_info": {
+          "package_name": "com.gateguard.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "684593258085-cf1eecu0c0uumi0ifsdgqu6im0hkpqmn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gateguard.app",
+            "certificate_hash": "d8e5aa20413bc3afd50516cdf83e27759a214044"
+          }
+        },
+        {
+          "client_id": "684593258085-tfqd5rsivaacj3a3iade406i99i6c8jo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsShKmCanYcsNYuJWxO9YHOO8_jcIfitk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "684593258085-tfqd5rsivaacj3a3iade406i99i6c8jo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

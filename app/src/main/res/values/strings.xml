@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GateGuard</string>
+    <string name="face_verified_msg">Face detected. Guard can visually confirm guest.</string>
+</resources>
