@@ -1,0 +1,67 @@
+# Android / Gradle
+.gradle/
+/local.properties
+/.idea/
+/captures/
+/build/
+/app/build/
+**/build/
+.gradle/
+**/.gradle/
+**/local.properties
+**/*.iml
+**/gradle-app.setting
+**/gradle-wrapper.jar
+**/gradle-wrapper.properties
+
+# Kotlin
+*.kotlin_module
+
+# Generated files
+**/generated/
+**/build/generated/
+**/generated/source/
+**/intermediates/
+**/outputs/
+**/tmp/
+**/out/
+
+# Signing keys
+**/*.jks
+**/*.keystore
+
+# Files for the Android emulator
+*.log
+*.lock
+
+# IntelliJ / Android Studio
+*.iml
+.idea/
+out/
+
+# Node
+node_modules/
+pnpm-lock.yaml
+yarn.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# VS Code
+.vscode/
+
+# JetBrains
+.DS_Store
+
+# Local environment files
+.env
+.env.*
+
+# Flutter and local Android-related artifacts not needed
+*.apk
+*.ap_ 
+
+# Git Large File Storage note
+*.apk
+*.aab
