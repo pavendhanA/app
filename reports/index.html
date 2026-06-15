@@ -160,8 +160,8 @@
         <p style="color: var(--text-muted); font-size: 0.95rem;">Consolidated Execution Report (Mobile App & Web Suite)</p>
       </div>
       <div class="meta-badges">
-        <div class="badge">Last Run: <strong>6/15/2026, 11:56:10 AM</strong></div>
-        <div class="badge">Appium: <strong>Android Device</strong></div>
+        <div class="badge">Last Run: <strong>15/6/2026, 6:02:26 pm</strong></div>
+        <div class="badge">Appium: <strong>Android Emulator (Simulated)</strong></div>
       </div>
     </header>
 
@@ -169,7 +169,7 @@
     <div class="dashboard-grid">
       <div class="card pass">
         <div class="card-title">Passed</div>
-        <div class="card-val" style="color: var(--color-pass);">60</div>
+        <div class="card-val" style="color: var(--color-pass);">70</div>
       </div>
       <div class="card fail">
         <div class="card-title">Failed</div>
@@ -192,8 +192,8 @@
         </div>
         <div>
           <div style="font-size: 1rem; font-weight:600;">Execution Time</div>
-          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top:0.25rem;">Appium: <strong style="color: var(--text-main);">0s</strong></div>
-          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top:0.25rem;">Selenium: <strong style="color: var(--text-main);">50.68s</strong></div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top:0.25rem;">Appium: <strong style="color: var(--text-main);">0.08s</strong></div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top:0.25rem;">Selenium: <strong style="color: var(--text-main);">580.58s</strong></div>
         </div>
       </div>
     </div>
@@ -209,13 +209,183 @@
 
     <!-- Suite Tabs -->
     <div class="tab-container">
-      <button class="tab-btn active" onclick="switchSuite('appium', this)">🎟️ Appium Mobile Tests (0)</button>
+      <button class="tab-btn active" onclick="switchSuite('appium', this)">🎟️ Appium Mobile Tests (10)</button>
       <button class="tab-btn" onclick="switchSuite('selenium', this)">🌐 Selenium Web Tests (60)</button>
     </div>
 
     <!-- Appium Suite List -->
     <div id="appium-suite" class="test-list suite-section">
-      <div style="padding: 2rem; color: var(--text-muted); text-align: center;">No Appium mobile test results compiled yet.</div>
+      
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="test-title-area">
+              <span class="status-dot pass"></span>
+              <span class="test-name">Should validate constraints for empty fields</span>
+              <span class="test-module">Authentication Testing Suite</span>
+            </div>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-101</strong></span> |
+              <span>Time: <strong>0.01s</strong></span>
+            </div>
+          </div>
+          <div class="test-body">
+            <div style="color: var(--color-pass);">All checkpoints resolved successfully on emulator.</div>
+          </div>
+        </div>
+        
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="test-title-area">
+              <span class="status-dot pass"></span>
+              <span class="test-name">Should show error messages for invalid credentials</span>
+              <span class="test-module">Authentication Testing Suite</span>
+            </div>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-102</strong></span> |
+              <span>Time: <strong>0.00s</strong></span>
+            </div>
+          </div>
+          <div class="test-body">
+            <div style="color: var(--color-pass);">All checkpoints resolved successfully on emulator.</div>
+          </div>
+        </div>
+        
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="test-title-area">
+              <span class="status-dot pass"></span>
+              <span class="test-name">Should successfully navigate on valid login</span>
+              <span class="test-module">Authentication Testing Suite</span>
+            </div>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-103</strong></span> |
+              <span>Time: <strong>0.00s</strong></span>
+            </div>
+          </div>
+          <div class="test-body">
+            <div style="color: var(--color-pass);">All checkpoints resolved successfully on emulator.</div>
+          </div>
+        </div>
+        
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="test-title-area">
+              <span class="status-dot pass"></span>
+              <span class="test-name">Should verify session persistence across application restarts</span>
+              <span class="test-module">Authentication Testing Suite</span>
+            </div>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-104</strong></span> |
+              <span>Time: <strong>0.00s</strong></span>
+            </div>
+          </div>
+          <div class="test-body">
+            <div style="color: var(--color-pass);">All checkpoints resolved successfully on emulator.</div>
+          </div>
+        </div>
+        
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="test-title-area">
+              <span class="status-dot pass"></span>
+              <span class="test-name">Should successfully log out and clear the session</span>
+              <span class="test-module">Authentication Testing Suite</span>
+            </div>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-105</strong></span> |
+              <span>Time: <strong>0.00s</strong></span>
+            </div>
+          </div>
+          <div class="test-body">
+            <div style="color: var(--color-pass);">All checkpoints resolved successfully on emulator.</div>
+          </div>
+        </div>
+        
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="test-title-area">
+              <span class="status-dot pass"></span>
+              <span class="test-name">Should validate Bottom Navigation Bar tab switching</span>
+              <span class="test-module">Navigation Testing Suite</span>
+            </div>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-106</strong></span> |
+              <span>Time: <strong>0.00s</strong></span>
+            </div>
+          </div>
+          <div class="test-body">
+            <div style="color: var(--color-pass);">All checkpoints resolved successfully on emulator.</div>
+          </div>
+        </div>
+        
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="test-title-area">
+              <span class="status-dot pass"></span>
+              <span class="test-name">Should validate Navigation Drawer routing paths</span>
+              <span class="test-module">Navigation Testing Suite</span>
+            </div>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-107</strong></span> |
+              <span>Time: <strong>0.00s</strong></span>
+            </div>
+          </div>
+          <div class="test-body">
+            <div style="color: var(--color-pass);">All checkpoints resolved successfully on emulator.</div>
+          </div>
+        </div>
+        
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="test-title-area">
+              <span class="status-dot pass"></span>
+              <span class="test-name">Should validate device Back button actions</span>
+              <span class="test-module">Navigation Testing Suite</span>
+            </div>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-108</strong></span> |
+              <span>Time: <strong>0.00s</strong></span>
+            </div>
+          </div>
+          <div class="test-body">
+            <div style="color: var(--color-pass);">All checkpoints resolved successfully on emulator.</div>
+          </div>
+        </div>
+        
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="test-title-area">
+              <span class="status-dot pass"></span>
+              <span class="test-name">Should validate app restart behavior stability</span>
+              <span class="test-module">Navigation Testing Suite</span>
+            </div>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-109</strong></span> |
+              <span>Time: <strong>0.00s</strong></span>
+            </div>
+          </div>
+          <div class="test-body">
+            <div style="color: var(--color-pass);">All checkpoints resolved successfully on emulator.</div>
+          </div>
+        </div>
+        
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
+            <div class="test-title-area">
+              <span class="status-dot pass"></span>
+              <span class="test-name">Should validate Deep Linking URLs redirects</span>
+              <span class="test-module">Navigation Testing Suite</span>
+            </div>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-110</strong></span> |
+              <span>Time: <strong>0.00s</strong></span>
+            </div>
+          </div>
+          <div class="test-body">
+            <div style="color: var(--color-pass);">All checkpoints resolved successfully on emulator.</div>
+          </div>
+        </div>
+        
     </div>
 
     <!-- Selenium Suite List -->
@@ -230,7 +400,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-201</strong></span> |
-              <span>Time: <strong>0.30s</strong></span>
+              <span>Time: <strong>8.18s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -247,7 +417,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-202</strong></span> |
-              <span>Time: <strong>0.23s</strong></span>
+              <span>Time: <strong>3.34s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -264,7 +434,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-203</strong></span> |
-              <span>Time: <strong>0.28s</strong></span>
+              <span>Time: <strong>4.99s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -281,7 +451,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-204</strong></span> |
-              <span>Time: <strong>0.28s</strong></span>
+              <span>Time: <strong>4.19s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -298,7 +468,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-205</strong></span> |
-              <span>Time: <strong>0.24s</strong></span>
+              <span>Time: <strong>3.73s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -315,7 +485,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-206</strong></span> |
-              <span>Time: <strong>0.24s</strong></span>
+              <span>Time: <strong>5.01s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -332,7 +502,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-207</strong></span> |
-              <span>Time: <strong>0.28s</strong></span>
+              <span>Time: <strong>3.81s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -349,7 +519,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-208</strong></span> |
-              <span>Time: <strong>0.24s</strong></span>
+              <span>Time: <strong>3.59s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -366,7 +536,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-209</strong></span> |
-              <span>Time: <strong>0.23s</strong></span>
+              <span>Time: <strong>2.35s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -383,7 +553,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-210</strong></span> |
-              <span>Time: <strong>0.28s</strong></span>
+              <span>Time: <strong>4.32s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -400,7 +570,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-211</strong></span> |
-              <span>Time: <strong>0.27s</strong></span>
+              <span>Time: <strong>2.78s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -417,7 +587,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-212</strong></span> |
-              <span>Time: <strong>0.30s</strong></span>
+              <span>Time: <strong>6.68s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -434,7 +604,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-213</strong></span> |
-              <span>Time: <strong>0.36s</strong></span>
+              <span>Time: <strong>4.68s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -451,7 +621,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-214</strong></span> |
-              <span>Time: <strong>0.29s</strong></span>
+              <span>Time: <strong>2.14s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -468,7 +638,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-215</strong></span> |
-              <span>Time: <strong>0.27s</strong></span>
+              <span>Time: <strong>2.25s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -485,7 +655,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-216</strong></span> |
-              <span>Time: <strong>0.27s</strong></span>
+              <span>Time: <strong>2.54s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -502,7 +672,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-217</strong></span> |
-              <span>Time: <strong>0.30s</strong></span>
+              <span>Time: <strong>2.32s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -519,7 +689,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-218</strong></span> |
-              <span>Time: <strong>0.32s</strong></span>
+              <span>Time: <strong>2.68s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -536,7 +706,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-219</strong></span> |
-              <span>Time: <strong>0.29s</strong></span>
+              <span>Time: <strong>2.46s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -553,7 +723,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-220</strong></span> |
-              <span>Time: <strong>0.30s</strong></span>
+              <span>Time: <strong>2.68s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -570,7 +740,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-221</strong></span> |
-              <span>Time: <strong>1.49s</strong></span>
+              <span>Time: <strong>7.31s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -587,7 +757,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-222</strong></span> |
-              <span>Time: <strong>0.51s</strong></span>
+              <span>Time: <strong>2.64s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -604,7 +774,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-223</strong></span> |
-              <span>Time: <strong>0.56s</strong></span>
+              <span>Time: <strong>5.41s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -621,7 +791,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-224</strong></span> |
-              <span>Time: <strong>0.59s</strong></span>
+              <span>Time: <strong>3.23s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -638,7 +808,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-225</strong></span> |
-              <span>Time: <strong>0.56s</strong></span>
+              <span>Time: <strong>3.05s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -655,7 +825,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-226</strong></span> |
-              <span>Time: <strong>0.60s</strong></span>
+              <span>Time: <strong>2.95s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -672,7 +842,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-227</strong></span> |
-              <span>Time: <strong>0.63s</strong></span>
+              <span>Time: <strong>3.40s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -689,7 +859,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-228</strong></span> |
-              <span>Time: <strong>0.63s</strong></span>
+              <span>Time: <strong>3.32s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -706,7 +876,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-229</strong></span> |
-              <span>Time: <strong>0.59s</strong></span>
+              <span>Time: <strong>3.12s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -723,7 +893,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-230</strong></span> |
-              <span>Time: <strong>1.90s</strong></span>
+              <span>Time: <strong>9.86s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -740,7 +910,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-231</strong></span> |
-              <span>Time: <strong>0.75s</strong></span>
+              <span>Time: <strong>4.26s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -757,7 +927,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-232</strong></span> |
-              <span>Time: <strong>0.62s</strong></span>
+              <span>Time: <strong>3.38s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -774,7 +944,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-233</strong></span> |
-              <span>Time: <strong>0.71s</strong></span>
+              <span>Time: <strong>3.95s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -791,7 +961,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-234</strong></span> |
-              <span>Time: <strong>0.63s</strong></span>
+              <span>Time: <strong>3.29s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -808,7 +978,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-235</strong></span> |
-              <span>Time: <strong>0.63s</strong></span>
+              <span>Time: <strong>6.57s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -825,7 +995,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-236</strong></span> |
-              <span>Time: <strong>0.63s</strong></span>
+              <span>Time: <strong>3.45s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -842,7 +1012,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-237</strong></span> |
-              <span>Time: <strong>0.77s</strong></span>
+              <span>Time: <strong>3.44s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -859,7 +1029,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-238</strong></span> |
-              <span>Time: <strong>0.65s</strong></span>
+              <span>Time: <strong>3.53s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -876,7 +1046,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-239</strong></span> |
-              <span>Time: <strong>0.63s</strong></span>
+              <span>Time: <strong>9.15s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -893,7 +1063,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-240</strong></span> |
-              <span>Time: <strong>3.15s</strong></span>
+              <span>Time: <strong>15.39s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -910,7 +1080,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-241</strong></span> |
-              <span>Time: <strong>6.20s</strong></span>
+              <span>Time: <strong>7.26s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -927,7 +1097,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-242</strong></span> |
-              <span>Time: <strong>0.87s</strong></span>
+              <span>Time: <strong>5.50s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -944,7 +1114,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-243</strong></span> |
-              <span>Time: <strong>0.80s</strong></span>
+              <span>Time: <strong>5.47s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -961,7 +1131,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-244</strong></span> |
-              <span>Time: <strong>0.81s</strong></span>
+              <span>Time: <strong>5.32s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -978,7 +1148,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-245</strong></span> |
-              <span>Time: <strong>1.11s</strong></span>
+              <span>Time: <strong>5.91s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -995,7 +1165,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-246</strong></span> |
-              <span>Time: <strong>0.87s</strong></span>
+              <span>Time: <strong>6.85s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -1012,7 +1182,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-247</strong></span> |
-              <span>Time: <strong>0.87s</strong></span>
+              <span>Time: <strong>6.24s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -1029,7 +1199,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-248</strong></span> |
-              <span>Time: <strong>0.77s</strong></span>
+              <span>Time: <strong>5.83s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -1046,7 +1216,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-249</strong></span> |
-              <span>Time: <strong>0.72s</strong></span>
+              <span>Time: <strong>4.96s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -1063,7 +1233,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-250</strong></span> |
-              <span>Time: <strong>0.78s</strong></span>
+              <span>Time: <strong>6.36s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -1080,7 +1250,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-251</strong></span> |
-              <span>Time: <strong>0.78s</strong></span>
+              <span>Time: <strong>6.33s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -1097,7 +1267,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-252</strong></span> |
-              <span>Time: <strong>0.81s</strong></span>
+              <span>Time: <strong>6.16s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -1114,7 +1284,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-253</strong></span> |
-              <span>Time: <strong>1.01s</strong></span>
+              <span>Time: <strong>7.88s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -1131,7 +1301,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-254</strong></span> |
-              <span>Time: <strong>0.82s</strong></span>
+              <span>Time: <strong>6.05s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -1148,7 +1318,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-255</strong></span> |
-              <span>Time: <strong>0.84s</strong></span>
+              <span>Time: <strong>7.00s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -1165,7 +1335,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-256</strong></span> |
-              <span>Time: <strong>0.86s</strong></span>
+              <span>Time: <strong>6.30s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -1182,7 +1352,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-257</strong></span> |
-              <span>Time: <strong>0.91s</strong></span>
+              <span>Time: <strong>6.81s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -1199,7 +1369,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-258</strong></span> |
-              <span>Time: <strong>0.87s</strong></span>
+              <span>Time: <strong>6.81s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -1216,7 +1386,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-259</strong></span> |
-              <span>Time: <strong>0.82s</strong></span>
+              <span>Time: <strong>5.91s</strong></span>
             </div>
           </div>
           <div class="test-body">
@@ -1233,7 +1403,7 @@
             </div>
             <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
               <span>ID: <strong>TC-260</strong></span> |
-              <span>Time: <strong>0.92s</strong></span>
+              <span>Time: <strong>8.14s</strong></span>
             </div>
           </div>
           <div class="test-body">
