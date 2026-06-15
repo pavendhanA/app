@@ -39,7 +39,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: web-execution-reports
-          path: reports/selenium/
+          path: reports/
           retention-days: 14
 
       - name: 7. Commit Reports to Repository
@@ -49,13 +49,15 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
           # Stage report directories
-          git add reports/selenium/
+          git add reports/
           
           # Check if there are differences to commit
           if git diff --cached --quiet; then
             echo "No changes in reports. Skipping commit."
           else
             git commit -m "Auto-update Selenium Reports [skip ci]"
+            # Reset hard to clean up any other unstaged changes (e.g. package-lock.json changes)
+            git reset --hard HEAD
             # Force pull before pushing to avoid conflicts
             git pull --rebase origin ${GITHUB_REF##*/}
             git push origin HEAD:${GITHUB_REF##*/}

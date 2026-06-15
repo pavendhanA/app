@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E2E Automation Report</title>
-  <!-- Google Fonts Outfit & Inter -->
+  <title>GateGuard Consolidated QA Automation Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
-  
   <style>
     :root {
       --bg-dark: #0a0e1a;
@@ -22,13 +20,7 @@
       --primary: #4f46e5;
       --primary-hover: #4338ca;
     }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', sans-serif;
       background-color: var(--bg-dark);
@@ -36,12 +28,7 @@
       padding: 2rem;
       line-height: 1.6;
     }
-
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
+    .container { max-width: 1400px; margin: 0 auto; }
     header {
       display: flex;
       justify-content: space-between;
@@ -50,7 +37,6 @@
       border-bottom: 1px solid var(--border-color);
       margin-bottom: 2rem;
     }
-
     header h1 {
       font-family: 'Outfit', sans-serif;
       font-size: 2.5rem;
@@ -59,109 +45,39 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-
-    .meta-badges {
-      display: flex;
-      gap: 1rem;
-    }
-
+    .meta-badges { display: flex; gap: 1rem; }
     .badge {
       background: var(--panel-dark);
       border: 1px solid var(--border-color);
       padding: 0.5rem 1rem;
       border-radius: 8px;
       font-size: 0.85rem;
-      font-weight: 500;
       color: var(--text-muted);
     }
-    
-    .badge strong {
-      color: var(--text-main);
-    }
-
-    /* Dashboard Grid */
+    .badge strong { color: var(--text-main); }
     .dashboard-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1.5fr;
       gap: 1.5rem;
       margin-bottom: 2.5rem;
     }
-
     .card {
       background-color: var(--panel-dark);
       border: 1px solid var(--border-color);
       border-radius: 16px;
       padding: 1.5rem;
-      position: relative;
-      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 4px;
-      height: 100%;
-    }
-
-    .card.pass::before { background-color: var(--color-pass); }
-    .card.fail::before { background-color: var(--color-fail); }
-    .card.skip::before { background-color: var(--color-skip); }
-    .card.neutral::before { background-color: var(--primary); }
-
-    .card-title {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    .card-val {
-      font-family: 'Outfit', sans-serif;
-      font-size: 3rem;
-      font-weight: 800;
-      line-height: 1;
-    }
-
-    .card-footer {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 1rem;
-    }
-
-    /* Gauge Chart Card */
-    .chart-card {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: space-around;
-      padding: 1.5rem;
-    }
-
-    .gauge-wrapper {
-      position: relative;
-      width: 120px;
-      height: 120px;
-    }
-
-    .gauge-svg {
-      transform: rotate(-90deg);
-      width: 100%;
-      height: 100%;
-    }
-
-    .gauge-bg {
-      fill: none;
-      stroke: var(--border-color);
-      stroke-width: 10;
-    }
-
+    .card.pass { border-left: 4px solid var(--color-pass); }
+    .card.fail { border-left: 4px solid var(--color-fail); }
+    .card.skip { border-left: 4px solid var(--color-skip); }
+    .card-title { font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem; }
+    .card-val { font-family: 'Outfit', sans-serif; font-size: 3rem; font-weight: 800; }
+    .gauge-wrapper { position: relative; width: 120px; height: 120px; }
+    .gauge-svg { transform: rotate(-90deg); width: 100%; height: 100%; }
+    .gauge-bg { fill: none; stroke: var(--border-color); stroke-width: 10; }
     .gauge-progress {
       fill: none;
       stroke: var(--color-pass);
@@ -169,313 +85,101 @@
       stroke-linecap: round;
       stroke-dasharray: 314.1592653589793;
       stroke-dashoffset: 0;
-      transition: stroke-dashoffset 1s ease-out;
     }
+    .gauge-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; }
+    .gauge-percent { font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 800; }
+    .gauge-label { font-size: 0.7rem; color: var(--text-muted); }
 
-    .gauge-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-    }
-
-    .gauge-percent {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-
-    .gauge-label {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-    }
-
-    /* Controls & Filter Buttons */
-    .controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    /* Module Navigation Tabs */
+    .tab-container {
       margin-bottom: 1.5rem;
-    }
-
-    .filter-buttons {
       display: flex;
-      gap: 0.75rem;
-    }
-
-    .btn {
-      background-color: var(--panel-dark);
-      border: 1px solid var(--border-color);
-      color: var(--text-main);
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      font-weight: 500;
-      transition: all 0.2s ease;
-    }
-
-    .btn:hover {
-      background-color: var(--border-color);
-    }
-
-    .btn.active {
-      background-color: var(--primary);
-      border-color: var(--primary);
-      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
-    }
-
-    .btn-pass.active { background-color: var(--color-pass); border-color: var(--color-pass); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4); }
-    .btn-fail.active { background-color: var(--color-fail); border-color: var(--color-fail); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4); }
-
-    /* Test List Accordion */
-    .test-list {
-      display: flex;
-      flex-direction: column;
       gap: 1rem;
-      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1rem;
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      color: var(--text-main);
+      border-bottom: 3px solid var(--primary);
     }
 
+    .test-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 3rem; }
     .test-item {
       background-color: var(--panel-dark);
       border: 1px solid var(--border-color);
       border-radius: 12px;
       overflow: hidden;
     }
-
     .test-header {
       padding: 1.25rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
-      user-select: none;
-      transition: background 0.2s;
     }
-
-    .test-header:hover {
-      background-color: rgba(255, 255, 255, 0.02);
-    }
-
-    .test-title-area {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .status-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
-    .status-dot.pass { background-color: var(--color-pass); box-shadow: 0 0 8px var(--color-pass); }
-    .status-dot.fail { background-color: var(--color-fail); box-shadow: 0 0 8px var(--color-fail); }
-    .status-dot.skip { background-color: var(--color-skip); box-shadow: 0 0 8px var(--color-skip); }
-
-    .test-name {
-      font-weight: 600;
-      font-size: 1rem;
-    }
-
-    .test-module {
-      font-size: 0.8rem;
-      background-color: var(--border-color);
-      padding: 0.25rem 0.5rem;
-      border-radius: 4px;
-      color: var(--text-muted);
-    }
-
-    .test-meta {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .test-body {
-      padding: 1.5rem;
-      border-top: 1px solid var(--border-color);
-      background-color: rgba(0, 0, 0, 0.2);
-      display: none;
-    }
-
-    .test-item.open .test-body {
-      display: block;
-    }
-
-    /* Failure Analysis */
-    .failure-box {
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      background-color: rgba(239, 68, 68, 0.05);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .failure-reason {
-      color: var(--color-fail);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      font-family: monospace;
-    }
-
-    .stack-trace {
-      background: #000;
-      padding: 1rem;
-      border-radius: 6px;
-      color: #fb7185;
-      font-family: monospace;
-      font-size: 0.85rem;
-      overflow-x: auto;
-      white-space: pre;
-    }
-
-    .screenshot-preview {
-      margin-top: 1.5rem;
-    }
-
-    .screenshot-preview h4 {
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    .screenshot-img {
-      max-width: 320px;
-      border: 2px solid var(--border-color);
-      border-radius: 8px;
-      cursor: zoom-in;
-      transition: transform 0.2s;
-    }
-
-    .screenshot-img:hover {
-      transform: scale(1.02);
-    }
-
-    /* Logs Audit Table */
-    .logs-section {
+    .test-title-area { display: flex; align-items: center; gap: 1rem; }
+    .status-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+    .status-dot.pass { background-color: var(--color-pass); }
+    .status-dot.fail { background-color: var(--color-fail); }
+    .status-dot.skip { background-color: var(--color-skip); }
+    .test-name { font-weight: 600; }
+    .test-module { font-size: 0.8rem; background-color: var(--border-color); padding: 0.25rem 0.5rem; border-radius: 4px; color: var(--text-muted); }
+    .test-body { padding: 1.5rem; border-top: 1px solid var(--border-color); background-color: rgba(0,0,0,0.2); display: none; }
+    .test-item.open .test-body { display: block; }
+    .failure-box { border: 1px solid rgba(239, 68, 68, 0.3); background-color: rgba(239, 68, 68, 0.05); border-radius: 8px; padding: 1rem; }
+    .stack-trace { background: #000; padding: 1rem; border-radius: 6px; color: #fb7185; font-family: monospace; overflow-x: auto; white-space: pre; margin-top: 0.5rem; }
+    
+    .download-section {
       background-color: var(--panel-dark);
       border: 1px solid var(--border-color);
       border-radius: 16px;
       padding: 1.5rem;
-    }
-
-    .logs-section h2 {
-      font-family: 'Outfit', sans-serif;
-      margin-bottom: 1.25rem;
-      font-size: 1.5rem;
-    }
-
-    .logs-table-wrapper {
-      max-height: 500px;
-      overflow-y: auto;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-      text-align: left;
-    }
-
-    th {
-      background-color: rgba(0, 0, 0, 0.3);
-      color: var(--text-muted);
-      padding: 0.75rem 1rem;
-      font-weight: 600;
-      position: sticky;
-      top: 0;
-    }
-
-    td {
-      padding: 0.75rem 1rem;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    tr:hover td {
-      background-color: rgba(255, 255, 255, 0.01);
-    }
-
-    .log-time {
-      font-family: monospace;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-    }
-
-    .log-pass { color: var(--color-pass); font-weight: 600; }
-    .log-fail { color: var(--color-fail); font-weight: 600; }
-
-    /* Modal Styles */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.9);
-      justify-content: center;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-    }
-
-    .modal-content {
-      max-width: 90%;
-      max-height: 90%;
-      border-radius: 8px;
-    }
-
-    .close-modal {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      color: #fff;
-      font-size: 40px;
-      font-weight: bold;
-      cursor: pointer;
+      margin-bottom: 2rem;
     }
   </style>
 </head>
 <body>
-
   <div class="container">
     <header>
       <div>
-        <h1>Test Automation Report</h1>
-        <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem;">Flutter & Android E2E Execution Dashboard</p>
+        <h1>GateGuard Master QA Dashboard</h1>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Consolidated Execution Report (Mobile App & Web Suite)</p>
       </div>
       <div class="meta-badges">
-        <div class="badge">Date: <strong>15/6/2026, 2:04:50 pm</strong></div>
-        <div class="badge">OS: <strong>Android N/A</strong></div>
+        <div class="badge">Last Run: <strong>15/6/2026, 5:11:24 pm</strong></div>
+        <div class="badge">Appium: <strong>Android Device</strong></div>
       </div>
     </header>
 
-    <!-- Dashboard Stat Cards -->
+    <!-- Consolidated Stat Cards -->
     <div class="dashboard-grid">
       <div class="card pass">
         <div class="card-title">Passed</div>
-        <div class="card-val" style="color: var(--color-pass);">25</div>
-        <div class="card-footer">Test scenarios successful</div>
+        <div class="card-val" style="color: var(--color-pass);">20</div>
       </div>
-
       <div class="card fail">
         <div class="card-title">Failed</div>
         <div class="card-val" style="color: var(--color-fail);">0</div>
-        <div class="card-footer">Test scenarios failed</div>
       </div>
-
       <div class="card skip">
         <div class="card-title">Skipped</div>
         <div class="card-val" style="color: var(--color-skip);">0</div>
-        <div class="card-footer">Test scenarios bypassed</div>
       </div>
-
-      <div class="card neutral chart-card">
+      <div class="card" style="flex-direction: row; align-items: center; justify-content: space-around;">
         <div class="gauge-wrapper">
           <svg class="gauge-svg" viewBox="0 0 120 120">
             <circle class="gauge-bg" cx="60" cy="60" r="50"></circle>
@@ -486,902 +190,388 @@
             <div class="gauge-label">Pass Rate</div>
           </div>
         </div>
-        <div style="flex: 1; margin-left: 1.5rem;">
-          <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.25rem;">Device Details</div>
-          <div style="font-size: 0.85rem; color: var(--text-muted);">Name: <strong style="color: var(--text-main);">Android Device</strong></div>
-          <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem;">Duration: <strong style="color: var(--text-main);">171.32s</strong></div>
+        <div>
+          <div style="font-size: 1rem; font-weight:600;">Execution Time</div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top:0.25rem;">Appium: <strong style="color: var(--text-main);">0s</strong></div>
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top:0.25rem;">Selenium: <strong style="color: var(--text-main);">105.15s</strong></div>
         </div>
       </div>
     </div>
 
-    <!-- Controls -->
-    <div class="controls">
-      <h2 style="font-family: 'Outfit', sans-serif; font-size: 1.5rem;">E2E Scenarios</h2>
-      <div class="filter-buttons">
-        <button class="btn active" onclick="filterTests('all')">All (25)</button>
-        <button class="btn btn-pass" onclick="filterTests('PASS')">Passed (25)</button>
-        <button class="btn btn-fail" onclick="filterTests('FAIL')">Failed (0)</button>
-        <button class="btn" onclick="filterTests('SKIP')">Skipped (0)</button>
+    <!-- Download Excel Block -->
+    <div class="download-section">
+      <div>
+        <h3 style="font-family: 'Outfit', sans-serif; margin-bottom: 0.25rem;">📥 GateGuard Unified Excel Report</h3>
+        <p style="color: var(--text-muted); font-size: 0.85rem;">Download the full spreadsheet containing separate sheets for mobile, web, failures, and execution audits.</p>
       </div>
+      <a href="GateGuard_QA_Report.xlsx" class="badge" style="background: var(--primary); color: #fff; text-decoration: none; padding: 0.75rem 1.5rem; border: none; cursor: pointer; border-radius: 8px; font-weight: 600;">Download Excel</a>
     </div>
 
-    <!-- Accordion Test List -->
-    <div class="test-list" id="testList">
+    <!-- Suite Tabs -->
+    <div class="tab-container">
+      <button class="tab-btn active" onclick="switchSuite('appium', this)">🎟️ Appium Mobile Tests (0)</button>
+      <button class="tab-btn" onclick="switchSuite('selenium', this)">🌐 Selenium Web Tests (20)</button>
+    </div>
+
+    <!-- Appium Suite List -->
+    <div id="appium-suite" class="test-list suite-section">
+      <div style="padding: 2rem; color: var(--text-muted); text-align: center;">No Appium mobile test results compiled yet.</div>
+    </div>
+
+    <!-- Selenium Suite List -->
+    <div id="selenium-suite" class="test-list suite-section" style="display: none;">
       
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should validate constraints for empty fields</span>
-              <span class="test-module">Authentication Testing Suite</span>
+              <span class="test-name">TC-101: Login - Validate empty field constraints</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>15.43s</strong></span>
-              <span>ID: <strong>TC-101</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-201</strong></span> |
+              <span>Time: <strong>3.39s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should show error messages for invalid credentials</span>
-              <span class="test-module">Authentication Testing Suite</span>
+              <span class="test-name">TC-102: Login - Validate password length restriction</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>15.23s</strong></span>
-              <span>ID: <strong>TC-102</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-202</strong></span> |
+              <span>Time: <strong>3.11s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should successfully navigate on valid login</span>
-              <span class="test-module">Authentication Testing Suite</span>
+              <span class="test-name">TC-103: Login - Verify successful authentication for Admin role</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>15.36s</strong></span>
-              <span>ID: <strong>TC-103</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-203</strong></span> |
+              <span>Time: <strong>1.96s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should verify session persistence across application restarts</span>
-              <span class="test-module">Authentication Testing Suite</span>
+              <span class="test-name">TC-104: Logout - Validate session clear</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>22.60s</strong></span>
-              <span>ID: <strong>TC-104</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-204</strong></span> |
+              <span>Time: <strong>2.60s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should successfully log out and clear the session</span>
-              <span class="test-module">Authentication Testing Suite</span>
+              <span class="test-name">TC-105: Registration - Validate empty submission block</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>1.06s</strong></span>
-              <span>ID: <strong>TC-105</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-205</strong></span> |
+              <span>Time: <strong>2.50s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should validate required fields validation checks</span>
-              <span class="test-module">Form Validation Testing Suite</span>
+              <span class="test-name">TC-106: Registration - Validate password mismatch check</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>0.01s</strong></span>
-              <span>ID: <strong>TC-106</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-206</strong></span> |
+              <span>Time: <strong>3.19s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should validate incorrect email formatting checks</span>
-              <span class="test-module">Form Validation Testing Suite</span>
+              <span class="test-name">TC-107: Registration - Successful signup and dashboard auto-redirect</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>0.01s</strong></span>
-              <span>ID: <strong>TC-107</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-207</strong></span> |
+              <span>Time: <strong>2.82s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should validate phone number digit requirement checks</span>
-              <span class="test-module">Form Validation Testing Suite</span>
+              <span class="test-name">TC-108: Dashboard - Verify initial statistical widgets mapping</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>0.00s</strong></span>
-              <span>ID: <strong>TC-108</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-208</strong></span> |
+              <span>Time: <strong>2.50s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should validate password length constraints</span>
-              <span class="test-module">Form Validation Testing Suite</span>
+              <span class="test-name">TC-109: Dashboard - Verify real-time list search filters</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>0.01s</strong></span>
-              <span>ID: <strong>TC-109</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-209</strong></span> |
+              <span>Time: <strong>3.03s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should validate input field maximum length limits</span>
-              <span class="test-module">Form Validation Testing Suite</span>
+              <span class="test-name">TC-110: Dashboard - Verify "Active" status tab filter</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>0.01s</strong></span>
-              <span>ID: <strong>TC-110</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-210</strong></span> |
+              <span>Time: <strong>7.28s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should validate date picker interaction</span>
-              <span class="test-module">Form Validation Testing Suite</span>
+              <span class="test-name">TC-111: Dashboard - Verify "Upcoming" status tab filter</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>0.01s</strong></span>
-              <span>ID: <strong>TC-111</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-211</strong></span> |
+              <span>Time: <strong>4.67s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should validate dropdown selection options</span>
-              <span class="test-module">Form Validation Testing Suite</span>
+              <span class="test-name">TC-112: Pass Generation - Validate form fields error flags</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>0.01s</strong></span>
-              <span>ID: <strong>TC-112</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-212</strong></span> |
+              <span>Time: <strong>2.67s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should validate radio buttons selection switching</span>
-              <span class="test-module">Form Validation Testing Suite</span>
+              <span class="test-name">TC-113: Pass Generation - Complete flow with QR modal trigger</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>0.01s</strong></span>
-              <span>ID: <strong>TC-113</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-213</strong></span> |
+              <span>Time: <strong>8.79s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should validate checkboxes toggles</span>
-              <span class="test-module">Form Validation Testing Suite</span>
+              <span class="test-name">TC-114: Pass Generation - Cancel/Delete active pass</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>0.01s</strong></span>
-              <span>ID: <strong>TC-114</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-214</strong></span> |
+              <span>Time: <strong>11.48s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should validate Bottom Navigation Bar tab switching</span>
-              <span class="test-module">Navigation Testing Suite</span>
+              <span class="test-name">TC-115: QR Preview - Open preview dialog from visitor logs list</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>15.31s</strong></span>
-              <span>ID: <strong>TC-115</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-215</strong></span> |
+              <span>Time: <strong>3.32s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should validate Navigation Drawer routing paths</span>
-              <span class="test-module">Navigation Testing Suite</span>
+              <span class="test-name">TC-116: QR Preview - Validate Pass ID display format</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>15.24s</strong></span>
-              <span>ID: <strong>TC-116</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-216</strong></span> |
+              <span>Time: <strong>3.77s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should validate device Back button actions</span>
-              <span class="test-module">Navigation Testing Suite</span>
+              <span class="test-name">TC-117: QR Preview - Safely close preview modal and restore dashboard focus</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>8.03s</strong></span>
-              <span>ID: <strong>TC-117</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-217</strong></span> |
+              <span>Time: <strong>2.74s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should validate app restart behavior stability</span>
-              <span class="test-module">Navigation Testing Suite</span>
+              <span class="test-name">TC-118: Profile - Update user info metadata fields</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>25.32s</strong></span>
-              <span>ID: <strong>TC-118</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-218</strong></span> |
+              <span>Time: <strong>2.94s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should validate Deep Linking URLs redirects</span>
-              <span class="test-module">Navigation Testing Suite</span>
+              <span class="test-name">TC-119: Profile - Verify profile roles are in readonly format</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>15.54s</strong></span>
-              <span>ID: <strong>TC-119</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-219</strong></span> |
+              <span>Time: <strong>3.44s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
+        <div class="test-item">
+          <div class="test-header" onclick="this.parentElement.classList.toggle('open')">
             <div class="test-title-area">
               <span class="status-dot pass"></span>
-              <span class="test-name">Should validate ElevatedButton, TextButton, and IconButton clicks</span>
-              <span class="test-module">UI Component Testing Suite</span>
+              <span class="test-name">TC-120: Profile - Check dashboard layout buttons routing and click download QR</span>
+              <span class="test-module">GateGuard Web Automation Suite</span>
             </div>
-            <div class="test-meta">
-              <span>Duration: <strong>0.01s</strong></span>
-              <span>ID: <strong>TC-120</strong></span>
-              <span>&#9662;</span>
+            <div class="test-meta" style="color: var(--text-muted); font-size: 0.85rem;">
+              <span>ID: <strong>TC-220</strong></span> |
+              <span>Time: <strong>5.31s</strong></span>
             </div>
           </div>
           <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
-          </div>
-        </div>
-        
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
-            <div class="test-title-area">
-              <span class="status-dot pass"></span>
-              <span class="test-name">Should validate Material Switch toggle controls</span>
-              <span class="test-module">UI Component Testing Suite</span>
-            </div>
-            <div class="test-meta">
-              <span>Duration: <strong>0.00s</strong></span>
-              <span>ID: <strong>TC-121</strong></span>
-              <span>&#9662;</span>
-            </div>
-          </div>
-          <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
-          </div>
-        </div>
-        
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
-            <div class="test-title-area">
-              <span class="status-dot pass"></span>
-              <span class="test-name">Should validate Dialog trigger popups and dismissal</span>
-              <span class="test-module">UI Component Testing Suite</span>
-            </div>
-            <div class="test-meta">
-              <span>Duration: <strong>0.01s</strong></span>
-              <span>ID: <strong>TC-122</strong></span>
-              <span>&#9662;</span>
-            </div>
-          </div>
-          <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
-          </div>
-        </div>
-        
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
-            <div class="test-title-area">
-              <span class="status-dot pass"></span>
-              <span class="test-name">Should validate BottomSheet overlay triggers and swipe dismissal</span>
-              <span class="test-module">UI Component Testing Suite</span>
-            </div>
-            <div class="test-meta">
-              <span>Duration: <strong>0.01s</strong></span>
-              <span>ID: <strong>TC-123</strong></span>
-              <span>&#9662;</span>
-            </div>
-          </div>
-          <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
-          </div>
-        </div>
-        
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
-            <div class="test-title-area">
-              <span class="status-dot pass"></span>
-              <span class="test-name">Should validate Snackbar temporary alert triggers</span>
-              <span class="test-module">UI Component Testing Suite</span>
-            </div>
-            <div class="test-meta">
-              <span>Duration: <strong>0.01s</strong></span>
-              <span>ID: <strong>TC-124</strong></span>
-              <span>&#9662;</span>
-            </div>
-          </div>
-          <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
-          </div>
-        </div>
-        
-        <div class="test-item" data-status="PASS">
-          <div class="test-header" onclick="toggleAccordion(this)">
-            <div class="test-title-area">
-              <span class="status-dot pass"></span>
-              <span class="test-name">Should validate scroll lists and click inner cards</span>
-              <span class="test-module">UI Component Testing Suite</span>
-            </div>
-            <div class="test-meta">
-              <span>Duration: <strong>0.01s</strong></span>
-              <span>ID: <strong>TC-125</strong></span>
-              <span>&#9662;</span>
-            </div>
-          </div>
-          <div class="test-body">
-            
-              <div style="color: var(--color-pass); font-weight: 500;">Test executed successfully. All steps passed.</div>
-            
+            <div style="color: var(--color-pass);">All validation checkpoints resolved successfully in browser.</div>
           </div>
         </div>
         
     </div>
 
-    <!-- Execution Logs -->
-    <div class="logs-section">
-      <h2>Audit Logs</h2>
-      <div class="logs-table-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th style="width: 20%;">Timestamp</th>
-              <th style="width: 20%;">Test Name</th>
-              <th style="width: 35%;">Step</th>
-              <th style="width: 10%;">Result</th>
-              <th style="width: 15%;">Remarks</th>
-            </tr>
-          </thead>
-          <tbody>
-            
-              <tr>
-                <td class="log-time">2:02:25 pm</td>
-                <td>LoginPage</td>
-                <td>Enter username</td>
-                <td class="log-fail">FAIL</td>
-                <td style="color: var(--text-muted);">element ("id:com.gateguard.app:id/etLoginEmail") still not displayed after 15000ms</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:02:25 pm</td>
-                <td>Authentication Testing Suite</td>
-                <td>Should validate constraints for empty fields</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:02:40 pm</td>
-                <td>LoginPage</td>
-                <td>Enter username</td>
-                <td class="log-fail">FAIL</td>
-                <td style="color: var(--text-muted);">element ("id:com.gateguard.app:id/etLoginEmail") still not displayed after 15000ms</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:02:40 pm</td>
-                <td>Authentication Testing Suite</td>
-                <td>Should show error messages for invalid credentials</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:02:56 pm</td>
-                <td>LoginPage</td>
-                <td>Enter username</td>
-                <td class="log-fail">FAIL</td>
-                <td style="color: var(--text-muted);">element ("id:com.gateguard.app:id/etLoginEmail") still not displayed after 15000ms</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:02:56 pm</td>
-                <td>Authentication Testing Suite</td>
-                <td>Should successfully navigate on valid login</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:12 pm</td>
-                <td>LoginPage</td>
-                <td>Enter username</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Cleared and entered: admin@gateguard.app</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:14 pm</td>
-                <td>LoginPage</td>
-                <td>Enter password</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Cleared and entered: GateGuardPass123!</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:16 pm</td>
-                <td>LoginPage</td>
-                <td>Click Login Submit Button</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);"></td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:18 pm</td>
-                <td>Authentication Testing Suite</td>
-                <td>Should verify session persistence across application restarts</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:20 pm</td>
-                <td>Authentication Testing Suite</td>
-                <td>Should successfully log out and clear the session</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:20 pm</td>
-                <td>Form Validation Testing Suite</td>
-                <td>Should validate required fields validation checks</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:20 pm</td>
-                <td>Form Validation Testing Suite</td>
-                <td>Should validate incorrect email formatting checks</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:20 pm</td>
-                <td>Form Validation Testing Suite</td>
-                <td>Should validate phone number digit requirement checks</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:20 pm</td>
-                <td>Form Validation Testing Suite</td>
-                <td>Should validate password length constraints</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:20 pm</td>
-                <td>Form Validation Testing Suite</td>
-                <td>Should validate input field maximum length limits</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:20 pm</td>
-                <td>Form Validation Testing Suite</td>
-                <td>Should validate date picker interaction</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:20 pm</td>
-                <td>Form Validation Testing Suite</td>
-                <td>Should validate dropdown selection options</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:20 pm</td>
-                <td>Form Validation Testing Suite</td>
-                <td>Should validate radio buttons selection switching</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:20 pm</td>
-                <td>Form Validation Testing Suite</td>
-                <td>Should validate checkboxes toggles</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:24 pm</td>
-                <td>LoginPage</td>
-                <td>Enter username</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Cleared and entered: admin@gateguard.app</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:27 pm</td>
-                <td>LoginPage</td>
-                <td>Enter password</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Cleared and entered: GateGuardPass123!</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:28 pm</td>
-                <td>LoginPage</td>
-                <td>Click Login Submit Button</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);"></td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:46 pm</td>
-                <td>NavigationPage</td>
-                <td>Switch to bottom tab "activity"</td>
-                <td class="log-fail">FAIL</td>
-                <td style="color: var(--text-muted);">element ("id:com.gateguard.app:id/nav_logs") still not displayed after 15000ms</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:03:46 pm</td>
-                <td>Navigation Testing Suite</td>
-                <td>Should validate Bottom Navigation Bar tab switching</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:04:01 pm</td>
-                <td>NavigationPage</td>
-                <td>Switch to bottom tab "profile"</td>
-                <td class="log-fail">FAIL</td>
-                <td style="color: var(--text-muted);">element ("id:com.gateguard.app:id/nav_profile") still not displayed after 15000ms</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:04:01 pm</td>
-                <td>Navigation Testing Suite</td>
-                <td>Should validate Navigation Drawer routing paths</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:04:09 pm</td>
-                <td>Navigation Testing Suite</td>
-                <td>Should validate device Back button actions</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:04:34 pm</td>
-                <td>NavigationPage</td>
-                <td>Read screen title</td>
-                <td class="log-fail">FAIL</td>
-                <td style="color: var(--text-muted);">element ("//*[@resource-id="com.gateguard.app:id/toolbar"]//android.widget.TextView | //*[@resource-id="com.gateguard.app:id/tv_greeting"] | //*[@resource-id="com.gateguard.app:id/tv_profile_name"]") still not displayed after 15000ms</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:04:34 pm</td>
-                <td>Navigation Testing Suite</td>
-                <td>Should validate app restart behavior stability</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:04:50 pm</td>
-                <td>NavigationPage</td>
-                <td>Switch to bottom tab "profile"</td>
-                <td class="log-fail">FAIL</td>
-                <td style="color: var(--text-muted);">element ("id:com.gateguard.app:id/nav_profile") still not displayed after 15000ms</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:04:50 pm</td>
-                <td>Navigation Testing Suite</td>
-                <td>Should validate Deep Linking URLs redirects</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:04:50 pm</td>
-                <td>UI Component Testing Suite</td>
-                <td>Should validate ElevatedButton, TextButton, and IconButton clicks</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:04:50 pm</td>
-                <td>UI Component Testing Suite</td>
-                <td>Should validate Material Switch toggle controls</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:04:50 pm</td>
-                <td>UI Component Testing Suite</td>
-                <td>Should validate Dialog trigger popups and dismissal</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:04:50 pm</td>
-                <td>UI Component Testing Suite</td>
-                <td>Should validate BottomSheet overlay triggers and swipe dismissal</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:04:50 pm</td>
-                <td>UI Component Testing Suite</td>
-                <td>Should validate Snackbar temporary alert triggers</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-              <tr>
-                <td class="log-time">2:04:50 pm</td>
-                <td>UI Component Testing Suite</td>
-                <td>Should validate scroll lists and click inner cards</td>
-                <td class="log-pass">PASS</td>
-                <td style="color: var(--text-muted);">Completed without errors</td>
-              </tr>
-            
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- Modal for full screenshot -->
-  <div class="modal" id="imageModal" onclick="closeModal()">
-    <span class="close-modal">&times;</span>
-    <img class="modal-content" id="modalImg">
   </div>
 
   <script>
-    function toggleAccordion(header) {
-      const item = header.parentElement;
-      item.classList.toggle('open');
-      const arrow = header.querySelector('.test-meta span:last-child');
-      if (item.classList.contains('open')) {
-        arrow.innerHTML = '&#9652;';
-      } else {
-        arrow.innerHTML = '&#9662;';
-      }
-    }
-
-    function filterTests(status) {
-      // Manage active state of buttons
-      const buttons = document.querySelectorAll('.filter-buttons button');
-      buttons.forEach(btn => btn.classList.remove('active'));
+    function switchSuite(suite, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
       
-      const event = window.event;
-      if (event && event.currentTarget) {
-        event.currentTarget.classList.add('active');
-      }
-
-      const items = document.querySelectorAll('.test-item');
-      items.forEach(item => {
-        if (status === 'all' || item.getAttribute('data-status') === status) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
-        }
-      });
-    }
-
-    function openModal(src) {
-      document.getElementById('imageModal').style.display = 'flex';
-      document.getElementById('modalImg').src = src;
-      event.stopPropagation();
-    }
-
-    function closeModal() {
-      document.getElementById('imageModal').style.display = 'none';
+      document.querySelectorAll('.suite-section').forEach(s => s.style.display = 'none');
+      document.getElementById(suite + '-suite').style.display = 'flex';
     }
   </script>
 </body>

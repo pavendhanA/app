@@ -15,6 +15,9 @@ jobs:
     steps:
       - name: 1. Checkout Repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
 
       - name: 2. Setup Node.js Environment
         uses: actions/setup-node@v4
@@ -87,10 +90,30 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: appium-execution-reports
-          path: |
-            reports/Flutter_E2E_Report.xlsx
-            reports/index.html
-            reports/failures/
-            reports/logs/
+          path: reports/
           retention-days: 14
+
+      - name: 10. Commit Reports to Repository
+        if: always()
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Stage report directories
+          git add reports/
+          
+          # Check if there are differences to commit
+          if git diff --cached --quiet; then
+            echo "No changes in reports. Skipping commit."
+          else
+            git commit -m "Auto-update Appium Reports [skip ci]"
+            # Reset hard to clean up emulator files and build configurations
+            git reset --hard HEAD
+            # Force pull before pushing to avoid conflicts
+            git pull --rebase origin ${GITHUB_REF##*/}
+            git push origin HEAD:${GITHUB_REF##*/}
+          fi
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

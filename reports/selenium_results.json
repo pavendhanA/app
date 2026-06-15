@@ -1,0 +1,337 @@
+{
+  "summary": {
+    "date": "15/6/2026, 5:11:24 pm",
+    "deviceName": "Chrome/Firefox/WebKit Headless",
+    "total": 20,
+    "passed": 20,
+    "failed": 0,
+    "skipped": 0,
+    "passPercentage": 100,
+    "duration": "105.15s"
+  },
+  "testCases": [
+    {
+      "id": "TC-201",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-101: Login - Validate empty field constraints",
+      "status": "PASS",
+      "duration": "3.39s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-202",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-102: Login - Validate password length restriction",
+      "status": "PASS",
+      "duration": "3.11s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-203",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-103: Login - Verify successful authentication for Admin role",
+      "status": "PASS",
+      "duration": "1.96s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-204",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-104: Logout - Validate session clear",
+      "status": "PASS",
+      "duration": "2.60s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-205",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-105: Registration - Validate empty submission block",
+      "status": "PASS",
+      "duration": "2.50s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-206",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-106: Registration - Validate password mismatch check",
+      "status": "PASS",
+      "duration": "3.19s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-207",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-107: Registration - Successful signup and dashboard auto-redirect",
+      "status": "PASS",
+      "duration": "2.82s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-208",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-108: Dashboard - Verify initial statistical widgets mapping",
+      "status": "PASS",
+      "duration": "2.50s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-209",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-109: Dashboard - Verify real-time list search filters",
+      "status": "PASS",
+      "duration": "3.03s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-210",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-110: Dashboard - Verify \"Active\" status tab filter",
+      "status": "PASS",
+      "duration": "7.28s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-211",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-111: Dashboard - Verify \"Upcoming\" status tab filter",
+      "status": "PASS",
+      "duration": "4.67s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-212",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-112: Pass Generation - Validate form fields error flags",
+      "status": "PASS",
+      "duration": "2.67s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-213",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-113: Pass Generation - Complete flow with QR modal trigger",
+      "status": "PASS",
+      "duration": "8.79s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-214",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-114: Pass Generation - Cancel/Delete active pass",
+      "status": "PASS",
+      "duration": "11.48s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-215",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-115: QR Preview - Open preview dialog from visitor logs list",
+      "status": "PASS",
+      "duration": "3.32s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-216",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-116: QR Preview - Validate Pass ID display format",
+      "status": "PASS",
+      "duration": "3.77s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-217",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-117: QR Preview - Safely close preview modal and restore dashboard focus",
+      "status": "PASS",
+      "duration": "2.74s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-218",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-118: Profile - Update user info metadata fields",
+      "status": "PASS",
+      "duration": "2.94s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-219",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-119: Profile - Verify profile roles are in readonly format",
+      "status": "PASS",
+      "duration": "3.44s",
+      "error": "",
+      "stack": ""
+    },
+    {
+      "id": "TC-220",
+      "module": "GateGuard Web Automation Suite",
+      "scenario": "TC-120: Profile - Check dashboard layout buttons routing and click download QR",
+      "status": "PASS",
+      "duration": "5.31s",
+      "error": "",
+      "stack": ""
+    }
+  ],
+  "failedTests": [],
+  "executionLogs": [
+    {
+      "timestamp": "2026-06-15T11:41:24.431Z",
+      "testName": "TC-101: Login - Validate empty field constraints",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.431Z",
+      "testName": "TC-102: Login - Validate password length restriction",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-103: Login - Verify successful authentication for Admin role",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-104: Logout - Validate session clear",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-105: Registration - Validate empty submission block",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-106: Registration - Validate password mismatch check",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-107: Registration - Successful signup and dashboard auto-redirect",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-108: Dashboard - Verify initial statistical widgets mapping",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-109: Dashboard - Verify real-time list search filters",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-110: Dashboard - Verify \"Active\" status tab filter",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-111: Dashboard - Verify \"Upcoming\" status tab filter",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-112: Pass Generation - Validate form fields error flags",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-113: Pass Generation - Complete flow with QR modal trigger",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-114: Pass Generation - Cancel/Delete active pass",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-115: QR Preview - Open preview dialog from visitor logs list",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-116: QR Preview - Validate Pass ID display format",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-117: QR Preview - Safely close preview modal and restore dashboard focus",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-118: Profile - Update user info metadata fields",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-119: Profile - Verify profile roles are in readonly format",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    },
+    {
+      "timestamp": "2026-06-15T11:41:24.432Z",
+      "testName": "TC-120: Profile - Check dashboard layout buttons routing and click download QR",
+      "step": "Asserting module GateGuard Web Automation Suite",
+      "result": "PASS",
+      "remarks": "Success"
+    }
+  ]
+}

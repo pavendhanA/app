@@ -1,8 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const DriverFactory = require('../src/driver/DriverFactory');
-const ExcelReporter = require('../src/utils/ExcelReporter');
-const HtmlReporter = require('../src/utils/HtmlReporter');
+const UnifiedReporter = require('../src/utils/UnifiedReporter');
 const logger = require('../src/utils/Logger');
 
 // Create reports directories
@@ -144,8 +143,7 @@ after(async function () {
 
   // Compile Reports
   try {
-    await ExcelReporter.generateReport(path.join(reportDir, 'Flutter_E2E_Report.xlsx'), reportPayload);
-    await HtmlReporter.generateReport(path.join(reportDir, 'index.html'), reportPayload);
+    await UnifiedReporter.updateReport('appium', reportPayload);
   } catch (reportErr) {
     logger.error(`Failed to compile reports: ${reportErr.message}`);
   }
