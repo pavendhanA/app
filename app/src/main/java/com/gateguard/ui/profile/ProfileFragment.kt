@@ -23,6 +23,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
 
         binding.btnLogout.setOnClickListener {
+            val prefs = requireContext().getSharedPreferences("GateGuardPrefs", android.content.Context.MODE_PRIVATE)
+            prefs.edit().putBoolean("is_logged_in", false).apply()
             Firebase.auth.signOut()
             findNavController().navigate(R.id.action_profile_to_login)
         }

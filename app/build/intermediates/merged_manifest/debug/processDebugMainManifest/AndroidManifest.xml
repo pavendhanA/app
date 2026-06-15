@@ -66,7 +66,9 @@
         <activity android:name="com.gateguard.ScanQrActivity" />
         <activity android:name="com.gateguard.FaceVerifyActivity" />
         <activity android:name="com.gateguard.ProfileActivity" />
-        <activity android:name="com.gateguard.MainActivity" />
+        <activity
+            android:name="com.gateguard.MainActivity"
+            android:exported="true" />
         <activity android:name="com.gateguard.HomeActivity" />
         <activity
             android:name="com.gateguard.CaptureActivityPortrait"

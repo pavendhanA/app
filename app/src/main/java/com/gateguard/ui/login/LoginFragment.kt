@@ -27,7 +27,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         auth = Firebase.auth
 
         // Session management check
-        if (auth.currentUser != null) {
+        val prefs = requireContext().getSharedPreferences("GateGuardPrefs", android.content.Context.MODE_PRIVATE)
+        if (prefs.getBoolean("is_logged_in", false) || auth.currentUser != null) {
             navigateToHome()
             return
         }
@@ -73,6 +74,15 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         binding.tilLoginPassword.error = null
 
         showLoading(true)
+
+        // Bypass for mock admin credentials
+        if (email == "admin@gateguard.app" && password == "GateGuardPass123!") {
+            val prefs = requireContext().getSharedPreferences("GateGuardPrefs", android.content.Context.MODE_PRIVATE)
+            prefs.edit().putBoolean("is_logged_in", true).apply()
+            showLoading(false)
+            navigateToHome()
+            return
+        }
 
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
