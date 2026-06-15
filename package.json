@@ -1,5 +1,27 @@
 {
+  "name": "gateguard-e2e-automation",
+  "version": "1.0.0",
+  "description": "E2E Automation Framework for Flutter Android APK using Appium 2.x and WebDriverIO",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests/setup.js tests/**/*.test.js --timeout 120000 --exit",
+    "test:flutter": "cross-env AUTOMATION_NAME=Flutter npm run test",
+    "test:native": "cross-env AUTOMATION_NAME=UiAutomator2 npm run test",
+    "test:ai": "node src/utils/AiTestingAgent.js"
+  },
   "dependencies": {
-    "firebase": "^12.14.0"
+    "firebase": "^12.14.0",
+    "exceljs": "^4.4.0",
+    "winston": "^3.11.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "webdriverio": "^8.32.4",
+    "appium-flutter-finder": "latest",
+    "mocha": "^10.3.0",
+    "chai": "^4.4.1",
+    "cross-env": "^7.0.3",
+    "mochawesome": "^7.1.3",
+    "mochawesome-report-generator": "^6.2.0"
   }
 }

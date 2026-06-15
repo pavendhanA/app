@@ -1,0 +1,96 @@
+name: Flutter Appium E2E Automation CI
+
+on:
+  push:
+    branches: [ main, master, dev ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  e2e-automation:
+    # macOS runners are used because they support hardware virtualization acceleration for Android Emulators in GitHub Actions.
+    runs-on: macos-13
+
+    steps:
+      - name: 1. Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 2. Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+
+      - name: 3. Setup Java Development Kit (JDK 17)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: 4. Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.13'
+
+      - name: 5. Build Android Debug APK
+        run: gradle :app:assembleDebug
+
+      - name: 6. Install Appium Server 2.x and Drivers
+        run: |
+          npm install -g appium@next
+          appium driver install uiautomator2
+          appium driver install --source=npm appium-flutter-driver
+          echo "Appium server and driver modules installed successfully."
+        shell: bash
+
+      - name: 7. Install NPM Project Dependencies
+        run: npm ci
+
+      - name: 8. Boot Android Emulator & Run E2E Test Suite
+        uses: reactive-circus/android-emulator-runner@v2
+        env:
+          AUTOMATION_NAME: UiAutomator2
+          APK_PATH: app/build/outputs/apk/debug/app-debug.apk
+          APPIUM_HOST: 127.0.0.1
+          APPIUM_PORT: 4723
+          APPIUM_PATH: /
+        with:
+          api-level: 33
+          target: google_apis
+          arch: x86_64
+          force-avd-creation: false
+          emulator-options: -no-window -no-audio -no-boot-anim -camera-back none
+          disable-animations: true
+          script: |
+            # Create reports log directories
+            mkdir -p reports/logs
+            
+            # Start Appium Server in background
+            appium --log reports/logs/appium.log &
+            
+            # Wait for Appium port listener to be healthy
+            echo "Waiting for Appium port listener to start..."
+            for i in {1..30}; do
+              if curl -s http://127.0.0.1:4723/status > /dev/null; then
+                echo "Appium Server is active and listening!"
+                break
+              fi
+              sleep 2
+            done
+            
+            # Run E2E automation tests
+            npm run test
+
+      - name: 9. Upload Execution Reports and Failure Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: appium-execution-reports
+          path: |
+            reports/Flutter_E2E_Report.xlsx
+            reports/index.html
+            reports/failures/
+            reports/logs/
+          retention-days: 14
+
