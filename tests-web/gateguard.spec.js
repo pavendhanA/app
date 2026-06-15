@@ -3,7 +3,7 @@ const path = require('path');
 
 const fileUrl = `file://${path.resolve(__dirname, '../web/index.html')}`;
 
-test.describe('GateGuard Web Automation Suite', () => {
+test.describe('Selenium Web Tests', () => {
 
   test.beforeEach(async ({ page }) => {
     // Navigate to the local mock web page

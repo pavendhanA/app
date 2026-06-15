@@ -122,7 +122,7 @@
       "specs": [],
       "suites": [
         {
-          "title": "GateGuard Web Automation Suite",
+          "title": "Selenium Web Tests",
           "file": "gateguard.spec.js",
           "line": 6,
           "column": 6,
@@ -143,12 +143,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3391,
+                      "duration": 3944,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:39:42.482Z",
+                      "startTime": "2026-06-15T11:50:27.676Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -156,7 +156,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-64e8e14601c8294d3f4c",
+              "id": "564be3f80a870c80304e-b4e3dd62f9de834c1c95",
               "file": "gateguard.spec.js",
               "line": 17,
               "column": 3
@@ -177,12 +177,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3108,
+                      "duration": 4407,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:39:48.124Z",
+                      "startTime": "2026-06-15T11:50:33.314Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -190,7 +190,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-59ab5f93edbb7b0e4d1c",
+              "id": "564be3f80a870c80304e-bd06b6dbbb92a9c94d6b",
               "file": "gateguard.spec.js",
               "line": 25,
               "column": 3
@@ -211,12 +211,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1957,
+                      "duration": 6954,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:39:51.274Z",
+                      "startTime": "2026-06-15T11:50:37.764Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -224,7 +224,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-924580d2a17e4123db6b",
+              "id": "564be3f80a870c80304e-8268411112b25399fdac",
               "file": "gateguard.spec.js",
               "line": 34,
               "column": 3
@@ -245,12 +245,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2595,
+                      "duration": 2932,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:39:53.270Z",
+                      "startTime": "2026-06-15T11:50:44.758Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -258,7 +258,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-6d37eda884173d6769f4",
+              "id": "564be3f80a870c80304e-2c57ab1b6eee87f8b53a",
               "file": "gateguard.spec.js",
               "line": 45,
               "column": 3
@@ -279,12 +279,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2496,
+                      "duration": 3433,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:39:55.902Z",
+                      "startTime": "2026-06-15T11:50:47.727Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -292,7 +292,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-770ccf0263049b38e132",
+              "id": "564be3f80a870c80304e-597d05f952e773ddef2a",
               "file": "gateguard.spec.js",
               "line": 62,
               "column": 3
@@ -313,12 +313,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3190,
+                      "duration": 5958,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:39:58.436Z",
+                      "startTime": "2026-06-15T11:50:51.198Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -326,7 +326,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-667d6131cc16f843ac3f",
+              "id": "564be3f80a870c80304e-edb468bd04d64a971bf6",
               "file": "gateguard.spec.js",
               "line": 71,
               "column": 3
@@ -347,12 +347,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2822,
+                      "duration": 3619,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:40:01.662Z",
+                      "startTime": "2026-06-15T11:50:57.199Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -360,7 +360,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-c6224c06519dc92c1768",
+              "id": "564be3f80a870c80304e-d9421d94f5e087986a89",
               "file": "gateguard.spec.js",
               "line": 84,
               "column": 3
@@ -381,12 +381,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2496,
+                      "duration": 2152,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:40:04.524Z",
+                      "startTime": "2026-06-15T11:51:00.889Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -394,7 +394,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-8941d81a8fa9a648fc4e",
+              "id": "564be3f80a870c80304e-a9d0f0effa878a3d3374",
               "file": "gateguard.spec.js",
               "line": 103,
               "column": 3
@@ -415,12 +415,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3031,
+                      "duration": 2442,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:40:07.057Z",
+                      "startTime": "2026-06-15T11:51:03.081Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -428,7 +428,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-131820371f8649e5194c",
+              "id": "564be3f80a870c80304e-a5fda940e1986f529cf1",
               "file": "gateguard.spec.js",
               "line": 114,
               "column": 3
@@ -449,12 +449,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 7282,
+                      "duration": 2935,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:40:10.125Z",
+                      "startTime": "2026-06-15T11:51:05.561Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -462,7 +462,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-a17568053b8ed28f6bad",
+              "id": "564be3f80a870c80304e-e7c7595cc6a0e0fdda27",
               "file": "gateguard.spec.js",
               "line": 127,
               "column": 3
@@ -483,12 +483,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 4673,
+                      "duration": 5832,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:40:17.442Z",
+                      "startTime": "2026-06-15T11:51:08.536Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -496,7 +496,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-2fc61ab31ce8b2a34ac6",
+              "id": "564be3f80a870c80304e-65cb15a9089ca114ac1c",
               "file": "gateguard.spec.js",
               "line": 144,
               "column": 3
@@ -517,12 +517,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2665,
+                      "duration": 2709,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:40:22.149Z",
+                      "startTime": "2026-06-15T11:51:14.406Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -530,7 +530,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-ecdc24ab51df7f38a4a7",
+              "id": "564be3f80a870c80304e-60c942221fbd3e94cc84",
               "file": "gateguard.spec.js",
               "line": 162,
               "column": 3
@@ -551,12 +551,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 8791,
+                      "duration": 3162,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:40:24.848Z",
+                      "startTime": "2026-06-15T11:51:17.152Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -564,7 +564,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-7d987b546653e07f2323",
+              "id": "564be3f80a870c80304e-69eb49fb8a29354654e4",
               "file": "gateguard.spec.js",
               "line": 176,
               "column": 3
@@ -585,12 +585,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 11481,
+                      "duration": 4617,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:40:33.683Z",
+                      "startTime": "2026-06-15T11:51:20.351Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -598,7 +598,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-129af4b99ba31fca7395",
+              "id": "564be3f80a870c80304e-c27a6099f78fe817b354",
               "file": "gateguard.spec.js",
               "line": 196,
               "column": 3
@@ -619,12 +619,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3322,
+                      "duration": 4656,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:40:45.208Z",
+                      "startTime": "2026-06-15T11:51:25.008Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -632,7 +632,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-2e0e964f79bff72c670d",
+              "id": "564be3f80a870c80304e-0544849b1a54ec93e090",
               "file": "gateguard.spec.js",
               "line": 216,
               "column": 3
@@ -653,12 +653,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3775,
+                      "duration": 3344,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:40:48.573Z",
+                      "startTime": "2026-06-15T11:51:29.713Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -666,7 +666,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-c83c3448bff6e77b5122",
+              "id": "564be3f80a870c80304e-1847693b4da6c83e74fe",
               "file": "gateguard.spec.js",
               "line": 227,
               "column": 3
@@ -687,12 +687,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2739,
+                      "duration": 4979,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:40:52.391Z",
+                      "startTime": "2026-06-15T11:51:33.096Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -700,7 +700,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-bbb1f88984b3b31b5683",
+              "id": "564be3f80a870c80304e-2183fcc411d80e44737f",
               "file": "gateguard.spec.js",
               "line": 237,
               "column": 3
@@ -721,12 +721,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2941,
+                      "duration": 5908,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:40:55.172Z",
+                      "startTime": "2026-06-15T11:51:38.112Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -734,7 +734,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-62a3cd8bb7e493cb50f7",
+              "id": "564be3f80a870c80304e-f62526fcfa3b42d38950",
               "file": "gateguard.spec.js",
               "line": 254,
               "column": 3
@@ -755,12 +755,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3435,
+                      "duration": 3487,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:40:58.151Z",
+                      "startTime": "2026-06-15T11:51:44.056Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -768,7 +768,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-0f776f42271eaade41b6",
+              "id": "564be3f80a870c80304e-7029252f25456f307517",
               "file": "gateguard.spec.js",
               "line": 270,
               "column": 3
@@ -789,12 +789,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 5307,
+                      "duration": 2772,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:41:01.630Z",
+                      "startTime": "2026-06-15T11:51:47.580Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -802,7 +802,7 @@
                   "status": "expected"
                 }
               ],
-              "id": "564be3f80a870c80304e-8dce6cb51b3bf6e5d74b",
+              "id": "564be3f80a870c80304e-03ee194b7aaeb33d6805",
               "file": "gateguard.spec.js",
               "line": 281,
               "column": 3
@@ -814,8 +814,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-06-15T11:39:39.254Z",
-    "duration": 104942.49,
+    "startTime": "2026-06-15T11:50:24.380Z",
+    "duration": 102321.657,
     "expected": 20,
     "skipped": 0,
     "unexpected": 0,
