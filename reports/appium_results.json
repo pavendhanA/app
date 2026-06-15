@@ -1,6 +1,6 @@
 {
   "summary": {
-    "date": "15/6/2026, 5:52:18 pm",
+    "date": "6/15/2026, 12:36:40 PM",
     "deviceName": "Android Emulator (Simulated)",
     "androidVersion": "14.0",
     "total": 10,
@@ -8,7 +8,7 @@
     "failed": 0,
     "skipped": 0,
     "passPercentage": 100,
-    "duration": "0.08s"
+    "duration": "0.03s"
   },
   "testCases": [
     {
@@ -17,7 +17,7 @@
       "scenario": "Should validate constraints for empty fields",
       "status": "PASS",
       "device": "Android Emulator (Simulated)",
-      "duration": "0.01s"
+      "duration": "0.00s"
     },
     {
       "id": "TC-102",
@@ -95,238 +95,238 @@
   "failedTests": [],
   "executionLogs": [
     {
-      "timestamp": "2026-06-15T12:22:18.767Z",
+      "timestamp": "2026-06-15T12:36:40.223Z",
       "testName": "LoginPage",
       "step": "Enter username",
       "result": "PASS",
       "remarks": "Cleared and entered: "
     },
     {
-      "timestamp": "2026-06-15T12:22:18.768Z",
+      "timestamp": "2026-06-15T12:36:40.223Z",
       "testName": "LoginPage",
       "step": "Enter password",
       "result": "PASS",
       "remarks": "Cleared and entered: "
     },
     {
-      "timestamp": "2026-06-15T12:22:18.769Z",
+      "timestamp": "2026-06-15T12:36:40.224Z",
       "testName": "LoginPage",
       "step": "Click Login Submit Button",
       "result": "PASS",
       "remarks": ""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.769Z",
+      "timestamp": "2026-06-15T12:36:40.224Z",
       "testName": "LoginPage",
       "step": "Get login error message",
       "result": "PASS",
       "remarks": "Text found (Simulated): \"Validation error: Fields required\""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.773Z",
+      "timestamp": "2026-06-15T12:36:40.226Z",
       "testName": "Authentication Testing Suite",
       "step": "Should validate constraints for empty fields",
       "result": "PASS",
       "remarks": "Completed without errors"
     },
     {
-      "timestamp": "2026-06-15T12:22:18.774Z",
+      "timestamp": "2026-06-15T12:36:40.227Z",
       "testName": "LoginPage",
       "step": "Enter username",
       "result": "PASS",
       "remarks": "Cleared and entered: invalid_user"
     },
     {
-      "timestamp": "2026-06-15T12:22:18.774Z",
+      "timestamp": "2026-06-15T12:36:40.227Z",
       "testName": "LoginPage",
       "step": "Enter password",
       "result": "PASS",
       "remarks": "Cleared and entered: wrong_pass"
     },
     {
-      "timestamp": "2026-06-15T12:22:18.774Z",
+      "timestamp": "2026-06-15T12:36:40.227Z",
       "testName": "LoginPage",
       "step": "Click Login Submit Button",
       "result": "PASS",
       "remarks": ""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.774Z",
+      "timestamp": "2026-06-15T12:36:40.227Z",
       "testName": "LoginPage",
       "step": "Get login error message",
       "result": "PASS",
       "remarks": "Text found (Simulated): \"Invalid credentials\""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.777Z",
+      "timestamp": "2026-06-15T12:36:40.229Z",
       "testName": "Authentication Testing Suite",
       "step": "Should show error messages for invalid credentials",
       "result": "PASS",
       "remarks": "Completed without errors"
     },
     {
-      "timestamp": "2026-06-15T12:22:18.778Z",
+      "timestamp": "2026-06-15T12:36:40.230Z",
       "testName": "LoginPage",
       "step": "Enter username",
       "result": "PASS",
       "remarks": "Cleared and entered: admin@gateguard.app"
     },
     {
-      "timestamp": "2026-06-15T12:22:18.778Z",
+      "timestamp": "2026-06-15T12:36:40.230Z",
       "testName": "LoginPage",
       "step": "Enter password",
       "result": "PASS",
       "remarks": "Cleared and entered: GateGuardPass123!"
     },
     {
-      "timestamp": "2026-06-15T12:22:18.779Z",
+      "timestamp": "2026-06-15T12:36:40.230Z",
       "testName": "LoginPage",
       "step": "Click Login Submit Button",
       "result": "PASS",
       "remarks": ""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.810Z",
+      "timestamp": "2026-06-15T12:36:40.231Z",
       "testName": "Authentication Testing Suite",
       "step": "Should successfully navigate on valid login",
       "result": "PASS",
       "remarks": "Completed without errors"
     },
     {
-      "timestamp": "2026-06-15T12:22:18.813Z",
+      "timestamp": "2026-06-15T12:36:40.232Z",
       "testName": "Authentication Testing Suite",
       "step": "Should verify session persistence across application restarts",
       "result": "PASS",
       "remarks": "Completed without errors"
     },
     {
-      "timestamp": "2026-06-15T12:22:18.818Z",
+      "timestamp": "2026-06-15T12:36:40.233Z",
       "testName": "LoginPage",
       "step": "Open Profile Menu",
       "result": "PASS",
       "remarks": ""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.819Z",
+      "timestamp": "2026-06-15T12:36:40.233Z",
       "testName": "LoginPage",
       "step": "Click Logout Option",
       "result": "PASS",
       "remarks": ""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.820Z",
+      "timestamp": "2026-06-15T12:36:40.234Z",
       "testName": "Authentication Testing Suite",
       "step": "Should successfully log out and clear the session",
       "result": "PASS",
       "remarks": "Completed without errors"
     },
     {
-      "timestamp": "2026-06-15T12:22:18.822Z",
+      "timestamp": "2026-06-15T12:36:40.235Z",
       "testName": "NavigationPage",
       "step": "Switch to bottom tab \"activity\"",
       "result": "PASS",
       "remarks": ""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.822Z",
+      "timestamp": "2026-06-15T12:36:40.235Z",
       "testName": "NavigationPage",
       "step": "Read screen title",
       "result": "PASS",
       "remarks": "Text found (Simulated): \"activity\""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.823Z",
+      "timestamp": "2026-06-15T12:36:40.236Z",
       "testName": "NavigationPage",
       "step": "Switch to bottom tab \"profile\"",
       "result": "PASS",
       "remarks": ""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.823Z",
+      "timestamp": "2026-06-15T12:36:40.236Z",
       "testName": "NavigationPage",
       "step": "Read screen title",
       "result": "PASS",
       "remarks": "Text found (Simulated): \"profile\""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.823Z",
+      "timestamp": "2026-06-15T12:36:40.236Z",
       "testName": "NavigationPage",
       "step": "Switch to bottom tab \"home\"",
       "result": "PASS",
       "remarks": ""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.824Z",
+      "timestamp": "2026-06-15T12:36:40.237Z",
       "testName": "Navigation Testing Suite",
       "step": "Should validate Bottom Navigation Bar tab switching",
       "result": "PASS",
       "remarks": "Completed without errors"
     },
     {
-      "timestamp": "2026-06-15T12:22:18.825Z",
+      "timestamp": "2026-06-15T12:36:40.237Z",
       "testName": "NavigationPage",
       "step": "Switch to bottom tab \"profile\"",
       "result": "PASS",
       "remarks": ""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.826Z",
+      "timestamp": "2026-06-15T12:36:40.238Z",
       "testName": "NavigationPage",
       "step": "Read screen title",
       "result": "PASS",
       "remarks": "Text found (Simulated): \"profile\""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.828Z",
+      "timestamp": "2026-06-15T12:36:40.239Z",
       "testName": "Navigation Testing Suite",
       "step": "Should validate Navigation Drawer routing paths",
       "result": "PASS",
       "remarks": "Completed without errors"
     },
     {
-      "timestamp": "2026-06-15T12:22:18.829Z",
+      "timestamp": "2026-06-15T12:36:40.239Z",
       "testName": "NavigationPage",
       "step": "Read screen title",
       "result": "PASS",
       "remarks": "Text found (Simulated): \"profile\""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.831Z",
+      "timestamp": "2026-06-15T12:36:40.240Z",
       "testName": "Navigation Testing Suite",
       "step": "Should validate device Back button actions",
       "result": "PASS",
       "remarks": "Completed without errors"
     },
     {
-      "timestamp": "2026-06-15T12:22:18.834Z",
+      "timestamp": "2026-06-15T12:36:40.241Z",
       "testName": "NavigationPage",
       "step": "Read screen title",
       "result": "PASS",
       "remarks": "Text found (Simulated): \"profile\""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.835Z",
+      "timestamp": "2026-06-15T12:36:40.242Z",
       "testName": "Navigation Testing Suite",
       "step": "Should validate app restart behavior stability",
       "result": "PASS",
       "remarks": "Completed without errors"
     },
     {
-      "timestamp": "2026-06-15T12:22:18.837Z",
+      "timestamp": "2026-06-15T12:36:40.242Z",
       "testName": "NavigationPage",
       "step": "Switch to bottom tab \"profile\"",
       "result": "PASS",
       "remarks": ""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.837Z",
+      "timestamp": "2026-06-15T12:36:40.243Z",
       "testName": "NavigationPage",
       "step": "Read screen title",
       "result": "PASS",
       "remarks": "Text found (Simulated): \"profile\""
     },
     {
-      "timestamp": "2026-06-15T12:22:18.838Z",
+      "timestamp": "2026-06-15T12:36:40.243Z",
       "testName": "Navigation Testing Suite",
       "step": "Should validate Deep Linking URLs redirects",
       "result": "PASS",

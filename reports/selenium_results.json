@@ -1,13 +1,13 @@
 {
   "summary": {
-    "date": "15/6/2026, 6:02:26 pm",
+    "date": "6/15/2026, 12:36:39 PM",
     "deviceName": "Chrome/Firefox/WebKit Headless",
     "total": 60,
     "passed": 60,
     "failed": 0,
     "skipped": 0,
     "passPercentage": 100,
-    "duration": "580.58s"
+    "duration": "70.23s"
   },
   "testCases": [
     {
@@ -15,7 +15,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-101: Login - Validate empty field constraints",
       "status": "PASS",
-      "duration": "8.18s",
+      "duration": "0.39s",
       "error": "",
       "stack": ""
     },
@@ -24,7 +24,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-102: Login - Validate password length restriction",
       "status": "PASS",
-      "duration": "3.34s",
+      "duration": "0.34s",
       "error": "",
       "stack": ""
     },
@@ -33,7 +33,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-103: Login - Verify successful authentication for Admin role",
       "status": "PASS",
-      "duration": "4.99s",
+      "duration": "0.36s",
       "error": "",
       "stack": ""
     },
@@ -42,7 +42,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-104: Logout - Validate session clear",
       "status": "PASS",
-      "duration": "4.19s",
+      "duration": "0.36s",
       "error": "",
       "stack": ""
     },
@@ -51,7 +51,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-105: Registration - Validate empty submission block",
       "status": "PASS",
-      "duration": "3.73s",
+      "duration": "0.37s",
       "error": "",
       "stack": ""
     },
@@ -60,7 +60,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-106: Registration - Validate password mismatch check",
       "status": "PASS",
-      "duration": "5.01s",
+      "duration": "0.34s",
       "error": "",
       "stack": ""
     },
@@ -69,7 +69,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-107: Registration - Successful signup and dashboard auto-redirect",
       "status": "PASS",
-      "duration": "3.81s",
+      "duration": "0.39s",
       "error": "",
       "stack": ""
     },
@@ -78,7 +78,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-108: Dashboard - Verify initial statistical widgets mapping",
       "status": "PASS",
-      "duration": "3.59s",
+      "duration": "0.34s",
       "error": "",
       "stack": ""
     },
@@ -87,7 +87,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-109: Dashboard - Verify real-time list search filters",
       "status": "PASS",
-      "duration": "2.35s",
+      "duration": "0.33s",
       "error": "",
       "stack": ""
     },
@@ -96,7 +96,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-110: Dashboard - Verify \"Active\" status tab filter",
       "status": "PASS",
-      "duration": "4.32s",
+      "duration": "0.38s",
       "error": "",
       "stack": ""
     },
@@ -105,7 +105,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-111: Dashboard - Verify \"Upcoming\" status tab filter",
       "status": "PASS",
-      "duration": "2.78s",
+      "duration": "0.37s",
       "error": "",
       "stack": ""
     },
@@ -114,7 +114,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-112: Pass Generation - Validate form fields error flags",
       "status": "PASS",
-      "duration": "6.68s",
+      "duration": "0.40s",
       "error": "",
       "stack": ""
     },
@@ -123,7 +123,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-113: Pass Generation - Complete flow with QR modal trigger",
       "status": "PASS",
-      "duration": "4.68s",
+      "duration": "0.46s",
       "error": "",
       "stack": ""
     },
@@ -132,7 +132,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-114: Pass Generation - Cancel/Delete active pass",
       "status": "PASS",
-      "duration": "2.14s",
+      "duration": "0.37s",
       "error": "",
       "stack": ""
     },
@@ -141,7 +141,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-115: QR Preview - Open preview dialog from visitor logs list",
       "status": "PASS",
-      "duration": "2.25s",
+      "duration": "0.37s",
       "error": "",
       "stack": ""
     },
@@ -150,7 +150,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-116: QR Preview - Validate Pass ID display format",
       "status": "PASS",
-      "duration": "2.54s",
+      "duration": "0.36s",
       "error": "",
       "stack": ""
     },
@@ -159,7 +159,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-117: QR Preview - Safely close preview modal and restore dashboard focus",
       "status": "PASS",
-      "duration": "2.32s",
+      "duration": "0.41s",
       "error": "",
       "stack": ""
     },
@@ -168,7 +168,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-118: Profile - Update user info metadata fields",
       "status": "PASS",
-      "duration": "2.68s",
+      "duration": "0.40s",
       "error": "",
       "stack": ""
     },
@@ -177,7 +177,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-119: Profile - Verify profile roles are in readonly format",
       "status": "PASS",
-      "duration": "2.46s",
+      "duration": "0.39s",
       "error": "",
       "stack": ""
     },
@@ -186,7 +186,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-120: Profile - Check dashboard layout buttons routing and click download QR",
       "status": "PASS",
-      "duration": "2.68s",
+      "duration": "0.38s",
       "error": "",
       "stack": ""
     },
@@ -195,7 +195,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-101: Login - Validate empty field constraints",
       "status": "PASS",
-      "duration": "7.31s",
+      "duration": "1.86s",
       "error": "",
       "stack": ""
     },
@@ -204,7 +204,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-102: Login - Validate password length restriction",
       "status": "PASS",
-      "duration": "2.64s",
+      "duration": "0.58s",
       "error": "",
       "stack": ""
     },
@@ -213,7 +213,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-103: Login - Verify successful authentication for Admin role",
       "status": "PASS",
-      "duration": "5.41s",
+      "duration": "0.63s",
       "error": "",
       "stack": ""
     },
@@ -222,7 +222,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-104: Logout - Validate session clear",
       "status": "PASS",
-      "duration": "3.23s",
+      "duration": "0.68s",
       "error": "",
       "stack": ""
     },
@@ -231,7 +231,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-105: Registration - Validate empty submission block",
       "status": "PASS",
-      "duration": "3.05s",
+      "duration": "0.56s",
       "error": "",
       "stack": ""
     },
@@ -240,7 +240,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-106: Registration - Validate password mismatch check",
       "status": "PASS",
-      "duration": "2.95s",
+      "duration": "0.63s",
       "error": "",
       "stack": ""
     },
@@ -249,7 +249,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-107: Registration - Successful signup and dashboard auto-redirect",
       "status": "PASS",
-      "duration": "3.40s",
+      "duration": "0.69s",
       "error": "",
       "stack": ""
     },
@@ -258,7 +258,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-108: Dashboard - Verify initial statistical widgets mapping",
       "status": "PASS",
-      "duration": "3.32s",
+      "duration": "0.63s",
       "error": "",
       "stack": ""
     },
@@ -267,7 +267,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-109: Dashboard - Verify real-time list search filters",
       "status": "PASS",
-      "duration": "3.12s",
+      "duration": "0.64s",
       "error": "",
       "stack": ""
     },
@@ -276,7 +276,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-110: Dashboard - Verify \"Active\" status tab filter",
       "status": "PASS",
-      "duration": "9.86s",
+      "duration": "1.95s",
       "error": "",
       "stack": ""
     },
@@ -285,7 +285,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-111: Dashboard - Verify \"Upcoming\" status tab filter",
       "status": "PASS",
-      "duration": "4.26s",
+      "duration": "0.88s",
       "error": "",
       "stack": ""
     },
@@ -294,7 +294,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-112: Pass Generation - Validate form fields error flags",
       "status": "PASS",
-      "duration": "3.38s",
+      "duration": "0.73s",
       "error": "",
       "stack": ""
     },
@@ -303,7 +303,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-113: Pass Generation - Complete flow with QR modal trigger",
       "status": "PASS",
-      "duration": "3.95s",
+      "duration": "0.77s",
       "error": "",
       "stack": ""
     },
@@ -312,7 +312,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-114: Pass Generation - Cancel/Delete active pass",
       "status": "PASS",
-      "duration": "3.29s",
+      "duration": "0.72s",
       "error": "",
       "stack": ""
     },
@@ -321,7 +321,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-115: QR Preview - Open preview dialog from visitor logs list",
       "status": "PASS",
-      "duration": "6.57s",
+      "duration": "0.65s",
       "error": "",
       "stack": ""
     },
@@ -330,7 +330,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-116: QR Preview - Validate Pass ID display format",
       "status": "PASS",
-      "duration": "3.45s",
+      "duration": "0.92s",
       "error": "",
       "stack": ""
     },
@@ -339,7 +339,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-117: QR Preview - Safely close preview modal and restore dashboard focus",
       "status": "PASS",
-      "duration": "3.44s",
+      "duration": "0.73s",
       "error": "",
       "stack": ""
     },
@@ -348,7 +348,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-118: Profile - Update user info metadata fields",
       "status": "PASS",
-      "duration": "3.53s",
+      "duration": "0.70s",
       "error": "",
       "stack": ""
     },
@@ -357,7 +357,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-119: Profile - Verify profile roles are in readonly format",
       "status": "PASS",
-      "duration": "9.15s",
+      "duration": "0.66s",
       "error": "",
       "stack": ""
     },
@@ -366,7 +366,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-120: Profile - Check dashboard layout buttons routing and click download QR",
       "status": "PASS",
-      "duration": "15.39s",
+      "duration": "3.07s",
       "error": "",
       "stack": ""
     },
@@ -375,7 +375,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-101: Login - Validate empty field constraints",
       "status": "PASS",
-      "duration": "7.26s",
+      "duration": "8.40s",
       "error": "",
       "stack": ""
     },
@@ -384,7 +384,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-102: Login - Validate password length restriction",
       "status": "PASS",
-      "duration": "5.50s",
+      "duration": "1.01s",
       "error": "",
       "stack": ""
     },
@@ -393,7 +393,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-103: Login - Verify successful authentication for Admin role",
       "status": "PASS",
-      "duration": "5.47s",
+      "duration": "0.85s",
       "error": "",
       "stack": ""
     },
@@ -402,7 +402,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-104: Logout - Validate session clear",
       "status": "PASS",
-      "duration": "5.32s",
+      "duration": "0.90s",
       "error": "",
       "stack": ""
     },
@@ -411,7 +411,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-105: Registration - Validate empty submission block",
       "status": "PASS",
-      "duration": "5.91s",
+      "duration": "1.26s",
       "error": "",
       "stack": ""
     },
@@ -420,7 +420,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-106: Registration - Validate password mismatch check",
       "status": "PASS",
-      "duration": "6.85s",
+      "duration": "0.92s",
       "error": "",
       "stack": ""
     },
@@ -429,7 +429,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-107: Registration - Successful signup and dashboard auto-redirect",
       "status": "PASS",
-      "duration": "6.24s",
+      "duration": "0.90s",
       "error": "",
       "stack": ""
     },
@@ -438,7 +438,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-108: Dashboard - Verify initial statistical widgets mapping",
       "status": "PASS",
-      "duration": "5.83s",
+      "duration": "0.81s",
       "error": "",
       "stack": ""
     },
@@ -447,7 +447,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-109: Dashboard - Verify real-time list search filters",
       "status": "PASS",
-      "duration": "4.96s",
+      "duration": "0.78s",
       "error": "",
       "stack": ""
     },
@@ -456,7 +456,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-110: Dashboard - Verify \"Active\" status tab filter",
       "status": "PASS",
-      "duration": "6.36s",
+      "duration": "0.86s",
       "error": "",
       "stack": ""
     },
@@ -465,7 +465,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-111: Dashboard - Verify \"Upcoming\" status tab filter",
       "status": "PASS",
-      "duration": "6.33s",
+      "duration": "0.83s",
       "error": "",
       "stack": ""
     },
@@ -474,7 +474,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-112: Pass Generation - Validate form fields error flags",
       "status": "PASS",
-      "duration": "6.16s",
+      "duration": "0.89s",
       "error": "",
       "stack": ""
     },
@@ -483,7 +483,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-113: Pass Generation - Complete flow with QR modal trigger",
       "status": "PASS",
-      "duration": "7.88s",
+      "duration": "1.11s",
       "error": "",
       "stack": ""
     },
@@ -492,7 +492,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-114: Pass Generation - Cancel/Delete active pass",
       "status": "PASS",
-      "duration": "6.05s",
+      "duration": "0.89s",
       "error": "",
       "stack": ""
     },
@@ -501,7 +501,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-115: QR Preview - Open preview dialog from visitor logs list",
       "status": "PASS",
-      "duration": "7.00s",
+      "duration": "0.94s",
       "error": "",
       "stack": ""
     },
@@ -510,7 +510,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-116: QR Preview - Validate Pass ID display format",
       "status": "PASS",
-      "duration": "6.30s",
+      "duration": "0.94s",
       "error": "",
       "stack": ""
     },
@@ -519,7 +519,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-117: QR Preview - Safely close preview modal and restore dashboard focus",
       "status": "PASS",
-      "duration": "6.81s",
+      "duration": "0.98s",
       "error": "",
       "stack": ""
     },
@@ -528,7 +528,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-118: Profile - Update user info metadata fields",
       "status": "PASS",
-      "duration": "6.81s",
+      "duration": "1.11s",
       "error": "",
       "stack": ""
     },
@@ -537,7 +537,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-119: Profile - Verify profile roles are in readonly format",
       "status": "PASS",
-      "duration": "5.91s",
+      "duration": "1.03s",
       "error": "",
       "stack": ""
     },
@@ -546,7 +546,7 @@
       "module": "Selenium Web Tests",
       "scenario": "TC-120: Profile - Check dashboard layout buttons routing and click download QR",
       "status": "PASS",
-      "duration": "8.14s",
+      "duration": "1.20s",
       "error": "",
       "stack": ""
     }
@@ -554,420 +554,420 @@
   "failedTests": [],
   "executionLogs": [
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-101: Login - Validate empty field constraints",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-102: Login - Validate password length restriction",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-103: Login - Verify successful authentication for Admin role",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-104: Logout - Validate session clear",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-105: Registration - Validate empty submission block",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-106: Registration - Validate password mismatch check",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-107: Registration - Successful signup and dashboard auto-redirect",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-108: Dashboard - Verify initial statistical widgets mapping",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-109: Dashboard - Verify real-time list search filters",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-110: Dashboard - Verify \"Active\" status tab filter",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-111: Dashboard - Verify \"Upcoming\" status tab filter",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-112: Pass Generation - Validate form fields error flags",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-113: Pass Generation - Complete flow with QR modal trigger",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-114: Pass Generation - Cancel/Delete active pass",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-115: QR Preview - Open preview dialog from visitor logs list",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-116: QR Preview - Validate Pass ID display format",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-117: QR Preview - Safely close preview modal and restore dashboard focus",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-118: Profile - Update user info metadata fields",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-119: Profile - Verify profile roles are in readonly format",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-120: Profile - Check dashboard layout buttons routing and click download QR",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-101: Login - Validate empty field constraints",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-102: Login - Validate password length restriction",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-103: Login - Verify successful authentication for Admin role",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-104: Logout - Validate session clear",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-105: Registration - Validate empty submission block",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-106: Registration - Validate password mismatch check",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-107: Registration - Successful signup and dashboard auto-redirect",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-108: Dashboard - Verify initial statistical widgets mapping",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-109: Dashboard - Verify real-time list search filters",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-110: Dashboard - Verify \"Active\" status tab filter",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-111: Dashboard - Verify \"Upcoming\" status tab filter",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-112: Pass Generation - Validate form fields error flags",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-113: Pass Generation - Complete flow with QR modal trigger",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-114: Pass Generation - Cancel/Delete active pass",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-115: QR Preview - Open preview dialog from visitor logs list",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-116: QR Preview - Validate Pass ID display format",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-117: QR Preview - Safely close preview modal and restore dashboard focus",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-118: Profile - Update user info metadata fields",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-119: Profile - Verify profile roles are in readonly format",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-120: Profile - Check dashboard layout buttons routing and click download QR",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-101: Login - Validate empty field constraints",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-102: Login - Validate password length restriction",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-103: Login - Verify successful authentication for Admin role",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-104: Logout - Validate session clear",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-105: Registration - Validate empty submission block",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-106: Registration - Validate password mismatch check",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-107: Registration - Successful signup and dashboard auto-redirect",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-108: Dashboard - Verify initial statistical widgets mapping",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-109: Dashboard - Verify real-time list search filters",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-110: Dashboard - Verify \"Active\" status tab filter",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-111: Dashboard - Verify \"Upcoming\" status tab filter",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-112: Pass Generation - Validate form fields error flags",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-113: Pass Generation - Complete flow with QR modal trigger",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-114: Pass Generation - Cancel/Delete active pass",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-115: QR Preview - Open preview dialog from visitor logs list",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-116: QR Preview - Validate Pass ID display format",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-117: QR Preview - Safely close preview modal and restore dashboard focus",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-118: Profile - Update user info metadata fields",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-119: Profile - Verify profile roles are in readonly format",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
       "remarks": "Success"
     },
     {
-      "timestamp": "2026-06-15T12:32:26.247Z",
+      "timestamp": "2026-06-15T12:36:39.537Z",
       "testName": "TC-120: Profile - Check dashboard layout buttons routing and click download QR",
       "step": "Asserting module Selenium Web Tests",
       "result": "PASS",
