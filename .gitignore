@@ -65,3 +65,8 @@ package-lock.json
 # Git Large File Storage note
 *.apk
 *.aab
+
+# Playwright temp dirs
+test-results/
+playwright-report/
+

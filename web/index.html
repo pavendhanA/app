@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GateGuard Web Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- App Container -->
+  <div id="app">
+    
+    <!-- Auth Layout (Login & Registration) -->
+    <div id="auth-container" class="auth-box">
+      <!-- Login Form -->
+      <div id="login-view" class="auth-panel">
+        <h1 class="brand-title">GateGuard</h1>
+        <p class="subtitle">Enterprise Security Portal</p>
+        
+        <form id="login-form">
+          <div class="form-group">
+            <label for="login-email">Email Address</label>
+            <input type="email" id="login-email" placeholder="e.g. admin@gateguard.app" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" placeholder="••••••••" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="login-role">Sign In As</label>
+            <select id="login-role">
+              <option value="admin">Administrator</option>
+              <option value="host">Host / Resident</option>
+              <option value="guard">Security Guard</option>
+            </select>
+          </div>
+
+          <div class="form-actions">
+            <label class="remember-me">
+              <input type="checkbox" id="remember-me-checkbox"> Remember Me
+            </label>
+          </div>
+          
+          <button type="submit" id="login-submit-button" class="btn btn-primary btn-block">Sign In</button>
+          
+          <div id="auth-error-message" class="error-text"></div>
+        </form>
+        
+        <p class="auth-footer">Don't have an account? <span id="go-to-register" class="link-text">Register here</span></p>
+      </div>
+
+      <!-- Registration Form -->
+      <div id="register-view" class="auth-panel hidden">
+        <h1 class="brand-title">GateGuard</h1>
+        <p class="subtitle">Create Security Account</p>
+        
+        <form id="register-form">
+          <div class="form-group">
+            <label for="register-name">Full Name</label>
+            <input type="text" id="register-name" placeholder="John Doe">
+          </div>
+
+          <div class="form-group">
+            <label for="register-email">Email Address</label>
+            <input type="email" id="register-email" placeholder="johndoe@email.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="register-password">Password</label>
+            <input type="password" id="register-password" placeholder="Min. 8 characters">
+          </div>
+
+          <div class="form-group">
+            <label for="register-confirm-password">Confirm Password</label>
+            <input type="password" id="register-confirm-password" placeholder="Confirm Password">
+          </div>
+
+          <div class="form-group">
+            <label for="register-role">Default Account Role</label>
+            <select id="register-role">
+              <option value="host">Host / Resident</option>
+              <option value="guard">Security Guard</option>
+            </select>
+          </div>
+          
+          <button type="submit" id="register-submit-button" class="btn btn-primary btn-block">Sign Up</button>
+          
+          <div id="register-error-message" class="error-text"></div>
+        </form>
+        
+        <p class="auth-footer">Already have an account? <span id="go-to-login" class="link-text">Login here</span></p>
+      </div>
+    </div>
+
+    <!-- Main Dashboard Layout -->
+    <div id="dashboard-container" class="dashboard-layout hidden">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <div class="brand">
+            <span class="brand-icon">🛡️</span>
+            <span class="brand-name">GateGuard</span>
+          </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+          <button class="nav-item active" id="nav-dashboard">📊 Dashboard</button>
+          <button class="nav-item" id="nav-pass">🎟️ Pass Generation</button>
+          <button class="nav-item" id="nav-profile">👤 My Profile</button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="user-block">
+            <div class="user-avatar" id="sidebar-avatar">U</div>
+            <div class="user-info">
+              <div class="user-name" id="sidebar-name">User Name</div>
+              <div class="user-role" id="sidebar-role">Host</div>
+            </div>
+          </div>
+          <button id="logout-button" class="btn btn-logout">Logout</button>
+        </div>
+      </aside>
+
+      <!-- Main Panel -->
+      <main class="main-panel">
+        <!-- Top Toolbar -->
+        <header class="top-toolbar">
+          <h2 id="view-title">Dashboard Overview</h2>
+          <div class="toolbar-actions">
+            <span class="status-indicator">● System Online</span>
+          </div>
+        </header>
+
+        <!-- View 1: Stats & Visitor List (Dashboard) -->
+        <section id="dashboard-view" class="view-section">
+          <!-- Stats Grid -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-title">Total Visitors</div>
+              <div class="stat-val" id="stat-total">0</div>
+              <div class="stat-desc">Historically logged passes</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">Active Passes</div>
+              <div class="stat-val" id="stat-active" style="color: var(--color-pass);">0</div>
+              <div class="stat-desc">Currently checked-in</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">Upcoming Passes</div>
+              <div class="stat-val" id="stat-upcoming" style="color: var(--color-upcoming);">0</div>
+              <div class="stat-desc">Scheduled arrivals</div>
+            </div>
+          </div>
+
+          <!-- Visitors Module Panel -->
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Visitor Logs Management</h3>
+              <div class="panel-controls">
+                <input type="text" id="visitor-search" placeholder="Search visitor name...">
+                <div class="filter-group">
+                  <button class="btn btn-sm active" id="filter-all">All</button>
+                  <button class="btn btn-sm" id="filter-active">Active</button>
+                  <button class="btn btn-sm" id="filter-upcoming">Upcoming</button>
+                </div>
+              </div>
+            </div>
+            
+            <div class="table-wrapper">
+              <table id="visitors-table">
+                <thead>
+                  <tr>
+                    <th>Visitor ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Purpose</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="visitors-list">
+                  <!-- Injected dynamically -->
+                </tbody>
+              </table>
+              <div id="no-visitors-alert" class="empty-state hidden">
+                <p>No matching visitor passes found.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- View 2: Visitor Pass Form -->
+        <section id="pass-view" class="view-section hidden">
+          <div class="panel form-panel">
+            <h3>Generate Digital Visitor Pass</h3>
+            <p class="subtitle">Complete the fields below to dispatch a secure access pass</p>
+            
+            <form id="pass-form">
+              <div class="form-row">
+                <div class="form-group col">
+                  <label for="pass-name">Visitor Name</label>
+                  <input type="text" id="pass-name" placeholder="e.g. Alice Smith" required>
+                </div>
+                <div class="form-group col">
+                  <label for="pass-email">Visitor Email Address</label>
+                  <input type="email" id="pass-email" placeholder="e.g. alice@smith.com" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <label for="pass-phone">Contact Number</label>
+                  <input type="tel" id="pass-phone" placeholder="e.g. +1 (555) 019-2834" required>
+                </div>
+                <div class="form-group col">
+                  <label for="pass-purpose">Purpose of Visit</label>
+                  <select id="pass-purpose" required>
+                    <option value="">Select Purpose</option>
+                    <option value="Personal Delivery">Personal Delivery</option>
+                    <option value="Maintenance Worker">Maintenance Worker</option>
+                    <option value="Social Meeting">Social Meeting</option>
+                    <option value="Business Consultation">Business Consultation</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="pass-host">Authorized Host / Resident</label>
+                <select id="pass-host" required>
+                  <option value="">Select Host</option>
+                  <option value="Admin User">Admin User (Suite 101)</option>
+                  <option value="Host User">Host User (Suite 404)</option>
+                  <option value="Jane Doe">Jane Doe (Suite 202)</option>
+                </select>
+              </div>
+
+              <button type="submit" id="pass-submit-button" class="btn btn-primary">Generate Pass & QR</button>
+              <div id="pass-error-message" class="error-text"></div>
+            </form>
+          </div>
+        </section>
+
+        <!-- View 3: Profile Settings -->
+        <section id="profile-view" class="view-section hidden">
+          <div class="panel form-panel">
+            <h3>Account Settings</h3>
+            <p class="subtitle">Update your personal credentials and contact settings</p>
+            
+            <form id="profile-form">
+              <div class="profile-pic-container">
+                <div class="profile-pic-wrapper">
+                  <img id="profile-pic-preview" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100%25' height='100%25' fill='%23202b47'/><text x='50%25' y='55%25' font-size='36' font-family='Arial' fill='%239ca3af' text-anchor='middle' dominant-baseline='central'>U</text></svg>" alt="User Profile Image">
+                </div>
+                <div class="profile-pic-upload">
+                  <label for="profile-avatar-input" class="btn btn-sm btn-outline">Upload New Image</label>
+                  <input type="file" id="profile-avatar-input" class="hidden" accept="image/*">
+                  <p class="file-limits">Support PNG, JPG under 2MB</p>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <label for="profile-name">Full Name</label>
+                  <input type="text" id="profile-name" value="Jane Doe" required>
+                </div>
+                <div class="form-group col">
+                  <label for="profile-phone">Contact Number</label>
+                  <input type="tel" id="profile-phone" value="+1 (555) 012-3456" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="profile-role-view">Assigned Security Role</label>
+                <input type="text" id="profile-role-view" value="Host" readonly class="input-readonly">
+              </div>
+
+              <button type="submit" id="profile-submit-button" class="btn btn-primary">Save Changes</button>
+              <div id="profile-success-message" class="success-text"></div>
+            </form>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- QR Code Preview Modal -->
+    <div id="qr-modal" class="modal-overlay hidden">
+      <div class="modal-box">
+        <span id="close-qr-modal" class="close-btn">&times;</span>
+        <h3>Visitor Access QR Code</h3>
+        <p class="subtitle">Share this QR code with the visitor for scanning at the main gate.</p>
+        
+        <div class="qr-content-wrapper">
+          <div class="qr-card">
+            <!-- Simulated QR code -->
+            <div id="qr-image-container" class="qr-placeholder">
+              <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- Outer borders -->
+                <rect x="10" y="10" width="180" height="180" fill="#fff" stroke="#121829" stroke-width="6"/>
+                <!-- Anchor boxes top-left, top-right, bottom-left -->
+                <rect x="25" y="25" width="45" height="45" fill="#121829" />
+                <rect x="35" y="35" width="25" height="25" fill="#fff" />
+                <rect x="40" y="40" width="15" height="15" fill="#121829" />
+
+                <rect x="130" y="25" width="45" height="45" fill="#121829" />
+                <rect x="140" y="35" width="25" height="25" fill="#fff" />
+                <rect x="145" y="40" width="15" height="15" fill="#121829" />
+
+                <rect x="25" y="130" width="45" height="45" fill="#121829" />
+                <rect x="35" y="140" width="25" height="25" fill="#fff" />
+                <rect x="40" y="145" width="15" height="15" fill="#121829" />
+
+                <!-- Some QR noise points -->
+                <rect x="85" y="25" width="10" height="10" fill="#121829" />
+                <rect x="105" y="35" width="15" height="10" fill="#121829" />
+                <rect x="85" y="55" width="20" height="20" fill="#121829" />
+                <rect x="110" y="55" width="10" height="15" fill="#121829" />
+                <rect x="85" y="85" width="15" height="10" fill="#121829" />
+                <rect x="135" y="85" width="20" height="15" fill="#121829" />
+                <rect x="110" y="105" width="10" height="10" fill="#121829" />
+                <rect x="85" y="125" width="30" height="10" fill="#121829" />
+                <rect x="135" y="125" width="15" height="20" fill="#121829" />
+                <rect x="85" y="150" width="10" height="20" fill="#121829" />
+                <rect x="105" y="160" width="25" height="15" fill="#121829" />
+                <rect x="145" y="155" width="15" height="15" fill="#121829" />
+              </svg>
+            </div>
+            <div class="qr-details">
+              <h4 id="qr-visitor-name">Alice Smith</h4>
+              <p id="qr-pass-id">Pass ID: GG-501</p>
+              <span id="qr-pass-status" class="badge-status pass">ACTIVE</span>
+            </div>
+          </div>
+        </div>
+
+        <button id="download-qr-button" class="btn btn-outline btn-block">📥 Download QR Code</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

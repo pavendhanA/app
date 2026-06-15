@@ -1,0 +1,44 @@
+<testsuites id="" name="" tests="20" failures="0" skipped="0" errors="0" time="131.30760800000002">
+<testsuite name="gateguard.spec.js" timestamp="2026-06-15T11:18:35.980Z" hostname="chromium" tests="20" failures="0" skipped="0" time="95.539" errors="0">
+<testcase name="GateGuard Web Automation Suite › TC-101: Login - Validate empty field constraints" classname="gateguard.spec.js" time="7.255">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-102: Login - Validate password length restriction" classname="gateguard.spec.js" time="5.613">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-103: Login - Verify successful authentication for Admin role" classname="gateguard.spec.js" time="2.018">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-104: Logout - Validate session clear" classname="gateguard.spec.js" time="7.466">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-105: Registration - Validate empty submission block" classname="gateguard.spec.js" time="2.245">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-106: Registration - Validate password mismatch check" classname="gateguard.spec.js" time="2.695">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-107: Registration - Successful signup and dashboard auto-redirect" classname="gateguard.spec.js" time="9.392">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-108: Dashboard - Verify initial statistical widgets mapping" classname="gateguard.spec.js" time="3.924">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-109: Dashboard - Verify real-time list search filters" classname="gateguard.spec.js" time="6.228">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-110: Dashboard - Verify &quot;Active&quot; status tab filter" classname="gateguard.spec.js" time="5.889">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-111: Dashboard - Verify &quot;Upcoming&quot; status tab filter" classname="gateguard.spec.js" time="4.511">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-112: Pass Generation - Validate form fields error flags" classname="gateguard.spec.js" time="3.16">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-113: Pass Generation - Complete flow with QR modal trigger" classname="gateguard.spec.js" time="6.691">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-114: Pass Generation - Cancel/Delete active pass" classname="gateguard.spec.js" time="2.637">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-115: QR Preview - Open preview dialog from visitor logs list" classname="gateguard.spec.js" time="5.919">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-116: QR Preview - Validate Pass ID display format" classname="gateguard.spec.js" time="2.852">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-117: QR Preview - Safely close preview modal and restore dashboard focus" classname="gateguard.spec.js" time="5.044">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-118: Profile - Update user info metadata fields" classname="gateguard.spec.js" time="3.005">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-119: Profile - Verify profile roles are in readonly format" classname="gateguard.spec.js" time="5.601">
+</testcase>
+<testcase name="GateGuard Web Automation Suite › TC-120: Profile - Check dashboard layout buttons routing and click download QR" classname="gateguard.spec.js" time="3.394">
+</testcase>
+</testsuite>
+</testsuites>

@@ -7,7 +7,8 @@
     "test": "mocha tests/setup.js tests/**/*.test.js --timeout 120000 --exit",
     "test:flutter": "cross-env AUTOMATION_NAME=Flutter npm run test",
     "test:native": "cross-env AUTOMATION_NAME=UiAutomator2 npm run test",
-    "test:ai": "node src/utils/AiTestingAgent.js"
+    "test:ai": "node src/utils/AiTestingAgent.js",
+    "test:web": "playwright test"
   },
   "dependencies": {
     "firebase": "^12.14.0",
@@ -22,6 +23,7 @@
     "chai": "^4.4.1",
     "cross-env": "^7.0.3",
     "mochawesome": "^7.1.3",
-    "mochawesome-report-generator": "^6.2.0"
+    "mochawesome-report-generator": "^6.2.0",
+    "@playwright/test": "^1.42.1"
   }
 }
