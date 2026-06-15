@@ -1,44 +1,128 @@
-<testsuites id="" name="" tests="20" failures="0" skipped="0" errors="0" time="102.321657">
-<testsuite name="gateguard.spec.js" timestamp="2026-06-15T11:50:24.861Z" hostname="chromium" tests="20" failures="0" skipped="0" time="80.242" errors="0">
-<testcase name="Selenium Web Tests › TC-101: Login - Validate empty field constraints" classname="gateguard.spec.js" time="3.944">
+<testsuites id="" name="" tests="60" failures="0" skipped="0" errors="0" time="50.629924">
+<testsuite name="gateguard.spec.js" timestamp="2026-06-15T11:55:20.259Z" hostname="chromium" tests="20" failures="0" skipped="0" time="5.548" errors="0">
+<testcase name="Selenium Web Tests › TC-101: Login - Validate empty field constraints" classname="gateguard.spec.js" time="0.301">
 </testcase>
-<testcase name="Selenium Web Tests › TC-102: Login - Validate password length restriction" classname="gateguard.spec.js" time="4.407">
+<testcase name="Selenium Web Tests › TC-102: Login - Validate password length restriction" classname="gateguard.spec.js" time="0.227">
 </testcase>
-<testcase name="Selenium Web Tests › TC-103: Login - Verify successful authentication for Admin role" classname="gateguard.spec.js" time="6.954">
+<testcase name="Selenium Web Tests › TC-103: Login - Verify successful authentication for Admin role" classname="gateguard.spec.js" time="0.278">
 </testcase>
-<testcase name="Selenium Web Tests › TC-104: Logout - Validate session clear" classname="gateguard.spec.js" time="2.932">
+<testcase name="Selenium Web Tests › TC-104: Logout - Validate session clear" classname="gateguard.spec.js" time="0.278">
 </testcase>
-<testcase name="Selenium Web Tests › TC-105: Registration - Validate empty submission block" classname="gateguard.spec.js" time="3.433">
+<testcase name="Selenium Web Tests › TC-105: Registration - Validate empty submission block" classname="gateguard.spec.js" time="0.237">
 </testcase>
-<testcase name="Selenium Web Tests › TC-106: Registration - Validate password mismatch check" classname="gateguard.spec.js" time="5.958">
+<testcase name="Selenium Web Tests › TC-106: Registration - Validate password mismatch check" classname="gateguard.spec.js" time="0.238">
 </testcase>
-<testcase name="Selenium Web Tests › TC-107: Registration - Successful signup and dashboard auto-redirect" classname="gateguard.spec.js" time="3.619">
+<testcase name="Selenium Web Tests › TC-107: Registration - Successful signup and dashboard auto-redirect" classname="gateguard.spec.js" time="0.278">
 </testcase>
-<testcase name="Selenium Web Tests › TC-108: Dashboard - Verify initial statistical widgets mapping" classname="gateguard.spec.js" time="2.152">
+<testcase name="Selenium Web Tests › TC-108: Dashboard - Verify initial statistical widgets mapping" classname="gateguard.spec.js" time="0.237">
 </testcase>
-<testcase name="Selenium Web Tests › TC-109: Dashboard - Verify real-time list search filters" classname="gateguard.spec.js" time="2.442">
+<testcase name="Selenium Web Tests › TC-109: Dashboard - Verify real-time list search filters" classname="gateguard.spec.js" time="0.232">
 </testcase>
-<testcase name="Selenium Web Tests › TC-110: Dashboard - Verify &quot;Active&quot; status tab filter" classname="gateguard.spec.js" time="2.935">
+<testcase name="Selenium Web Tests › TC-110: Dashboard - Verify &quot;Active&quot; status tab filter" classname="gateguard.spec.js" time="0.275">
 </testcase>
-<testcase name="Selenium Web Tests › TC-111: Dashboard - Verify &quot;Upcoming&quot; status tab filter" classname="gateguard.spec.js" time="5.832">
+<testcase name="Selenium Web Tests › TC-111: Dashboard - Verify &quot;Upcoming&quot; status tab filter" classname="gateguard.spec.js" time="0.27">
 </testcase>
-<testcase name="Selenium Web Tests › TC-112: Pass Generation - Validate form fields error flags" classname="gateguard.spec.js" time="2.709">
+<testcase name="Selenium Web Tests › TC-112: Pass Generation - Validate form fields error flags" classname="gateguard.spec.js" time="0.305">
 </testcase>
-<testcase name="Selenium Web Tests › TC-113: Pass Generation - Complete flow with QR modal trigger" classname="gateguard.spec.js" time="3.162">
+<testcase name="Selenium Web Tests › TC-113: Pass Generation - Complete flow with QR modal trigger" classname="gateguard.spec.js" time="0.357">
 </testcase>
-<testcase name="Selenium Web Tests › TC-114: Pass Generation - Cancel/Delete active pass" classname="gateguard.spec.js" time="4.617">
+<testcase name="Selenium Web Tests › TC-114: Pass Generation - Cancel/Delete active pass" classname="gateguard.spec.js" time="0.288">
 </testcase>
-<testcase name="Selenium Web Tests › TC-115: QR Preview - Open preview dialog from visitor logs list" classname="gateguard.spec.js" time="4.656">
+<testcase name="Selenium Web Tests › TC-115: QR Preview - Open preview dialog from visitor logs list" classname="gateguard.spec.js" time="0.272">
 </testcase>
-<testcase name="Selenium Web Tests › TC-116: QR Preview - Validate Pass ID display format" classname="gateguard.spec.js" time="3.344">
+<testcase name="Selenium Web Tests › TC-116: QR Preview - Validate Pass ID display format" classname="gateguard.spec.js" time="0.273">
 </testcase>
-<testcase name="Selenium Web Tests › TC-117: QR Preview - Safely close preview modal and restore dashboard focus" classname="gateguard.spec.js" time="4.979">
+<testcase name="Selenium Web Tests › TC-117: QR Preview - Safely close preview modal and restore dashboard focus" classname="gateguard.spec.js" time="0.304">
 </testcase>
-<testcase name="Selenium Web Tests › TC-118: Profile - Update user info metadata fields" classname="gateguard.spec.js" time="5.908">
+<testcase name="Selenium Web Tests › TC-118: Profile - Update user info metadata fields" classname="gateguard.spec.js" time="0.316">
 </testcase>
-<testcase name="Selenium Web Tests › TC-119: Profile - Verify profile roles are in readonly format" classname="gateguard.spec.js" time="3.487">
+<testcase name="Selenium Web Tests › TC-119: Profile - Verify profile roles are in readonly format" classname="gateguard.spec.js" time="0.286">
 </testcase>
-<testcase name="Selenium Web Tests › TC-120: Profile - Check dashboard layout buttons routing and click download QR" classname="gateguard.spec.js" time="2.772">
+<testcase name="Selenium Web Tests › TC-120: Profile - Check dashboard layout buttons routing and click download QR" classname="gateguard.spec.js" time="0.296">
+</testcase>
+</testsuite>
+<testsuite name="gateguard.spec.js" timestamp="2026-06-15T11:55:20.259Z" hostname="firefox" tests="20" failures="0" skipped="0" time="17.237" errors="0">
+<testcase name="Selenium Web Tests › TC-101: Login - Validate empty field constraints" classname="gateguard.spec.js" time="1.492">
+</testcase>
+<testcase name="Selenium Web Tests › TC-102: Login - Validate password length restriction" classname="gateguard.spec.js" time="0.512">
+</testcase>
+<testcase name="Selenium Web Tests › TC-103: Login - Verify successful authentication for Admin role" classname="gateguard.spec.js" time="0.565">
+</testcase>
+<testcase name="Selenium Web Tests › TC-104: Logout - Validate session clear" classname="gateguard.spec.js" time="0.591">
+</testcase>
+<testcase name="Selenium Web Tests › TC-105: Registration - Validate empty submission block" classname="gateguard.spec.js" time="0.56">
+</testcase>
+<testcase name="Selenium Web Tests › TC-106: Registration - Validate password mismatch check" classname="gateguard.spec.js" time="0.598">
+</testcase>
+<testcase name="Selenium Web Tests › TC-107: Registration - Successful signup and dashboard auto-redirect" classname="gateguard.spec.js" time="0.629">
+</testcase>
+<testcase name="Selenium Web Tests › TC-108: Dashboard - Verify initial statistical widgets mapping" classname="gateguard.spec.js" time="0.628">
+</testcase>
+<testcase name="Selenium Web Tests › TC-109: Dashboard - Verify real-time list search filters" classname="gateguard.spec.js" time="0.59">
+</testcase>
+<testcase name="Selenium Web Tests › TC-110: Dashboard - Verify &quot;Active&quot; status tab filter" classname="gateguard.spec.js" time="1.904">
+</testcase>
+<testcase name="Selenium Web Tests › TC-111: Dashboard - Verify &quot;Upcoming&quot; status tab filter" classname="gateguard.spec.js" time="0.752">
+</testcase>
+<testcase name="Selenium Web Tests › TC-112: Pass Generation - Validate form fields error flags" classname="gateguard.spec.js" time="0.619">
+</testcase>
+<testcase name="Selenium Web Tests › TC-113: Pass Generation - Complete flow with QR modal trigger" classname="gateguard.spec.js" time="0.706">
+</testcase>
+<testcase name="Selenium Web Tests › TC-114: Pass Generation - Cancel/Delete active pass" classname="gateguard.spec.js" time="0.633">
+</testcase>
+<testcase name="Selenium Web Tests › TC-115: QR Preview - Open preview dialog from visitor logs list" classname="gateguard.spec.js" time="0.633">
+</testcase>
+<testcase name="Selenium Web Tests › TC-116: QR Preview - Validate Pass ID display format" classname="gateguard.spec.js" time="0.626">
+</testcase>
+<testcase name="Selenium Web Tests › TC-117: QR Preview - Safely close preview modal and restore dashboard focus" classname="gateguard.spec.js" time="0.77">
+</testcase>
+<testcase name="Selenium Web Tests › TC-118: Profile - Update user info metadata fields" classname="gateguard.spec.js" time="0.654">
+</testcase>
+<testcase name="Selenium Web Tests › TC-119: Profile - Verify profile roles are in readonly format" classname="gateguard.spec.js" time="0.629">
+</testcase>
+<testcase name="Selenium Web Tests › TC-120: Profile - Check dashboard layout buttons routing and click download QR" classname="gateguard.spec.js" time="3.146">
+</testcase>
+</testsuite>
+<testsuite name="gateguard.spec.js" timestamp="2026-06-15T11:55:20.259Z" hostname="webkit" tests="20" failures="0" skipped="0" time="22.434" errors="0">
+<testcase name="Selenium Web Tests › TC-101: Login - Validate empty field constraints" classname="gateguard.spec.js" time="6.198">
+</testcase>
+<testcase name="Selenium Web Tests › TC-102: Login - Validate password length restriction" classname="gateguard.spec.js" time="0.869">
+</testcase>
+<testcase name="Selenium Web Tests › TC-103: Login - Verify successful authentication for Admin role" classname="gateguard.spec.js" time="0.803">
+</testcase>
+<testcase name="Selenium Web Tests › TC-104: Logout - Validate session clear" classname="gateguard.spec.js" time="0.81">
+</testcase>
+<testcase name="Selenium Web Tests › TC-105: Registration - Validate empty submission block" classname="gateguard.spec.js" time="1.111">
+</testcase>
+<testcase name="Selenium Web Tests › TC-106: Registration - Validate password mismatch check" classname="gateguard.spec.js" time="0.873">
+</testcase>
+<testcase name="Selenium Web Tests › TC-107: Registration - Successful signup and dashboard auto-redirect" classname="gateguard.spec.js" time="0.867">
+</testcase>
+<testcase name="Selenium Web Tests › TC-108: Dashboard - Verify initial statistical widgets mapping" classname="gateguard.spec.js" time="0.766">
+</testcase>
+<testcase name="Selenium Web Tests › TC-109: Dashboard - Verify real-time list search filters" classname="gateguard.spec.js" time="0.722">
+</testcase>
+<testcase name="Selenium Web Tests › TC-110: Dashboard - Verify &quot;Active&quot; status tab filter" classname="gateguard.spec.js" time="0.779">
+</testcase>
+<testcase name="Selenium Web Tests › TC-111: Dashboard - Verify &quot;Upcoming&quot; status tab filter" classname="gateguard.spec.js" time="0.778">
+</testcase>
+<testcase name="Selenium Web Tests › TC-112: Pass Generation - Validate form fields error flags" classname="gateguard.spec.js" time="0.81">
+</testcase>
+<testcase name="Selenium Web Tests › TC-113: Pass Generation - Complete flow with QR modal trigger" classname="gateguard.spec.js" time="1.014">
+</testcase>
+<testcase name="Selenium Web Tests › TC-114: Pass Generation - Cancel/Delete active pass" classname="gateguard.spec.js" time="0.822">
+</testcase>
+<testcase name="Selenium Web Tests › TC-115: QR Preview - Open preview dialog from visitor logs list" classname="gateguard.spec.js" time="0.837">
+</testcase>
+<testcase name="Selenium Web Tests › TC-116: QR Preview - Validate Pass ID display format" classname="gateguard.spec.js" time="0.862">
+</testcase>
+<testcase name="Selenium Web Tests › TC-117: QR Preview - Safely close preview modal and restore dashboard focus" classname="gateguard.spec.js" time="0.905">
+</testcase>
+<testcase name="Selenium Web Tests › TC-118: Profile - Update user info metadata fields" classname="gateguard.spec.js" time="0.867">
+</testcase>
+<testcase name="Selenium Web Tests › TC-119: Profile - Verify profile roles are in readonly format" classname="gateguard.spec.js" time="0.821">
+</testcase>
+<testcase name="Selenium Web Tests › TC-120: Profile - Check dashboard layout buttons routing and click download QR" classname="gateguard.spec.js" time="0.92">
 </testcase>
 </testsuite>
 </testsuites>

@@ -1,13 +1,12 @@
 {
   "config": {
     "argv": [
-      "C:\\Program Files\\nodejs\\node.exe",
-      "C:\\Users\\DELL\\OneDrive\\Attachments\\Desktop\\GG\\node_modules\\@playwright\\test\\cli.js",
-      "test",
-      "--project=chromium"
+      "/opt/hostedtoolcache/node/18.20.8/x64/bin/node",
+      "/home/runner/work/app/app/node_modules/.bin/playwright",
+      "test"
     ],
-    "configFile": "C:\\Users\\DELL\\OneDrive\\Attachments\\Desktop\\GG\\playwright.config.js",
-    "rootDir": "C:/Users/DELL/OneDrive/Attachments/Desktop/GG/tests-web",
+    "configFile": "/home/runner/work/app/app/playwright.config.js",
+    "rootDir": "/home/runner/work/app/app/tests-web",
     "failOnFlakyTests": false,
     "forbidOnly": false,
     "fullyParallel": false,
@@ -18,20 +17,64 @@
     "grepInvert": null,
     "maxFailures": 0,
     "metadata": {
+      "ci": {
+        "commitHref": "https://github.com/pavendhanA/app/commit/0d98dfefba4ba46afcec1d317f247340782ca7b2",
+        "commitHash": "0d98dfefba4ba46afcec1d317f247340782ca7b2",
+        "buildHref": "https://github.com/pavendhanA/app/actions/runs/27544401710"
+      },
+      "gitCommit": {
+        "shortHash": "0d98dfe",
+        "hash": "0d98dfefba4ba46afcec1d317f247340782ca7b2",
+        "subject": "Fix GHA write permission 403 error and name tests to Selenium Web Tests",
+        "body": "Fix GHA write permission 403 error and name tests to Selenium Web Tests\n",
+        "author": {
+          "name": "pavendhanA",
+          "email": "pavendhan15032006@gamil.com",
+          "time": 1781524395000
+        },
+        "committer": {
+          "name": "pavendhanA",
+          "email": "pavendhan15032006@gamil.com",
+          "time": 1781524395000
+        },
+        "branch": "main"
+      },
       "actualWorkers": 1
     },
     "preserveOutput": "always",
     "projects": [
       {
-        "outputDir": "C:/Users/DELL/OneDrive/Attachments/Desktop/GG/test-results",
+        "outputDir": "/home/runner/work/app/app/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/pavendhanA/app/commit/0d98dfefba4ba46afcec1d317f247340782ca7b2",
+            "commitHash": "0d98dfefba4ba46afcec1d317f247340782ca7b2",
+            "buildHref": "https://github.com/pavendhanA/app/actions/runs/27544401710"
+          },
+          "gitCommit": {
+            "shortHash": "0d98dfe",
+            "hash": "0d98dfefba4ba46afcec1d317f247340782ca7b2",
+            "subject": "Fix GHA write permission 403 error and name tests to Selenium Web Tests",
+            "body": "Fix GHA write permission 403 error and name tests to Selenium Web Tests\n",
+            "author": {
+              "name": "pavendhanA",
+              "email": "pavendhan15032006@gamil.com",
+              "time": 1781524395000
+            },
+            "committer": {
+              "name": "pavendhanA",
+              "email": "pavendhan15032006@gamil.com",
+              "time": 1781524395000
+            },
+            "branch": "main"
+          },
           "actualWorkers": 1
         },
         "id": "chromium",
         "name": "chromium",
-        "testDir": "C:/Users/DELL/OneDrive/Attachments/Desktop/GG/tests-web",
+        "testDir": "/home/runner/work/app/app/tests-web",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -39,15 +82,37 @@
         "timeout": 15000
       },
       {
-        "outputDir": "C:/Users/DELL/OneDrive/Attachments/Desktop/GG/test-results",
+        "outputDir": "/home/runner/work/app/app/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/pavendhanA/app/commit/0d98dfefba4ba46afcec1d317f247340782ca7b2",
+            "commitHash": "0d98dfefba4ba46afcec1d317f247340782ca7b2",
+            "buildHref": "https://github.com/pavendhanA/app/actions/runs/27544401710"
+          },
+          "gitCommit": {
+            "shortHash": "0d98dfe",
+            "hash": "0d98dfefba4ba46afcec1d317f247340782ca7b2",
+            "subject": "Fix GHA write permission 403 error and name tests to Selenium Web Tests",
+            "body": "Fix GHA write permission 403 error and name tests to Selenium Web Tests\n",
+            "author": {
+              "name": "pavendhanA",
+              "email": "pavendhan15032006@gamil.com",
+              "time": 1781524395000
+            },
+            "committer": {
+              "name": "pavendhanA",
+              "email": "pavendhan15032006@gamil.com",
+              "time": 1781524395000
+            },
+            "branch": "main"
+          },
           "actualWorkers": 1
         },
         "id": "firefox",
         "name": "firefox",
-        "testDir": "C:/Users/DELL/OneDrive/Attachments/Desktop/GG/tests-web",
+        "testDir": "/home/runner/work/app/app/tests-web",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -55,15 +120,37 @@
         "timeout": 15000
       },
       {
-        "outputDir": "C:/Users/DELL/OneDrive/Attachments/Desktop/GG/test-results",
+        "outputDir": "/home/runner/work/app/app/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {
+          "ci": {
+            "commitHref": "https://github.com/pavendhanA/app/commit/0d98dfefba4ba46afcec1d317f247340782ca7b2",
+            "commitHash": "0d98dfefba4ba46afcec1d317f247340782ca7b2",
+            "buildHref": "https://github.com/pavendhanA/app/actions/runs/27544401710"
+          },
+          "gitCommit": {
+            "shortHash": "0d98dfe",
+            "hash": "0d98dfefba4ba46afcec1d317f247340782ca7b2",
+            "subject": "Fix GHA write permission 403 error and name tests to Selenium Web Tests",
+            "body": "Fix GHA write permission 403 error and name tests to Selenium Web Tests\n",
+            "author": {
+              "name": "pavendhanA",
+              "email": "pavendhan15032006@gamil.com",
+              "time": 1781524395000
+            },
+            "committer": {
+              "name": "pavendhanA",
+              "email": "pavendhan15032006@gamil.com",
+              "time": 1781524395000
+            },
+            "branch": "main"
+          },
           "actualWorkers": 1
         },
         "id": "webkit",
         "name": "webkit",
-        "testDir": "C:/Users/DELL/OneDrive/Attachments/Desktop/GG/tests-web",
+        "testDir": "/home/runner/work/app/app/tests-web",
         "testIgnore": [],
         "testMatch": [
           "**/*.@(spec|test).?(c|m)[jt]s?(x)"
@@ -97,7 +184,7 @@
         }
       ],
       [
-        "C:\\Users\\DELL\\OneDrive\\Attachments\\Desktop\\GG\\src\\utils\\PlaywrightCustomReporter.js",
+        "/home/runner/work/app/app/src/utils/PlaywrightCustomReporter.js",
         null
       ]
     ],
@@ -143,12 +230,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3944,
+                      "duration": 301,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:50:27.676Z",
+                      "startTime": "2026-06-15T11:55:20.789Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -177,12 +264,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 4407,
+                      "duration": 227,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:50:33.314Z",
+                      "startTime": "2026-06-15T11:55:22.409Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -211,12 +298,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 6954,
+                      "duration": 278,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:50:37.764Z",
+                      "startTime": "2026-06-15T11:55:22.653Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -245,12 +332,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2932,
+                      "duration": 278,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:50:44.758Z",
+                      "startTime": "2026-06-15T11:55:22.948Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -279,12 +366,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3433,
+                      "duration": 237,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:50:47.727Z",
+                      "startTime": "2026-06-15T11:55:23.238Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -313,12 +400,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 5958,
+                      "duration": 238,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:50:51.198Z",
+                      "startTime": "2026-06-15T11:55:23.488Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -347,12 +434,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3619,
+                      "duration": 278,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:50:57.199Z",
+                      "startTime": "2026-06-15T11:55:23.736Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -381,12 +468,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2152,
+                      "duration": 237,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:51:00.889Z",
+                      "startTime": "2026-06-15T11:55:24.027Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -415,12 +502,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2442,
+                      "duration": 232,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:51:03.081Z",
+                      "startTime": "2026-06-15T11:55:24.276Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -449,12 +536,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2935,
+                      "duration": 275,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:51:05.561Z",
+                      "startTime": "2026-06-15T11:55:24.520Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -483,12 +570,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 5832,
+                      "duration": 270,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:51:08.536Z",
+                      "startTime": "2026-06-15T11:55:24.807Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -517,12 +604,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2709,
+                      "duration": 305,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:51:14.406Z",
+                      "startTime": "2026-06-15T11:55:25.089Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -551,12 +638,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3162,
+                      "duration": 357,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:51:17.152Z",
+                      "startTime": "2026-06-15T11:55:25.407Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -585,12 +672,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 4617,
+                      "duration": 288,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:51:20.351Z",
+                      "startTime": "2026-06-15T11:55:25.777Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -619,12 +706,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 4656,
+                      "duration": 272,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:51:25.008Z",
+                      "startTime": "2026-06-15T11:55:26.076Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -653,12 +740,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3344,
+                      "duration": 273,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:51:29.713Z",
+                      "startTime": "2026-06-15T11:55:26.361Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -687,12 +774,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 4979,
+                      "duration": 304,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:51:33.096Z",
+                      "startTime": "2026-06-15T11:55:26.647Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -721,12 +808,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 5908,
+                      "duration": 316,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:51:38.112Z",
+                      "startTime": "2026-06-15T11:55:26.963Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -755,12 +842,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 3487,
+                      "duration": 286,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:51:44.056Z",
+                      "startTime": "2026-06-15T11:55:27.292Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -789,12 +876,12 @@
                       "workerIndex": 0,
                       "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 2772,
+                      "duration": 296,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2026-06-15T11:51:47.580Z",
+                      "startTime": "2026-06-15T11:55:27.590Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -806,6 +893,1366 @@
               "file": "gateguard.spec.js",
               "line": 281,
               "column": 3
+            },
+            {
+              "title": "TC-101: Login - Validate empty field constraints",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1492,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:28.467Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-59b20c321e0f286a197b",
+              "file": "gateguard.spec.js",
+              "line": 17,
+              "column": 3
+            },
+            {
+              "title": "TC-102: Login - Validate password length restriction",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 512,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:30.453Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-7157dbc1c22ed085167b",
+              "file": "gateguard.spec.js",
+              "line": 25,
+              "column": 3
+            },
+            {
+              "title": "TC-103: Login - Verify successful authentication for Admin role",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 565,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:30.981Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-111b16abcfdbd1c62e84",
+              "file": "gateguard.spec.js",
+              "line": 34,
+              "column": 3
+            },
+            {
+              "title": "TC-104: Logout - Validate session clear",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 591,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:31.559Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-ed439be43282e4404941",
+              "file": "gateguard.spec.js",
+              "line": 45,
+              "column": 3
+            },
+            {
+              "title": "TC-105: Registration - Validate empty submission block",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 560,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:32.168Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-e693a7b3f284b2c1a108",
+              "file": "gateguard.spec.js",
+              "line": 62,
+              "column": 3
+            },
+            {
+              "title": "TC-106: Registration - Validate password mismatch check",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 598,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:32.749Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-004b28964203414912fd",
+              "file": "gateguard.spec.js",
+              "line": 71,
+              "column": 3
+            },
+            {
+              "title": "TC-107: Registration - Successful signup and dashboard auto-redirect",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 629,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:33.361Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-3884c6804c12b84485ed",
+              "file": "gateguard.spec.js",
+              "line": 84,
+              "column": 3
+            },
+            {
+              "title": "TC-108: Dashboard - Verify initial statistical widgets mapping",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 628,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:34.005Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-74aeece16535f570afa5",
+              "file": "gateguard.spec.js",
+              "line": 103,
+              "column": 3
+            },
+            {
+              "title": "TC-109: Dashboard - Verify real-time list search filters",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 590,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:34.648Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-c546af9aa54c4241e532",
+              "file": "gateguard.spec.js",
+              "line": 114,
+              "column": 3
+            },
+            {
+              "title": "TC-110: Dashboard - Verify \"Active\" status tab filter",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1904,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:35.253Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-364433d65ab03ecdc891",
+              "file": "gateguard.spec.js",
+              "line": 127,
+              "column": 3
+            },
+            {
+              "title": "TC-111: Dashboard - Verify \"Upcoming\" status tab filter",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 752,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:37.171Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-346a997ca27a91d35607",
+              "file": "gateguard.spec.js",
+              "line": 144,
+              "column": 3
+            },
+            {
+              "title": "TC-112: Pass Generation - Validate form fields error flags",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 619,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:37.935Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-4f48c1c6799a684a9346",
+              "file": "gateguard.spec.js",
+              "line": 162,
+              "column": 3
+            },
+            {
+              "title": "TC-113: Pass Generation - Complete flow with QR modal trigger",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 706,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:38.565Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-7d930e9978af2bdd76ce",
+              "file": "gateguard.spec.js",
+              "line": 176,
+              "column": 3
+            },
+            {
+              "title": "TC-114: Pass Generation - Cancel/Delete active pass",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 633,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:39.284Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-3fca2e83c2b003de4997",
+              "file": "gateguard.spec.js",
+              "line": 196,
+              "column": 3
+            },
+            {
+              "title": "TC-115: QR Preview - Open preview dialog from visitor logs list",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 633,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:39.931Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-7d4adee50aa4948e6b13",
+              "file": "gateguard.spec.js",
+              "line": 216,
+              "column": 3
+            },
+            {
+              "title": "TC-116: QR Preview - Validate Pass ID display format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 626,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:40.577Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-adc46d04c046af9de56c",
+              "file": "gateguard.spec.js",
+              "line": 227,
+              "column": 3
+            },
+            {
+              "title": "TC-117: QR Preview - Safely close preview modal and restore dashboard focus",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 770,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:41.218Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-e3406451861044bcbe16",
+              "file": "gateguard.spec.js",
+              "line": 237,
+              "column": 3
+            },
+            {
+              "title": "TC-118: Profile - Update user info metadata fields",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 654,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:42.001Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-d580f7adbf40bd82b918",
+              "file": "gateguard.spec.js",
+              "line": 254,
+              "column": 3
+            },
+            {
+              "title": "TC-119: Profile - Verify profile roles are in readonly format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 629,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:42.667Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-23ae6b736237b448c9f5",
+              "file": "gateguard.spec.js",
+              "line": 270,
+              "column": 3
+            },
+            {
+              "title": "TC-120: Profile - Check dashboard layout buttons routing and click download QR",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 3146,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:43.307Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-ab89f61e44f7bbc855a3",
+              "file": "gateguard.spec.js",
+              "line": 281,
+              "column": 3
+            },
+            {
+              "title": "TC-101: Login - Validate empty field constraints",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 6198,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:47.396Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-c07e4774b9dd41d483c7",
+              "file": "gateguard.spec.js",
+              "line": 17,
+              "column": 3
+            },
+            {
+              "title": "TC-102: Login - Validate password length restriction",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 869,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:54.123Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-315a0c0084cf2d52a8af",
+              "file": "gateguard.spec.js",
+              "line": 25,
+              "column": 3
+            },
+            {
+              "title": "TC-103: Login - Verify successful authentication for Admin role",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 803,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:55.010Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-2a75aa61c1f419018a67",
+              "file": "gateguard.spec.js",
+              "line": 34,
+              "column": 3
+            },
+            {
+              "title": "TC-104: Logout - Validate session clear",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 810,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:55.829Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-4738c128af53a8dfa7e7",
+              "file": "gateguard.spec.js",
+              "line": 45,
+              "column": 3
+            },
+            {
+              "title": "TC-105: Registration - Validate empty submission block",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1111,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:56.661Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-568c633eced29603e261",
+              "file": "gateguard.spec.js",
+              "line": 62,
+              "column": 3
+            },
+            {
+              "title": "TC-106: Registration - Validate password mismatch check",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 873,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:57.786Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-dc8031ba321e70a617d6",
+              "file": "gateguard.spec.js",
+              "line": 71,
+              "column": 3
+            },
+            {
+              "title": "TC-107: Registration - Successful signup and dashboard auto-redirect",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 867,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:58.678Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-9724c5ce5745e4219d66",
+              "file": "gateguard.spec.js",
+              "line": 84,
+              "column": 3
+            },
+            {
+              "title": "TC-108: Dashboard - Verify initial statistical widgets mapping",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 766,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:55:59.571Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-bcb96834a02520266681",
+              "file": "gateguard.spec.js",
+              "line": 103,
+              "column": 3
+            },
+            {
+              "title": "TC-109: Dashboard - Verify real-time list search filters",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 722,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:56:00.354Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-6bf67b850ebc8e17a994",
+              "file": "gateguard.spec.js",
+              "line": 114,
+              "column": 3
+            },
+            {
+              "title": "TC-110: Dashboard - Verify \"Active\" status tab filter",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 779,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:56:01.092Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-03f9a118a2438f3b7099",
+              "file": "gateguard.spec.js",
+              "line": 127,
+              "column": 3
+            },
+            {
+              "title": "TC-111: Dashboard - Verify \"Upcoming\" status tab filter",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 778,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:56:01.889Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-8ab935b8360907a7dc33",
+              "file": "gateguard.spec.js",
+              "line": 144,
+              "column": 3
+            },
+            {
+              "title": "TC-112: Pass Generation - Validate form fields error flags",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 810,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:56:02.683Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-b818f7f706b23339e99e",
+              "file": "gateguard.spec.js",
+              "line": 162,
+              "column": 3
+            },
+            {
+              "title": "TC-113: Pass Generation - Complete flow with QR modal trigger",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 1014,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:56:03.509Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-fbb0c4a83e6159269932",
+              "file": "gateguard.spec.js",
+              "line": 176,
+              "column": 3
+            },
+            {
+              "title": "TC-114: Pass Generation - Cancel/Delete active pass",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 822,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:56:04.540Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-abd4d7d2b974f4b37eb3",
+              "file": "gateguard.spec.js",
+              "line": 196,
+              "column": 3
+            },
+            {
+              "title": "TC-115: QR Preview - Open preview dialog from visitor logs list",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 837,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:56:05.377Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-da33d147a4cd6d511c28",
+              "file": "gateguard.spec.js",
+              "line": 216,
+              "column": 3
+            },
+            {
+              "title": "TC-116: QR Preview - Validate Pass ID display format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 862,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:56:06.229Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-29cb50297cfd9d7d085c",
+              "file": "gateguard.spec.js",
+              "line": 227,
+              "column": 3
+            },
+            {
+              "title": "TC-117: QR Preview - Safely close preview modal and restore dashboard focus",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 905,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:56:07.104Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-c1b70ae410a1eb79ba75",
+              "file": "gateguard.spec.js",
+              "line": 237,
+              "column": 3
+            },
+            {
+              "title": "TC-118: Profile - Update user info metadata fields",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 867,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:56:08.020Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-63a18f57f5a044a09109",
+              "file": "gateguard.spec.js",
+              "line": 254,
+              "column": 3
+            },
+            {
+              "title": "TC-119: Profile - Verify profile roles are in readonly format",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 821,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:56:08.899Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-4fb6f08e7192599189d6",
+              "file": "gateguard.spec.js",
+              "line": 270,
+              "column": 3
+            },
+            {
+              "title": "TC-120: Profile - Check dashboard layout buttons routing and click download QR",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 15000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 920,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2026-06-15T11:56:09.738Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "564be3f80a870c80304e-944a2920306260b0e50a",
+              "file": "gateguard.spec.js",
+              "line": 281,
+              "column": 3
             }
           ]
         }
@@ -814,9 +2261,9 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2026-06-15T11:50:24.380Z",
-    "duration": 102321.657,
-    "expected": 20,
+    "startTime": "2026-06-15T11:55:20.165Z",
+    "duration": 50629.924,
+    "expected": 60,
     "skipped": 0,
     "unexpected": 0,
     "flaky": 0
