@@ -1,4 +1,4 @@
-name: GateGuard Appium E2E Automation CI
+name: GateGuard Unified QA E2E CI
 
 on:
   push:
@@ -11,8 +11,7 @@ permissions:
   contents: write
 
 jobs:
-  e2e-automation:
-    # macOS runners are used because they support hardware virtualization acceleration for Android Emulators in GitHub Actions.
+  qa-automation:
     runs-on: macos-13
 
     steps:
@@ -47,13 +46,19 @@ jobs:
           npm install -g appium@next
           appium driver install uiautomator2
           appium driver install --source=npm appium-flutter-driver
-          echo "Appium server and driver modules installed successfully."
+          echo "Appium server and drivers installed successfully."
         shell: bash
 
       - name: 7. Install NPM Project Dependencies
         run: npm ci
 
-      - name: 8. Boot Android Emulator & Run E2E Test Suite
+      - name: 8. Install Playwright Web Browsers
+        run: npx playwright install --with-deps
+
+      - name: 9. Execute Selenium/Playwright Web Tests
+        run: npm run test:web
+
+      - name: 10. Boot Android Emulator & Run Appium Mobile Tests
         uses: reactive-circus/android-emulator-runner@v2
         env:
           AUTOMATION_NAME: UiAutomator2
@@ -69,34 +74,27 @@ jobs:
           emulator-options: -no-window -no-audio -no-boot-anim -camera-back none
           disable-animations: true
           script: |
-            # Create reports log directories
             mkdir -p reports/logs
-            
-            # Start Appium Server in background
             appium --log reports/logs/appium.log &
-            
-            # Wait for Appium port listener to be healthy
             echo "Waiting for Appium port listener to start..."
             for i in {1..30}; do
               if curl -s http://127.0.0.1:4723/status > /dev/null; then
-                echo "Appium Server is active and listening!"
+                echo "Appium Server is active!"
                 break
               fi
               sleep 2
             done
-            
-            # Run E2E automation tests
             npm run test
 
-      - name: 9. Upload Execution Reports and Failure Artifacts
+      - name: 11. Upload Unified Execution Reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: appium-execution-reports
+          name: gateguard-qa-execution-reports
           path: reports/
           retention-days: 14
 
-      - name: 10. Commit Reports to Repository
+      - name: 12. Commit Reports to Repository
         if: always()
         run: |
           git config --global user.name "github-actions[bot]"
@@ -109,7 +107,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes in reports. Skipping commit."
           else
-            git commit -m "Auto-update Appium Reports [skip ci]"
+            git commit -m "Auto-update QA Reports [skip ci]"
             # Reset hard to clean up emulator files and build configurations
             git reset --hard HEAD
             # Force pull before pushing to avoid conflicts
@@ -119,4 +117,3 @@ jobs:
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
