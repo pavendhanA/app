@@ -13,37 +13,37 @@ class Reporter {
       fs.mkdirSync(reportDir, { recursive: true });
     }
 
-    const appiumTests = payload.appium || [];
+    const seleniumTests = payload.selenium || [];
     const executionLogs = payload.executionLogs || [];
 
-    const suites = ['appium'];
+    const suites = ['selenium'];
     const mergedTests = {
-      appium: appiumTests.length > 0 ? appiumTests : []
+      selenium: seleniumTests.length > 0 ? seleniumTests : []
     };
     let mergedLogs = executionLogs.length > 0 ? [...executionLogs] : [];
 
-    // 1. Write active Appium suite to cache file
-    if (appiumTests.length > 0) {
-      const cacheTestFile = path.join(reportDir, 'cache_appium_tests.json');
-      const cacheLogFile = path.join(reportDir, 'cache_appium_logs.json');
+    // 1. Write active Selenium suite to cache file
+    if (seleniumTests.length > 0) {
+      const cacheTestFile = path.join(reportDir, 'cache_selenium_tests.json');
+      const cacheLogFile = path.join(reportDir, 'cache_selenium_logs.json');
       
-      const suiteTests = mergedTests.appium;
-      const suiteLogs = mergedLogs.filter(log => log.suite === 'appium');
+      const suiteTests = mergedTests.selenium;
+      const suiteLogs = mergedLogs.filter(log => log.suite === 'selenium');
       
       fs.writeFileSync(cacheTestFile, JSON.stringify(suiteTests, null, 2), 'utf8');
       fs.writeFileSync(cacheLogFile, JSON.stringify(suiteLogs, null, 2), 'utf8');
     }
 
-    // 2. Read Appium cache if it exists and wasn't in current payload
-    if (mergedTests.appium.length === 0) {
-      const cacheTestFile = path.join(reportDir, 'cache_appium_tests.json');
-      const cacheLogFile = path.join(reportDir, 'cache_appium_logs.json');
+    // 2. Read Selenium cache if it exists and wasn't in current payload
+    if (mergedTests.selenium.length === 0) {
+      const cacheTestFile = path.join(reportDir, 'cache_selenium_tests.json');
+      const cacheLogFile = path.join(reportDir, 'cache_selenium_logs.json');
 
       if (fs.existsSync(cacheTestFile)) {
         try {
-          mergedTests.appium = JSON.parse(fs.readFileSync(cacheTestFile, 'utf8'));
+          mergedTests.selenium = JSON.parse(fs.readFileSync(cacheTestFile, 'utf8'));
         } catch (e) {
-          logger.error(`Failed to parse cache tests for appium: ${e.message}`);
+          logger.error(`Failed to parse cache tests for selenium: ${e.message}`);
         }
       }
       if (fs.existsSync(cacheLogFile)) {
@@ -56,7 +56,7 @@ class Reporter {
             }
           });
         } catch (e) {
-          logger.error(`Failed to parse cache logs for appium: ${e.message}`);
+          logger.error(`Failed to parse cache logs for selenium: ${e.message}`);
         }
       }
     }
@@ -304,14 +304,14 @@ class Reporter {
       logger.info(`Excel Report saved successfully at: ${filePath}`);
     };
 
-    // Generate/Update ONLY Appium_Report.xlsx if data exists
-    if (mergedTests.appium.length > 0) {
+    // Generate/Update ONLY Selenium_Report.xlsx if data exists
+    if (mergedTests.selenium.length > 0) {
       await createTabbedWorkbook(
-        path.join(reportDir, 'Appium_Report.xlsx'),
-        'Android Device',
-        '14.0',
-        mergedTests.appium,
-        mergedLogs.filter(log => log.suite === 'appium')
+        path.join(reportDir, 'Selenium_Report.xlsx'),
+        'Chrome Browser',
+        'N/A',
+        mergedTests.selenium,
+        mergedLogs.filter(log => log.suite === 'selenium')
       );
     }
   }
