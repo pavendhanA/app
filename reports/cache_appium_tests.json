@@ -15,7 +15,7 @@
     "expected": "App prevents submission on empty email or password fields",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.43s"
+    "duration": "0.26s"
   },
   {
     "id": "TC-APP-03",
@@ -24,7 +24,7 @@
     "expected": "Error label displays when email format is invalid",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.37s"
+    "duration": "0.19s"
   },
   {
     "id": "TC-APP-04",
@@ -33,7 +33,7 @@
     "expected": "App registers biometric device setup option in local state",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.40s"
+    "duration": "0.41s"
   },
   {
     "id": "TC-APP-05",
@@ -42,7 +42,7 @@
     "expected": "Dashboard balance, income, and expense summary widgets render",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.47s"
+    "duration": "0.27s"
   },
   {
     "id": "TC-APP-06",
@@ -51,7 +51,7 @@
     "expected": "Balance summary card resolves within view limits",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.28s"
+    "duration": "0.24s"
   },
   {
     "id": "TC-APP-07",
@@ -60,7 +60,7 @@
     "expected": "Pull to refresh updates transaction listings from background storage",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.46s"
+    "duration": "0.21s"
   },
   {
     "id": "TC-APP-08",
@@ -69,7 +69,7 @@
     "expected": "Income sheet modal slides into view",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.17s"
+    "duration": "0.16s"
   },
   {
     "id": "TC-APP-09",
@@ -78,7 +78,7 @@
     "expected": "Category select holds Salary, Freelance, and Investments options",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.48s"
+    "duration": "0.31s"
   },
   {
     "id": "TC-APP-10",
@@ -87,7 +87,7 @@
     "expected": "Income fields accept numeric and descriptive inputs",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.39s"
+    "duration": "0.40s"
   },
   {
     "id": "TC-APP-11",
@@ -96,7 +96,7 @@
     "expected": "Missing amount triggers mobile error highlights",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.18s"
+    "duration": "0.35s"
   },
   {
     "id": "TC-APP-12",
@@ -105,7 +105,7 @@
     "expected": "Expense sheet slides up with focus on Category dropdown",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.34s"
+    "duration": "0.32s"
   },
   {
     "id": "TC-APP-13",
@@ -114,7 +114,7 @@
     "expected": "Expense logging works and decreases overall dashboard balance",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.36s"
+    "duration": "0.46s"
   },
   {
     "id": "TC-APP-14",
@@ -123,7 +123,7 @@
     "expected": "Dropdown contains Food, Utilities, Entertainment, Rent, Shopping",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.17s"
+    "duration": "0.42s"
   },
   {
     "id": "TC-APP-15",
@@ -132,7 +132,7 @@
     "expected": "Soft keyboard changes to numeric layout on amount field focus",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.33s"
+    "duration": "0.20s"
   },
   {
     "id": "TC-APP-16",
@@ -141,7 +141,7 @@
     "expected": "Active budget progress limiters are visible",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.20s"
+    "duration": "0.35s"
   },
   {
     "id": "TC-APP-17",
@@ -150,7 +150,7 @@
     "expected": "Progress bar limits adjust to new budget configurations",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.27s"
+    "duration": "0.44s"
   },
   {
     "id": "TC-APP-18",
@@ -159,7 +159,7 @@
     "expected": "Alert popup loads when transaction breaches designated cap threshold",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.26s"
+    "duration": "0.16s"
   },
   {
     "id": "TC-APP-19",
@@ -168,7 +168,7 @@
     "expected": "Distribution chart switches between absolute values and percentages",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.33s"
+    "duration": "0.30s"
   },
   {
     "id": "TC-APP-20",
@@ -177,7 +177,7 @@
     "expected": "Push alert fires sending current limits allocations reminders",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.19s"
+    "duration": "0.14s"
   },
   {
     "id": "TC-APP-21",
@@ -186,7 +186,7 @@
     "expected": "Successful transactions prompt immediate mobile success toast alert",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.33s"
+    "duration": "0.23s"
   },
   {
     "id": "TC-APP-22",
@@ -195,7 +195,7 @@
     "expected": "Swiping a notification alert row removes it from notifications panel",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.25s"
+    "duration": "0.47s"
   },
   {
     "id": "TC-APP-23",
@@ -204,7 +204,7 @@
     "expected": "Profile screen loads fields for user settings adjustments",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.30s"
+    "duration": "0.39s"
   },
   {
     "id": "TC-APP-24",
@@ -213,7 +213,7 @@
     "expected": "Display Name changes update the user info values on Save",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.22s"
+    "duration": "0.17s"
   },
   {
     "id": "TC-APP-25",
@@ -222,7 +222,7 @@
     "expected": "Preferred currency symbol alters default currency label layout",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.33s"
+    "duration": "0.21s"
   },
   {
     "id": "TC-APP-26",
@@ -231,7 +231,7 @@
     "expected": "Dialog queries permissions access to camera device for receipts scan",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.47s"
+    "duration": "0.44s"
   },
   {
     "id": "TC-APP-27",
@@ -240,7 +240,7 @@
     "expected": "Toggling dark theme alters app styling variables colors",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.20s"
+    "duration": "0.16s"
   },
   {
     "id": "TC-APP-28",
@@ -249,7 +249,7 @@
     "expected": "Logout prompts verification warning dialog",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.33s"
+    "duration": "0.20s"
   },
   {
     "id": "TC-APP-29",
@@ -258,7 +258,7 @@
     "expected": "Double tap exits execution thread and backgrounds app",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.39s"
+    "duration": "0.22s"
   },
   {
     "id": "TC-APP-30",
@@ -267,6 +267,6 @@
     "expected": "Logout deletes auth tokens and cleans cached shared preference namespaces",
     "actual": "Operation succeeded without error checks",
     "status": "PASS",
-    "duration": "0.28s"
+    "duration": "0.27s"
   }
 ]
