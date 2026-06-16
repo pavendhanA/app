@@ -9,8 +9,7 @@ The framework implements a **dual-driver architecture** which supports:
 2. **Native Fallback Mode**: Employs `appium-uiautomator2-driver` to automate standard Android compilation views. Our base page automatically decodes base64-encoded Flutter finder values into standard Android Accessibility IDs, Resource IDs, or XPath selectors.
 
 ### Directory Structure
-
-```
+....
 ├── .github/
 │   └── workflows/
 │       └── flutter-appium.yml # GitHub Actions workflow runner
