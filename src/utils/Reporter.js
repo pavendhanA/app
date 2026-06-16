@@ -19,25 +19,83 @@ class Reporter {
     const appiumTests = payload.appium || [];
     const executionLogs = payload.executionLogs || [];
 
-    const selPassed = seleniumTests.filter(t => t.status === 'PASS').length;
-    const selFailed = seleniumTests.filter(t => t.status === 'FAIL').length;
-    
-    const secPassed = securityTests.filter(t => t.status === 'PASS').length;
-    const secFailed = securityTests.filter(t => t.status === 'FAIL').length;
+    const suites = ['selenium', 'security', 'appium'];
+    const mergedTests = {
+      selenium: seleniumTests.length > 0 ? seleniumTests : [],
+      security: securityTests.length > 0 ? securityTests : [],
+      appium: appiumTests.length > 0 ? appiumTests : []
+    };
+    let mergedLogs = executionLogs.length > 0 ? [...executionLogs] : [];
 
-    const appPassed = appiumTests.filter(t => t.status === 'PASS').length;
-    const appFailed = appiumTests.filter(t => t.status === 'FAIL').length;
+    // 1. Write current active suites to cache files
+    const activeSuites = [];
+    if (seleniumTests.length > 0) activeSuites.push('selenium');
+    if (securityTests.length > 0) activeSuites.push('security');
+    if (appiumTests.length > 0) activeSuites.push('appium');
+
+    for (const suite of activeSuites) {
+      const cacheTestFile = path.join(reportDir, `cache_${suite}_tests.json`);
+      const cacheLogFile = path.join(reportDir, `cache_${suite}_logs.json`);
+      
+      const suiteTests = mergedTests[suite];
+      const suiteLogs = mergedLogs.filter(log => log.suite === suite);
+      
+      fs.writeFileSync(cacheTestFile, JSON.stringify(suiteTests, null, 2), 'utf8');
+      fs.writeFileSync(cacheLogFile, JSON.stringify(suiteLogs, null, 2), 'utf8');
+    }
+
+    // 2. Read missing suites from cache files to merge them
+    for (const suite of suites) {
+      if (mergedTests[suite].length === 0) {
+        const cacheTestFile = path.join(reportDir, `cache_${suite}_tests.json`);
+        const cacheLogFile = path.join(reportDir, `cache_${suite}_logs.json`);
+
+        if (fs.existsSync(cacheTestFile)) {
+          try {
+            mergedTests[suite] = JSON.parse(fs.readFileSync(cacheTestFile, 'utf8'));
+          } catch (e) {
+            logger.error(`Failed to parse cache tests for ${suite}: ${e.message}`);
+          }
+        }
+        if (fs.existsSync(cacheLogFile)) {
+          try {
+            const suiteLogs = JSON.parse(fs.readFileSync(cacheLogFile, 'utf8'));
+            const existingTimestamps = new Set(mergedLogs.map(l => l.timestamp + l.step));
+            suiteLogs.forEach(l => {
+              if (!existingTimestamps.has(l.timestamp + l.step)) {
+                mergedLogs.push(l);
+              }
+            });
+          } catch (e) {
+            logger.error(`Failed to parse cache logs for ${suite}: ${e.message}`);
+          }
+        }
+      }
+    }
+
+    // 3. Sort merged logs chronologically
+    mergedLogs.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+
+    // Summary calculations based on consolidated merged data
+    const selPassed = mergedTests.selenium.filter(t => t.status === 'PASS').length;
+    const selFailed = mergedTests.selenium.filter(t => t.status === 'FAIL').length;
+    
+    const secPassed = mergedTests.security.filter(t => t.status === 'PASS').length;
+    const secFailed = mergedTests.security.filter(t => t.status === 'FAIL').length;
+
+    const appPassed = mergedTests.appium.filter(t => t.status === 'PASS').length;
+    const appFailed = mergedTests.appium.filter(t => t.status === 'FAIL').length;
 
     const totalPassed = selPassed + secPassed + appPassed;
     const totalFailed = selFailed + secFailed + appFailed;
-    const totalTests = seleniumTests.length + securityTests.length + appiumTests.length;
+    const totalTests = mergedTests.selenium.length + mergedTests.security.length + mergedTests.appium.length;
     const successRate = totalTests > 0 ? ((totalPassed / totalTests) * 100).toFixed(2) : '0.00';
 
     const summary = {
       date: new Date().toLocaleString(),
-      selenium: { passed: selPassed, failed: selFailed, total: seleniumTests.length },
-      security: { passed: secPassed, failed: secFailed, total: securityTests.length },
-      appium: { passed: appPassed, failed: appFailed, total: appiumTests.length },
+      selenium: { passed: selPassed, failed: selFailed, total: mergedTests.selenium.length },
+      security: { passed: secPassed, failed: secFailed, total: mergedTests.security.length },
+      appium: { passed: appPassed, failed: appFailed, total: mergedTests.appium.length },
       total: totalTests,
       passed: totalPassed,
       failed: totalFailed,
@@ -54,7 +112,7 @@ class Reporter {
       const primaryHeaderFill = {
         type: 'pattern',
         pattern: 'solid',
-        fgColor: { argb: 'FF1B365D' } // Navy Blue matching the screenshot header
+        fgColor: { argb: 'FF1B365D' } // Dark Navy Blue matching the screenshot header
       };
       const headerFont = {
         name: 'Arial',
@@ -284,46 +342,54 @@ class Reporter {
       logger.info(`Excel Report saved successfully at: ${filePath}`);
     };
 
-    // 1. Generate Selenium_Report.xlsx
-    await createTabbedWorkbook(
-      path.join(reportDir, 'Selenium_Report.xlsx'),
-      'Chrome Browser',
-      'N/A',
-      seleniumTests,
-      executionLogs.filter(log => log.suite === 'selenium')
-    );
+    // Generate/Update Selenium_Report.xlsx if data exists
+    if (mergedTests.selenium.length > 0) {
+      await createTabbedWorkbook(
+        path.join(reportDir, 'Selenium_Report.xlsx'),
+        'Chrome Browser',
+        'N/A',
+        mergedTests.selenium,
+        mergedLogs.filter(log => log.suite === 'selenium')
+      );
+    }
 
-    // 2. Generate Security_Report.xlsx
-    await createTabbedWorkbook(
-      path.join(reportDir, 'Security_Report.xlsx'),
-      'Security Vulnerability Scanner',
-      'N/A',
-      securityTests,
-      executionLogs.filter(log => log.suite === 'security')
-    );
+    // Generate/Update Security_Report.xlsx if data exists
+    if (mergedTests.security.length > 0) {
+      await createTabbedWorkbook(
+        path.join(reportDir, 'Security_Report.xlsx'),
+        'Security Vulnerability Scanner',
+        'N/A',
+        mergedTests.security,
+        mergedLogs.filter(log => log.suite === 'security')
+      );
+    }
 
-    // 3. Generate Appium_Report.xlsx
-    await createTabbedWorkbook(
-      path.join(reportDir, 'Appium_Report.xlsx'),
-      'Android Device',
-      '14.0',
-      appiumTests,
-      executionLogs.filter(log => log.suite === 'appium')
-    );
+    // Generate/Update Appium_Report.xlsx if data exists
+    if (mergedTests.appium.length > 0) {
+      await createTabbedWorkbook(
+        path.join(reportDir, 'Appium_Report.xlsx'),
+        'Android Device',
+        '14.0',
+        mergedTests.appium,
+        mergedLogs.filter(log => log.suite === 'appium')
+      );
+    }
 
-    // 4. Generate Master_Report.xlsx
-    await createTabbedWorkbook(
-      path.join(reportDir, 'Master_Report.xlsx'),
-      'Consolidated QA System',
-      'N/A',
-      [...seleniumTests, ...securityTests, ...appiumTests],
-      executionLogs
-    );
+    // Generate/Update Master_Report.xlsx if any data exists
+    const allMergedTests = [...mergedTests.selenium, ...mergedTests.security, ...mergedTests.appium];
+    if (allMergedTests.length > 0) {
+      await createTabbedWorkbook(
+        path.join(reportDir, 'Master_Report.xlsx'),
+        'Consolidated QA System',
+        'N/A',
+        allMergedTests,
+        mergedLogs
+      );
+    }
 
     // 5. Generate Master HTML Dashboard
     const htmlPath = path.join(reportDir, 'index.html');
-    const allTests = [...seleniumTests, ...securityTests, ...appiumTests];
-    const failedCases = allTests.filter(t => t.status === 'FAIL');
+    const failedCases = allMergedTests.filter(t => t.status === 'FAIL');
 
     // SVG dash offset for circular gauge
     const radius = 50;
@@ -617,24 +683,24 @@ class Reporter {
 
     <!-- Suite Tabs -->
     <div class="tab-container">
-      <button class="tab-btn active" onclick="switchSuite('selenium', this)">🌐 Selenium Web E2E (${seleniumTests.length})</button>
-      <button class="tab-btn" onclick="switchSuite('security', this)">🛡️ Vulnerability Testing (${securityTests.length})</button>
-      <button class="tab-btn" onclick="switchSuite('appium', this)">📱 Appium Mobile E2E (${appiumTests.length})</button>
+      <button class="tab-btn active" onclick="switchSuite('selenium', this)">🌐 Selenium Web E2E (${mergedTests.selenium.length})</button>
+      <button class="tab-btn" onclick="switchSuite('security', this)">🛡️ Vulnerability Testing (${mergedTests.security.length})</button>
+      <button class="tab-btn" onclick="switchSuite('appium', this)">📱 Appium Mobile E2E (${mergedTests.appium.length})</button>
     </div>
 
     <!-- Selenium Test List -->
     <div id="selenium-suite" class="test-list suite-section">
-      ${this.generateTestListHtml(seleniumTests, failedCases)}
+      ${this.generateTestListHtml(mergedTests.selenium, failedCases)}
     </div>
 
     <!-- Security Test List -->
     <div id="security-suite" class="test-list suite-section" style="display:none;">
-      ${this.generateTestListHtml(securityTests, failedCases)}
+      ${this.generateTestListHtml(mergedTests.security, failedCases)}
     </div>
 
     <!-- Appium Test List -->
     <div id="appium-suite" class="test-list suite-section" style="display:none;">
-      ${this.generateTestListHtml(appiumTests, failedCases)}
+      ${this.generateTestListHtml(mergedTests.appium, failedCases)}
     </div>
 
     <!-- Execution Logs -->
@@ -651,7 +717,7 @@ class Reporter {
             </tr>
           </thead>
           <tbody>
-            ${executionLogs.map(log => `
+            ${mergedLogs.map(log => `
               <tr>
                 <td style="font-family:monospace; color:var(--text-muted);">${new Date(log.timestamp).toLocaleTimeString()}</td>
                 <td><strong>${log.testId || ''}</strong> ${log.testName}</td>
