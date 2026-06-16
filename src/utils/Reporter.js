@@ -13,55 +13,57 @@ class Reporter {
       fs.mkdirSync(reportDir, { recursive: true });
     }
 
+    const seleniumTests = payload.selenium || [];
     const securityTests = payload.security || [];
+    const appiumTests = payload.appium || [];
     const executionLogs = payload.executionLogs || [];
 
-    const suites = ['security'];
+    const suites = ['selenium', 'security', 'appium'];
     const mergedTests = {
-      security: securityTests.length > 0 ? securityTests : []
+      selenium: seleniumTests,
+      security: securityTests,
+      appium: appiumTests
     };
     let mergedLogs = executionLogs.length > 0 ? [...executionLogs] : [];
 
-    // 1. Write active Security suite to cache file
-    if (securityTests.length > 0) {
-      const cacheTestFile = path.join(reportDir, 'cache_security_tests.json');
-      const cacheLogFile = path.join(reportDir, 'cache_security_logs.json');
-      
-      const suiteTests = mergedTests.security;
-      const suiteLogs = mergedLogs.filter(log => log.suite === 'security');
-      
-      fs.writeFileSync(cacheTestFile, JSON.stringify(suiteTests, null, 2), 'utf8');
-      fs.writeFileSync(cacheLogFile, JSON.stringify(suiteLogs, null, 2), 'utf8');
-    }
+    // 1. Write and read cache for each suite
+    for (const suite of suites) {
+      const suiteTests = mergedTests[suite];
+      if (suiteTests.length > 0) {
+        const cacheTestFile = path.join(reportDir, `cache_${suite}_tests.json`);
+        const cacheLogFile = path.join(reportDir, `cache_${suite}_logs.json`);
+        
+        fs.writeFileSync(cacheTestFile, JSON.stringify(suiteTests, null, 2), 'utf8');
+        const suiteLogs = mergedLogs.filter(log => log.suite === suite);
+        fs.writeFileSync(cacheLogFile, JSON.stringify(suiteLogs, null, 2), 'utf8');
+      } else {
+        const cacheTestFile = path.join(reportDir, `cache_${suite}_tests.json`);
+        const cacheLogFile = path.join(reportDir, `cache_${suite}_logs.json`);
 
-    // 2. Read Security cache if it exists and wasn't in current payload
-    if (mergedTests.security.length === 0) {
-      const cacheTestFile = path.join(reportDir, 'cache_security_tests.json');
-      const cacheLogFile = path.join(reportDir, 'cache_security_logs.json');
-
-      if (fs.existsSync(cacheTestFile)) {
-        try {
-          mergedTests.security = JSON.parse(fs.readFileSync(cacheTestFile, 'utf8'));
-        } catch (e) {
-          logger.error(`Failed to parse cache tests for security: ${e.message}`);
+        if (fs.existsSync(cacheTestFile)) {
+          try {
+            mergedTests[suite] = JSON.parse(fs.readFileSync(cacheTestFile, 'utf8'));
+          } catch (e) {
+            logger.error(`Failed to parse cache tests for ${suite}: ${e.message}`);
+          }
+        }
+        if (fs.existsSync(cacheLogFile)) {
+          try {
+            const suiteLogs = JSON.parse(fs.readFileSync(cacheLogFile, 'utf8'));
+            const existingTimestamps = new Set(mergedLogs.map(l => l.timestamp + l.step));
+            suiteLogs.forEach(l => {
+              if (!existingTimestamps.has(l.timestamp + l.step)) {
+                mergedLogs.push(l);
+              }
+            });
+          } catch (e) {
+            logger.error(`Failed to parse cache logs for ${suite}: ${e.message}`);
+          }
         }
       }
-      if (fs.existsSync(cacheLogFile)) {
-        try {
-          const suiteLogs = JSON.parse(fs.readFileSync(cacheLogFile, 'utf8'));
-          const existingTimestamps = new Set(mergedLogs.map(l => l.timestamp + l.step));
-          suiteLogs.forEach(l => {
-            if (!existingTimestamps.has(l.timestamp + l.step)) {
-              mergedLogs.push(l);
-            }
-          });
-        } catch (e) {
-          logger.error(`Failed to parse cache logs for security: ${e.message}`);
-        }
-      }
     }
 
-    // 3. Sort merged logs chronologically
+    // 2. Sort merged logs chronologically
     mergedLogs.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
 
     // Helper to generate a report with 4 tabs: Summary, Test Cases, Failed Tests, Execution Logs
@@ -304,7 +306,18 @@ class Reporter {
       logger.info(`Excel Report saved successfully at: ${filePath}`);
     };
 
-    // Generate/Update ONLY Security_Report.xlsx if data exists
+    // Generate/Update Selenium_Report.xlsx if data exists
+    if (mergedTests.selenium.length > 0) {
+      await createTabbedWorkbook(
+        path.join(reportDir, 'Selenium_Report.xlsx'),
+        'Chrome Browser',
+        'N/A',
+        mergedTests.selenium,
+        mergedLogs.filter(log => log.suite === 'selenium')
+      );
+    }
+
+    // Generate/Update Security_Report.xlsx if data exists
     if (mergedTests.security.length > 0) {
       await createTabbedWorkbook(
         path.join(reportDir, 'Security_Report.xlsx'),
@@ -312,6 +325,17 @@ class Reporter {
         'N/A',
         mergedTests.security,
         mergedLogs.filter(log => log.suite === 'security')
+      );
+    }
+
+    // Generate/Update Appium_Report.xlsx if data exists
+    if (mergedTests.appium.length > 0) {
+      await createTabbedWorkbook(
+        path.join(reportDir, 'Appium_Report.xlsx'),
+        'Android Device',
+        '14.0',
+        mergedTests.appium,
+        mergedLogs.filter(log => log.suite === 'appium')
       );
     }
   }

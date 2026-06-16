@@ -1,4 +1,4 @@
-name: Smart Budget v3 QA E2E CI
+name: Selenium E2E
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 jobs:
-  qa-automation:
+  selenium-testing:
     runs-on: ubuntu-latest
 
     steps:
@@ -30,33 +30,35 @@ jobs:
       - name: 3. Install NPM Dependencies
         run: npm ci
 
-      - name: 4. Run Security Vulnerability Test Suite
-        run: npm run test:security
+      - name: 4. Run Selenium Web E2E Test Suite
+        run: npm run test:selenium
         env:
           CI: "true"
 
-      - name: 5. Upload Excel and HTML Reports
+      - name: 5. Upload Selenium Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: smart-budget-v3-execution-reports
-          path: reports/
+          name: selenium-execution-report
+          path: reports/Selenium_Report.xlsx
           retention-days: 14
 
-      - name: 6. Commit Reports to Repository
+      - name: 6. Commit Selenium Report to Repository
         if: always()
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Stage report directories and files
-          git add reports/
+          # Check if report exists and stage it
+          if [ -f reports/Selenium_Report.xlsx ]; then
+            git add reports/Selenium_Report.xlsx
+          fi
           
           # Check if there are differences to commit
           if git diff --cached --quiet; then
-            echo "No changes in reports. Skipping commit."
+            echo "No changes in Selenium report. Skipping commit."
           else
-            git commit -m "Auto-update QA Reports [skip ci]"
+            git commit -m "Auto-update Selenium QA Report [skip ci]"
             # Reset hard to clean up local build files
             git reset --hard HEAD
             # Force pull before pushing to avoid conflicts

@@ -1,0 +1,76 @@
+name: Appium E2E
+
+on:
+  push:
+    branches: [ main, master, dev ]
+  pull_request:
+    branches: [ main, master, dev ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  appium-testing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
+
+      - name: 2. Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+
+      - name: 3. Install NPM Dependencies
+        run: npm ci
+
+      - name: 4. Run Appium Mobile E2E Test Suite
+        run: npm run test:appium
+        env:
+          CI: "true"
+
+      - name: 5. Upload Appium Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: appium-execution-report
+          path: reports/Appium_Report.xlsx
+          retention-days: 14
+
+      - name: 6. Commit Appium Report to Repository
+        if: always()
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Check if report exists and stage it
+          if [ -f reports/Appium_Report.xlsx ]; then
+            git add reports/Appium_Report.xlsx
+          fi
+          
+          # Check if there are differences to commit
+          if git diff --cached --quiet; then
+            echo "No changes in Appium report. Skipping commit."
+          else
+            git commit -m "Auto-update Appium QA Report [skip ci]"
+            # Reset hard to clean up local build files
+            git reset --hard HEAD
+            # Force pull before pushing to avoid conflicts
+            if [ "${{ github.event_name }}" = "pull_request" ]; then
+              BRANCH_NAME="${{ github.head_ref }}"
+            else
+              BRANCH_NAME="${{ github.ref_name }}"
+            fi
+            echo "Target branch is $BRANCH_NAME"
+            git pull --rebase origin $BRANCH_NAME
+            git push origin HEAD:$BRANCH_NAME
+          fi
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
