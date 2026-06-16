@@ -1,4 +1,4 @@
-name: GateGuard Unified QA E2E CI
+name: Smart Budget v3 QA E2E CI
 
 on:
   push:
@@ -27,35 +27,29 @@ jobs:
           node-version: '18.x'
           cache: 'npm'
 
-      - name: 3. Install NPM Project Dependencies
+      - name: 3. Install NPM Dependencies
         run: npm ci
 
-      - name: 4. Install Playwright Web Browsers
-        run: npx playwright install --with-deps
-
-      - name: 5. Execute Selenium/Playwright Web Tests
-        run: npm run test:web
-
-      - name: 6. Execute Appium Mobile Tests (Simulated)
-        run: npm run test
+      - name: 4. Run Automated QA Test Suites
+        run: npm test
         env:
           CI: "true"
 
-      - name: 7. Upload Unified Execution Reports
+      - name: 5. Upload Excel and HTML Reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: gateguard-qa-execution-reports
+          name: smart-budget-v3-execution-reports
           path: reports/
           retention-days: 14
 
-      - name: 8. Commit Reports to Repository
+      - name: 6. Commit Reports to Repository
         if: always()
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Stage report directories
+          # Stage report directories and files
           git add reports/
           
           # Check if there are differences to commit

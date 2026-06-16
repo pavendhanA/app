@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GateGuard Web Portal</title>
+  <title>Smart Budget v3 - Financial Tracker</title>
+  <!-- Google Fonts Outfit & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
@@ -18,13 +19,13 @@
     <div id="auth-container" class="auth-box">
       <!-- Login Form -->
       <div id="login-view" class="auth-panel">
-        <h1 class="brand-title">GateGuard</h1>
-        <p class="subtitle">Enterprise Security Portal</p>
+        <h1 class="brand-title">Smart Budget</h1>
+        <p class="subtitle">v3 Professional Edition</p>
         
         <form id="login-form">
           <div class="form-group">
             <label for="login-email">Email Address</label>
-            <input type="email" id="login-email" placeholder="e.g. admin@gateguard.app" required>
+            <input type="email" id="login-email" placeholder="e.g. user@budget.com" required>
           </div>
           
           <div class="form-group">
@@ -32,15 +33,6 @@
             <input type="password" id="login-password" placeholder="••••••••" required>
           </div>
           
-          <div class="form-group">
-            <label for="login-role">Sign In As</label>
-            <select id="login-role">
-              <option value="admin">Administrator</option>
-              <option value="host">Host / Resident</option>
-              <option value="guard">Security Guard</option>
-            </select>
-          </div>
-
           <div class="form-actions">
             <label class="remember-me">
               <input type="checkbox" id="remember-me-checkbox"> Remember Me
@@ -57,8 +49,8 @@
 
       <!-- Registration Form -->
       <div id="register-view" class="auth-panel hidden">
-        <h1 class="brand-title">GateGuard</h1>
-        <p class="subtitle">Create Security Account</p>
+        <h1 class="brand-title">Smart Budget</h1>
+        <p class="subtitle">Create Account</p>
         
         <form id="register-form">
           <div class="form-group">
@@ -68,7 +60,7 @@
 
           <div class="form-group">
             <label for="register-email">Email Address</label>
-            <input type="email" id="register-email" placeholder="johndoe@email.com">
+            <input type="email" id="register-email" placeholder="john@email.com">
           </div>
           
           <div class="form-group">
@@ -79,14 +71,6 @@
           <div class="form-group">
             <label for="register-confirm-password">Confirm Password</label>
             <input type="password" id="register-confirm-password" placeholder="Confirm Password">
-          </div>
-
-          <div class="form-group">
-            <label for="register-role">Default Account Role</label>
-            <select id="register-role">
-              <option value="host">Host / Resident</option>
-              <option value="guard">Security Guard</option>
-            </select>
           </div>
           
           <button type="submit" id="register-submit-button" class="btn btn-primary btn-block">Sign Up</button>
@@ -104,14 +88,17 @@
       <aside class="sidebar">
         <div class="sidebar-header">
           <div class="brand">
-            <span class="brand-icon">🛡️</span>
-            <span class="brand-name">GateGuard</span>
+            <span class="brand-icon">💰</span>
+            <span class="brand-name">Smart Budget v3</span>
           </div>
         </div>
         
         <nav class="sidebar-nav">
           <button class="nav-item active" id="nav-dashboard">📊 Dashboard</button>
-          <button class="nav-item" id="nav-pass">🎟️ Pass Generation</button>
+          <button class="nav-item" id="nav-income">📥 Add Income</button>
+          <button class="nav-item" id="nav-expense">📤 Add Expense</button>
+          <button class="nav-item" id="nav-budget">🎯 Category Budget</button>
+          <button class="nav-item" id="nav-reports">📈 Reports & Charts</button>
           <button class="nav-item" id="nav-profile">👤 My Profile</button>
         </nav>
 
@@ -120,7 +107,7 @@
             <div class="user-avatar" id="sidebar-avatar">U</div>
             <div class="user-info">
               <div class="user-name" id="sidebar-name">User Name</div>
-              <div class="user-role" id="sidebar-role">Host</div>
+              <div class="user-role" id="sidebar-role">Standard User</div>
             </div>
           </div>
           <button id="logout-button" class="btn btn-logout">Logout</button>
@@ -133,41 +120,41 @@
         <header class="top-toolbar">
           <h2 id="view-title">Dashboard Overview</h2>
           <div class="toolbar-actions">
-            <span class="status-indicator">● System Online</span>
+            <span class="status-indicator">● Engine Online</span>
           </div>
         </header>
 
-        <!-- View 1: Stats & Visitor List (Dashboard) -->
+        <!-- View 1: Stats & Transaction List (Dashboard) -->
         <section id="dashboard-view" class="view-section">
           <!-- Stats Grid -->
           <div class="stats-grid">
             <div class="stat-card">
-              <div class="stat-title">Total Visitors</div>
-              <div class="stat-val" id="stat-total">0</div>
-              <div class="stat-desc">Historically logged passes</div>
+              <div class="stat-title">Total Balance</div>
+              <div class="stat-val" id="stat-total">$0.00</div>
+              <div class="stat-desc">Remaining net liquidity</div>
             </div>
             <div class="stat-card">
-              <div class="stat-title">Active Passes</div>
-              <div class="stat-val" id="stat-active" style="color: var(--color-pass);">0</div>
-              <div class="stat-desc">Currently checked-in</div>
+              <div class="stat-title">Total Income</div>
+              <div class="stat-val" id="stat-income" style="color: var(--color-pass);">$0.00</div>
+              <div class="stat-desc">Inflow from all sources</div>
             </div>
             <div class="stat-card">
-              <div class="stat-title">Upcoming Passes</div>
-              <div class="stat-val" id="stat-upcoming" style="color: var(--color-upcoming);">0</div>
-              <div class="stat-desc">Scheduled arrivals</div>
+              <div class="stat-title">Total Expenses</div>
+              <div class="stat-val" id="stat-expense" style="color: var(--color-fail);">$0.00</div>
+              <div class="stat-desc">Outflow allocations</div>
             </div>
           </div>
 
-          <!-- Visitors Module Panel -->
+          <!-- Transaction Logs Panel -->
           <div class="panel">
             <div class="panel-header">
-              <h3>Visitor Logs Management</h3>
+              <h3>Recent Transactions History</h3>
               <div class="panel-controls">
-                <input type="text" id="visitor-search" placeholder="Search visitor name...">
+                <input type="text" id="visitor-search" placeholder="Search transactions...">
                 <div class="filter-group">
                   <button class="btn btn-sm active" id="filter-all">All</button>
-                  <button class="btn btn-sm" id="filter-active">Active</button>
-                  <button class="btn btn-sm" id="filter-upcoming">Upcoming</button>
+                  <button class="btn btn-sm" id="filter-active">Income</button>
+                  <button class="btn btn-sm" id="filter-upcoming">Expenses</button>
                 </div>
               </div>
             </div>
@@ -176,11 +163,11 @@
               <table id="visitors-table">
                 <thead>
                   <tr>
-                    <th>Visitor ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Contact</th>
-                    <th>Purpose</th>
+                    <th>Txn ID</th>
+                    <th>Type</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Amount</th>
                     <th>Status</th>
                     <th>Action</th>
                   </tr>
@@ -190,98 +177,192 @@
                 </tbody>
               </table>
               <div id="no-visitors-alert" class="empty-state hidden">
-                <p>No matching visitor passes found.</p>
+                <p>No matching transactions found.</p>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- View 2: Visitor Pass Form -->
-        <section id="pass-view" class="view-section hidden">
+        <!-- View 2: Add Income Form -->
+        <section id="income-view" class="view-section hidden">
           <div class="panel form-panel">
-            <h3>Generate Digital Visitor Pass</h3>
-            <p class="subtitle">Complete the fields below to dispatch a secure access pass</p>
+            <h3>Add Cash Inflow / Income</h3>
+            <p class="subtitle">Complete the fields to register recurring or one-off income inflows</p>
             
-            <form id="pass-form">
+            <form id="income-form">
               <div class="form-row">
                 <div class="form-group col">
-                  <label for="pass-name">Visitor Name</label>
-                  <input type="text" id="pass-name" placeholder="e.g. Alice Smith" required>
+                  <label for="income-category">Inflow Category</label>
+                  <select id="income-category" required>
+                    <option value="">Select Category</option>
+                    <option value="Salary">Salary & Wages</option>
+                    <option value="Freelance">Freelance Consulting</option>
+                    <option value="Investments">Investment Returns</option>
+                    <option value="Other Inflow">Other Miscellaneous</option>
+                  </select>
                 </div>
                 <div class="form-group col">
-                  <label for="pass-email">Visitor Email Address</label>
-                  <input type="email" id="pass-email" placeholder="e.g. alice@smith.com" required>
+                  <label for="income-amount">Inflow Amount ($)</label>
+                  <input type="number" id="income-amount" placeholder="e.g. 5000" min="0.01" step="0.01" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="income-desc">Source Description</label>
+                <input type="text" id="income-desc" placeholder="e.g. Monthly corporate payroll" required>
+              </div>
+
+              <button type="submit" id="income-submit-button" class="btn btn-primary">Log Income Transaction</button>
+              <div id="income-error-message" class="error-text"></div>
+            </form>
+          </div>
+        </section>
+
+        <!-- View 3: Add Expense Form -->
+        <section id="expense-view" class="view-section hidden">
+          <div class="panel form-panel">
+            <h3>Add Cash Outflow / Expense</h3>
+            <p class="subtitle">Complete the fields to register personal cash outflows</p>
+            
+            <form id="expense-form">
+              <div class="form-row">
+                <div class="form-group col">
+                  <label for="expense-category">Outflow Category</label>
+                  <select id="expense-category" required>
+                    <option value="">Select Category</option>
+                    <option value="Food">Food & Groceries</option>
+                    <option value="Utilities">Monthly Utilities</option>
+                    <option value="Entertainment">Entertainment & Travel</option>
+                    <option value="Shopping">Personal Shopping</option>
+                    <option value="Rent">Rent & Housing</option>
+                  </select>
+                </div>
+                <div class="form-group col">
+                  <label for="expense-amount">Outflow Amount ($)</label>
+                  <input type="number" id="expense-amount" placeholder="e.g. 150.00" min="0.01" step="0.01" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="expense-desc">Usage Description</label>
+                <input type="text" id="expense-desc" placeholder="e.g. Grocery purchase at supermarket" required>
+              </div>
+
+              <button type="submit" id="expense-submit-button" class="btn btn-primary">Log Expense Transaction</button>
+              <div id="expense-error-message" class="error-text"></div>
+            </form>
+          </div>
+        </section>
+
+        <!-- View 4: Set Category Budget Form -->
+        <section id="budget-view" class="view-section hidden">
+          <div class="panel form-panel">
+            <h3>Configure Monthly Category Budgets</h3>
+            <p class="subtitle">Set spending targets and monitors per budget segment</p>
+            
+            <form id="budget-form">
+              <div class="form-row">
+                <div class="form-group col">
+                  <label for="budget-category">Budget Segment</label>
+                  <select id="budget-category" required>
+                    <option value="">Select Segment</option>
+                    <option value="Food">Food & Groceries</option>
+                    <option value="Utilities">Monthly Utilities</option>
+                    <option value="Entertainment">Entertainment & Travel</option>
+                    <option value="Shopping">Personal Shopping</option>
+                    <option value="Rent">Rent & Housing</option>
+                  </select>
+                </div>
+                <div class="form-group col">
+                  <label for="budget-limit">Budget Cap ($)</label>
+                  <input type="number" id="budget-limit" placeholder="e.g. 800.00" min="1" step="1" required>
+                </div>
+              </div>
+
+              <button type="submit" id="budget-submit-button" class="btn btn-primary">Save Budget Allocation</button>
+              <div id="budget-error-message" class="error-text"></div>
+            </form>
+
+            <div class="budget-caps-list" style="margin-top: 2rem;">
+              <h4>Active Budget Progress Limiters</h4>
+              <div id="budget-progress-bars" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+                <!-- Injected dynamically -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- View 5: Reports Dashboard -->
+        <section id="reports-view" class="view-section hidden">
+          <div class="panel">
+            <h3>Financial Analytics & Breakdown</h3>
+            <p class="subtitle">Summary statistics and reports distribution overview</p>
+            
+            <!-- Simulated visual graph cards -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+              <div style="background-color: rgba(0, 0, 0, 0.2); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; min-height: 250px;">
+                <h4 style="margin-bottom: 1rem;">Monthly Balance Trend Line</h4>
+                <div class="trend-chart-simulated" style="width: 100%; height: 160px; display: flex; align-items: flex-end; gap: 1rem; border-bottom: 2px solid var(--border-color); border-left: 2px solid var(--border-color); padding: 10px;">
+                  <div style="flex:1; height: 30%; background: linear-gradient(to top, var(--primary), #a5b4fc); border-radius: 4px 4px 0 0;" title="Jan: $1,200"></div>
+                  <div style="flex:1; height: 45%; background: linear-gradient(to top, var(--primary), #a5b4fc); border-radius: 4px 4px 0 0;" title="Feb: $1,800"></div>
+                  <div style="flex:1; height: 60%; background: linear-gradient(to top, var(--primary), #a5b4fc); border-radius: 4px 4px 0 0;" title="Mar: $2,400"></div>
+                  <div style="flex:1; height: 50%; background: linear-gradient(to top, var(--primary), #a5b4fc); border-radius: 4px 4px 0 0;" title="Apr: $2,000"></div>
+                  <div style="flex:1; height: 75%; background: linear-gradient(to top, var(--primary), #a5b4fc); border-radius: 4px 4px 0 0;" title="May: $3,000"></div>
+                  <div style="flex:1; height: 90%; background: linear-gradient(to top, var(--primary), #a5b4fc); border-radius: 4px 4px 0 0;" title="Jun: $3,600"></div>
+                </div>
+              </div>
+              
+              <div style="background-color: rgba(0, 0, 0, 0.2); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <h4>Category Breakdown</h4>
+                <div id="category-distribution-list" style="margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.85rem;">
+                  <!-- Injected dynamically -->
+                </div>
+                <button class="btn btn-outline btn-block btn-sm" id="export-reports-btn" style="margin-top: 1rem;">📥 Export Report Raw Data</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- View 6: Profile Settings -->
+        <section id="profile-view" class="view-section hidden">
+          <div class="panel form-panel">
+            <h3>User Account Profile</h3>
+            <p class="subtitle">Update credentials, preferred default currency settings, and configure profiles</p>
+            
+            <form id="profile-form">
+              <div class="profile-pic-container">
+                <div class="profile-pic-wrapper">
+                  <img id="profile-pic-preview" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100%25' height='100%25' fill='%23202b47'/><text x='50%25' y='55%25' font-size='36' font-family='Outfit' fill='%23818cf8' text-anchor='middle' dominant-baseline='central'>U</text></svg>" alt="User Profile Image">
+                </div>
+                <div class="profile-pic-upload">
+                  <label for="profile-avatar-input" class="btn btn-sm btn-outline">Upload Avatar</label>
+                  <input type="file" id="profile-avatar-input" class="hidden" accept="image/*">
+                  <p class="file-limits">Support PNG, JPG under 1MB</p>
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="form-group col">
-                  <label for="pass-phone">Contact Number</label>
-                  <input type="tel" id="pass-phone" placeholder="e.g. +1 (555) 019-2834" required>
+                  <label for="profile-name">Display Name</label>
+                  <input type="text" id="profile-name" value="User Account" required>
                 </div>
                 <div class="form-group col">
-                  <label for="pass-purpose">Purpose of Visit</label>
-                  <select id="pass-purpose" required>
-                    <option value="">Select Purpose</option>
-                    <option value="Personal Delivery">Personal Delivery</option>
-                    <option value="Maintenance Worker">Maintenance Worker</option>
-                    <option value="Social Meeting">Social Meeting</option>
-                    <option value="Business Consultation">Business Consultation</option>
+                  <label for="profile-currency">Preferred Currency</label>
+                  <select id="profile-currency" required>
+                    <option value="$">US Dollar ($)</option>
+                    <option value="€">Euro (€)</option>
+                    <option value="£">British Pound (£)</option>
+                    <option value="₹">Indian Rupee (₹)</option>
                   </select>
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="pass-host">Authorized Host / Resident</label>
-                <select id="pass-host" required>
-                  <option value="">Select Host</option>
-                  <option value="Admin User">Admin User (Suite 101)</option>
-                  <option value="Host User">Host User (Suite 404)</option>
-                  <option value="Jane Doe">Jane Doe (Suite 202)</option>
-                </select>
+                <label for="profile-role-view">Assigned Application Role</label>
+                <input type="text" id="profile-role-view" value="Budget Manager" readonly class="input-readonly">
               </div>
 
-              <button type="submit" id="pass-submit-button" class="btn btn-primary">Generate Pass & QR</button>
-              <div id="pass-error-message" class="error-text"></div>
-            </form>
-          </div>
-        </section>
-
-        <!-- View 3: Profile Settings -->
-        <section id="profile-view" class="view-section hidden">
-          <div class="panel form-panel">
-            <h3>Account Settings</h3>
-            <p class="subtitle">Update your personal credentials and contact settings</p>
-            
-            <form id="profile-form">
-              <div class="profile-pic-container">
-                <div class="profile-pic-wrapper">
-                  <img id="profile-pic-preview" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect width='100%25' height='100%25' fill='%23202b47'/><text x='50%25' y='55%25' font-size='36' font-family='Arial' fill='%239ca3af' text-anchor='middle' dominant-baseline='central'>U</text></svg>" alt="User Profile Image">
-                </div>
-                <div class="profile-pic-upload">
-                  <label for="profile-avatar-input" class="btn btn-sm btn-outline">Upload New Image</label>
-                  <input type="file" id="profile-avatar-input" class="hidden" accept="image/*">
-                  <p class="file-limits">Support PNG, JPG under 2MB</p>
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group col">
-                  <label for="profile-name">Full Name</label>
-                  <input type="text" id="profile-name" value="Jane Doe" required>
-                </div>
-                <div class="form-group col">
-                  <label for="profile-phone">Contact Number</label>
-                  <input type="tel" id="profile-phone" value="+1 (555) 012-3456" required>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="profile-role-view">Assigned Security Role</label>
-                <input type="text" id="profile-role-view" value="Host" readonly class="input-readonly">
-              </div>
-
-              <button type="submit" id="profile-submit-button" class="btn btn-primary">Save Changes</button>
+              <button type="submit" id="profile-submit-button" class="btn btn-primary">Save Profile Settings</button>
               <div id="profile-success-message" class="success-text"></div>
             </form>
           </div>
@@ -289,57 +370,23 @@
       </main>
     </div>
 
-    <!-- QR Code Preview Modal -->
+    <!-- Alert / Warning Modal (e.g. Budget Cap Warning Popup) -->
     <div id="qr-modal" class="modal-overlay hidden">
       <div class="modal-box">
         <span id="close-qr-modal" class="close-btn">&times;</span>
-        <h3>Visitor Access QR Code</h3>
-        <p class="subtitle">Share this QR code with the visitor for scanning at the main gate.</p>
+        <h3 id="modal-alert-title" style="color: var(--color-fail);">⚠️ Budget Cap Overflow alert</h3>
+        <p class="subtitle" style="margin-bottom: 1.5rem;">The transaction exceeds the designated segment cap threshold.</p>
         
-        <div class="qr-content-wrapper">
-          <div class="qr-card">
-            <!-- Simulated QR code -->
-            <div id="qr-image-container" class="qr-placeholder">
-              <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <!-- Outer borders -->
-                <rect x="10" y="10" width="180" height="180" fill="#fff" stroke="#121829" stroke-width="6"/>
-                <!-- Anchor boxes top-left, top-right, bottom-left -->
-                <rect x="25" y="25" width="45" height="45" fill="#121829" />
-                <rect x="35" y="35" width="25" height="25" fill="#fff" />
-                <rect x="40" y="40" width="15" height="15" fill="#121829" />
-
-                <rect x="130" y="25" width="45" height="45" fill="#121829" />
-                <rect x="140" y="35" width="25" height="25" fill="#fff" />
-                <rect x="145" y="40" width="15" height="15" fill="#121829" />
-
-                <rect x="25" y="130" width="45" height="45" fill="#121829" />
-                <rect x="35" y="140" width="25" height="25" fill="#fff" />
-                <rect x="40" y="145" width="15" height="15" fill="#121829" />
-
-                <!-- Some QR noise points -->
-                <rect x="85" y="25" width="10" height="10" fill="#121829" />
-                <rect x="105" y="35" width="15" height="10" fill="#121829" />
-                <rect x="85" y="55" width="20" height="20" fill="#121829" />
-                <rect x="110" y="55" width="10" height="15" fill="#121829" />
-                <rect x="85" y="85" width="15" height="10" fill="#121829" />
-                <rect x="135" y="85" width="20" height="15" fill="#121829" />
-                <rect x="110" y="105" width="10" height="10" fill="#121829" />
-                <rect x="85" y="125" width="30" height="10" fill="#121829" />
-                <rect x="135" y="125" width="15" height="20" fill="#121829" />
-                <rect x="85" y="150" width="10" height="20" fill="#121829" />
-                <rect x="105" y="160" width="25" height="15" fill="#121829" />
-                <rect x="145" y="155" width="15" height="15" fill="#121829" />
-              </svg>
-            </div>
-            <div class="qr-details">
-              <h4 id="qr-visitor-name">Alice Smith</h4>
-              <p id="qr-pass-id">Pass ID: GG-501</p>
-              <span id="qr-pass-status" class="badge-status pass">ACTIVE</span>
-            </div>
+        <div class="qr-content-wrapper" style="margin: 0.5rem 0 1.5rem 0;">
+          <div style="background-color: rgba(239, 68, 68, 0.1); border: 2px dashed var(--color-fail); border-radius: 12px; padding: 1.5rem; width: 100%; text-align: center;">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🚨</div>
+            <h4 id="qr-visitor-name" style="color: var(--text-main); font-weight: 700; margin-bottom: 0.25rem;">Shopping Segment</h4>
+            <p id="qr-pass-id" style="color: var(--text-muted); font-size: 0.9rem;">Limit: $500 | Current: $650</p>
+            <span id="qr-pass-status" class="badge-status cancelled" style="margin-top: 0.5rem;">LIMIT EXCEEDED</span>
           </div>
         </div>
 
-        <button id="download-qr-button" class="btn btn-outline btn-block">📥 Download QR Code</button>
+        <button id="download-qr-button" class="btn btn-outline btn-block">Acknowledge Warning</button>
       </div>
     </div>
 

@@ -1,73 +1,63 @@
 const BasePage = require('./BasePage');
-const finder = require('appium-flutter-finder');
 
 class LoginPage extends BasePage {
   constructor(driver) {
     super(driver);
   }
 
-  // Locators defined using Flutter finders (will translate in native fallback)
-  get usernameField() {
-    return finder.byValueKey('username-input');
+  // Locators
+  get emailField() {
+    return '#login-email';
   }
 
   get passwordField() {
-    return finder.byValueKey('password-input');
+    return '#login-password';
   }
 
   get loginButton() {
-    return finder.byValueKey('login-submit-button');
+    return '#login-submit-button';
   }
 
   get errorLabel() {
-    return finder.byValueKey('auth-error-message');
+    return '#auth-error-message';
   }
 
-  get profileMenuButton() {
-    return finder.bySemanticsLabel('Profile Menu');
+  get rememberCheckbox() {
+    return '#remember-me-checkbox';
   }
 
-  get logoutButton() {
-    return finder.byText('Logout');
-  }
-
-  get successToastOrHeader() {
-    return finder.byText('Dashboard');
+  get goToRegisterLink() {
+    return '#go-to-register';
   }
 
   /**
    * Complete login action.
    */
-  async login(username, password) {
-    if (username !== null) {
-      await this.clearAndSetValue(this.usernameField, username, 'Enter username');
+  async login(email, password, remember = false) {
+    if (email !== null) {
+      await this.clearAndSetValue(this.emailField, email, `Enter login email: ${email}`);
     }
     if (password !== null) {
-      await this.clearAndSetValue(this.passwordField, password, 'Enter password');
+      await this.clearAndSetValue(this.passwordField, password, 'Enter login password');
     }
-    await this.click(this.loginButton, 'Click Login Submit Button');
+    if (remember) {
+      await this.click(this.rememberCheckbox, 'Check Remember Me option');
+    }
+    await this.click(this.loginButton, 'Click Sign In Button');
   }
 
   /**
    * Gets auth error validation messages.
    */
   async getErrorMessage() {
-    return await this.getText(this.errorLabel, 'Get login error message');
+    return await this.getText(this.errorLabel, 'Get login error validation text');
   }
 
   /**
-   * Logs out the user.
+   * Navigate to Registration view.
    */
-  async logout() {
-    await this.click(this.profileMenuButton, 'Open Profile Menu');
-    await this.click(this.logoutButton, 'Click Logout Option');
-  }
-
-  /**
-   * Verifies if user is currently logged in.
-   */
-  async isLoggedIn() {
-    return await this.isDisplayed(this.profileMenuButton);
+  async navigateToRegister() {
+    await this.click(this.goToRegisterLink, 'Click Register Here link');
   }
 }
 

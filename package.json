@@ -4,7 +4,10 @@
   "description": "E2E Automation Framework for Flutter Android APK using Appium 2.x and WebDriverIO",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/setup.js tests/**/*.test.js --timeout 120000 --exit",
+    "test": "mocha tests/setup.js tests/**/*.test.js --timeout 180000 --exit",
+    "test:selenium": "cross-env TEST_SUITE=selenium mocha tests/setup.js tests/selenium.test.js --timeout 180000 --exit",
+    "test:security": "cross-env TEST_SUITE=security mocha tests/setup.js tests/security.test.js --timeout 180000 --exit",
+    "test:appium": "cross-env TEST_SUITE=appium mocha tests/setup.js tests/appium.test.js --timeout 180000 --exit",
     "test:flutter": "cross-env AUTOMATION_NAME=Flutter npm run test",
     "test:native": "cross-env AUTOMATION_NAME=UiAutomator2 npm run test",
     "test:ai": "node src/utils/AiTestingAgent.js",
@@ -24,6 +27,7 @@
     "cross-env": "^7.0.3",
     "mochawesome": "^7.1.3",
     "mochawesome-report-generator": "^6.2.0",
-    "@playwright/test": "^1.42.1"
+    "@playwright/test": "^1.42.1",
+    "selenium-webdriver": "^4.22.0"
   }
 }
