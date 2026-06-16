@@ -60,8 +60,14 @@ jobs:
             # Reset hard to clean up local build files
             git reset --hard HEAD
             # Force pull before pushing to avoid conflicts
-            git pull --rebase origin ${GITHUB_REF##*/}
-            git push origin HEAD:${GITHUB_REF##*/}
+            if [ "${{ github.event_name }}" = "pull_request" ]; then
+              BRANCH_NAME="${{ github.head_ref }}"
+            else
+              BRANCH_NAME="${{ github.ref_name }}"
+            fi
+            echo "Target branch is $BRANCH_NAME"
+            git pull --rebase origin $BRANCH_NAME
+            git push origin HEAD:$BRANCH_NAME
           fi
         shell: bash
         env:
