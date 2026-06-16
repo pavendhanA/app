@@ -49,28 +49,52 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Check if report exists and stage it
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BRANCH_NAME="${{ github.head_ref }}"
+          else
+            BRANCH_NAME="${{ github.ref_name }}"
+          fi
+          echo "Target branch is $BRANCH_NAME"
+          
+          # Save the generated report
           if [ -f reports/Selenium_Report.xlsx ]; then
-            git add reports/Selenium_Report.xlsx
+            cp reports/Selenium_Report.xlsx ../Selenium_Report.xlsx
+          else
+            echo "Selenium_Report.xlsx not found, skipping commit."
+            exit 0
           fi
           
-          # Check if there are differences to commit
-          if git diff --cached --quiet; then
-            echo "No changes in Selenium report. Skipping commit."
-          else
-            git commit -m "Auto-update Selenium QA Report [skip ci]"
-            # Reset hard to clean up local build files
+          # Retry loop to fetch, checkout branch, restore report, and push
+          for i in {1..5}; do
+            echo "Attempt $i to sync branch $BRANCH_NAME and push Selenium report..."
             git reset --hard HEAD
-            # Force pull before pushing to avoid conflicts
-            if [ "${{ github.event_name }}" = "pull_request" ]; then
-              BRANCH_NAME="${{ github.head_ref }}"
+            git fetch origin $BRANCH_NAME
+            git checkout $BRANCH_NAME || git checkout -b $BRANCH_NAME origin/$BRANCH_NAME
+            git pull origin $BRANCH_NAME
+            
+            # Restore the report
+            mkdir -p reports
+            cp ../Selenium_Report.xlsx reports/Selenium_Report.xlsx
+            
+            # Stage it
+            git add reports/Selenium_Report.xlsx
+            
+            # Check if there are differences to commit
+            if git diff --cached --quiet; then
+              echo "No changes in Selenium report. Skipping push."
+              exit 0
             else
-              BRANCH_NAME="${{ github.ref_name }}"
+              git commit -m "Auto-update Selenium QA Report [skip ci]"
+              if git push origin HEAD:$BRANCH_NAME; then
+                echo "Successfully pushed Selenium report!"
+                exit 0
+              fi
             fi
-            echo "Target branch is $BRANCH_NAME"
-            git pull --rebase origin $BRANCH_NAME
-            git push origin HEAD:$BRANCH_NAME
-          fi
+            echo "Push failed, retrying in 3 seconds..."
+            sleep 3
+          done
+          echo "Failed to commit and push Selenium report after 5 attempts."
+          exit 1
         shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
