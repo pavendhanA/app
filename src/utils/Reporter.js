@@ -13,37 +13,37 @@ class Reporter {
       fs.mkdirSync(reportDir, { recursive: true });
     }
 
-    const seleniumTests = payload.selenium || [];
+    const securityTests = payload.security || [];
     const executionLogs = payload.executionLogs || [];
 
-    const suites = ['selenium'];
+    const suites = ['security'];
     const mergedTests = {
-      selenium: seleniumTests.length > 0 ? seleniumTests : []
+      security: securityTests.length > 0 ? securityTests : []
     };
     let mergedLogs = executionLogs.length > 0 ? [...executionLogs] : [];
 
-    // 1. Write active Selenium suite to cache file
-    if (seleniumTests.length > 0) {
-      const cacheTestFile = path.join(reportDir, 'cache_selenium_tests.json');
-      const cacheLogFile = path.join(reportDir, 'cache_selenium_logs.json');
+    // 1. Write active Security suite to cache file
+    if (securityTests.length > 0) {
+      const cacheTestFile = path.join(reportDir, 'cache_security_tests.json');
+      const cacheLogFile = path.join(reportDir, 'cache_security_logs.json');
       
-      const suiteTests = mergedTests.selenium;
-      const suiteLogs = mergedLogs.filter(log => log.suite === 'selenium');
+      const suiteTests = mergedTests.security;
+      const suiteLogs = mergedLogs.filter(log => log.suite === 'security');
       
       fs.writeFileSync(cacheTestFile, JSON.stringify(suiteTests, null, 2), 'utf8');
       fs.writeFileSync(cacheLogFile, JSON.stringify(suiteLogs, null, 2), 'utf8');
     }
 
-    // 2. Read Selenium cache if it exists and wasn't in current payload
-    if (mergedTests.selenium.length === 0) {
-      const cacheTestFile = path.join(reportDir, 'cache_selenium_tests.json');
-      const cacheLogFile = path.join(reportDir, 'cache_selenium_logs.json');
+    // 2. Read Security cache if it exists and wasn't in current payload
+    if (mergedTests.security.length === 0) {
+      const cacheTestFile = path.join(reportDir, 'cache_security_tests.json');
+      const cacheLogFile = path.join(reportDir, 'cache_security_logs.json');
 
       if (fs.existsSync(cacheTestFile)) {
         try {
-          mergedTests.selenium = JSON.parse(fs.readFileSync(cacheTestFile, 'utf8'));
+          mergedTests.security = JSON.parse(fs.readFileSync(cacheTestFile, 'utf8'));
         } catch (e) {
-          logger.error(`Failed to parse cache tests for selenium: ${e.message}`);
+          logger.error(`Failed to parse cache tests for security: ${e.message}`);
         }
       }
       if (fs.existsSync(cacheLogFile)) {
@@ -56,7 +56,7 @@ class Reporter {
             }
           });
         } catch (e) {
-          logger.error(`Failed to parse cache logs for selenium: ${e.message}`);
+          logger.error(`Failed to parse cache logs for security: ${e.message}`);
         }
       }
     }
@@ -304,14 +304,14 @@ class Reporter {
       logger.info(`Excel Report saved successfully at: ${filePath}`);
     };
 
-    // Generate/Update ONLY Selenium_Report.xlsx if data exists
-    if (mergedTests.selenium.length > 0) {
+    // Generate/Update ONLY Security_Report.xlsx if data exists
+    if (mergedTests.security.length > 0) {
       await createTabbedWorkbook(
-        path.join(reportDir, 'Selenium_Report.xlsx'),
-        'Chrome Browser',
+        path.join(reportDir, 'Security_Report.xlsx'),
+        'Security Vulnerability Scanner',
         'N/A',
-        mergedTests.selenium,
-        mergedLogs.filter(log => log.suite === 'selenium')
+        mergedTests.security,
+        mergedLogs.filter(log => log.suite === 'security')
       );
     }
   }
