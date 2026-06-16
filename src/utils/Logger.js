@@ -75,7 +75,8 @@ logger.step = (testName, stepName, result, remarks = '') => {
     testName,
     step: stepName,
     result,
-    remarks
+    remarks,
+    suite: global.currentSuiteType || 'selenium'
   });
 };
 

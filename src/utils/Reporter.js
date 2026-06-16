@@ -19,7 +19,6 @@ class Reporter {
     const appiumTests = payload.appium || [];
     const executionLogs = payload.executionLogs || [];
 
-    // Summary calculations
     const selPassed = seleniumTests.filter(t => t.status === 'PASS').length;
     const selFailed = seleniumTests.filter(t => t.status === 'FAIL').length;
     
@@ -34,7 +33,6 @@ class Reporter {
     const totalTests = seleniumTests.length + securityTests.length + appiumTests.length;
     const successRate = totalTests > 0 ? ((totalPassed / totalTests) * 100).toFixed(2) : '0.00';
 
-    // Summary block structure
     const summary = {
       date: new Date().toLocaleString(),
       selenium: { passed: selPassed, failed: selFailed, total: seleniumTests.length },
@@ -46,67 +44,186 @@ class Reporter {
       successRate: successRate + '%'
     };
 
-    // Styling properties for ExcelJS
-    const primaryHeaderFill = {
-      type: 'pattern',
-      pattern: 'solid',
-      fgColor: { argb: 'FF1E293B' } // Dark Slate Blue / Indigo
-    };
-    const headerFont = {
-      name: 'Arial',
-      size: 11,
-      bold: true,
-      color: { argb: 'FFFFFFFF' }
-    };
-    const centerAlignment = { vertical: 'middle', horizontal: 'center' };
-    const leftAlignment = { vertical: 'middle', horizontal: 'left' };
-    const borderStyle = {
-      top: { style: 'thin', color: { argb: 'FFE2E8F0' } },
-      left: { style: 'thin', color: { argb: 'FFE2E8F0' } },
-      bottom: { style: 'thin', color: { argb: 'FFE2E8F0' } },
-      right: { style: 'thin', color: { argb: 'FFE2E8F0' } }
-    };
-
-    // Helper to format status cells
-    const applyStatusStyle = (row, colIndex, status) => {
-      const cell = row.getCell(colIndex);
-      if (status === 'PASS') {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F4EA' } }; // Light mint green
-        cell.font = { color: { argb: 'FF137333' }, bold: true };
-      } else {
-        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFCE8E6' } }; // Light crimson red
-        cell.font = { color: { argb: 'FFC5221F' }, bold: true };
-      }
-    };
-
-    // Helper to generate a single report spreadsheet
-    const createIndividualWorkbook = async (filePath, sheetName, columns, testCases) => {
+    // Helper to generate a report with 4 tabs: Summary, Test Cases, Failed Tests, Execution Logs
+    const createTabbedWorkbook = async (filePath, deviceName, deviceVersion, testCases, logs) => {
       const wb = new ExcelJS.Workbook();
       wb.creator = 'Smart Budget v3 QA Reporter';
       wb.created = new Date();
 
-      const sheet = wb.addWorksheet(sheetName);
-      sheet.views = [{ showGridLines: true }];
-      sheet.columns = columns;
+      // Style properties for ExcelJS
+      const primaryHeaderFill = {
+        type: 'pattern',
+        pattern: 'solid',
+        fgColor: { argb: 'FF1B365D' } // Navy Blue matching the screenshot header
+      };
+      const headerFont = {
+        name: 'Arial',
+        size: 11,
+        bold: true,
+        color: { argb: 'FFFFFFFF' }
+      };
+      const centerAlignment = { vertical: 'middle', horizontal: 'center' };
+      const leftAlignment = { vertical: 'middle', horizontal: 'left' };
+      const borderStyle = {
+        top: { style: 'thin', color: { argb: 'FFD3D3D3' } },
+        left: { style: 'thin', color: { argb: 'FFD3D3D3' } },
+        bottom: { style: 'thin', color: { argb: 'FFD3D3D3' } },
+        right: { style: 'thin', color: { argb: 'FFD3D3D3' } }
+      };
 
-      // Add rows
-      testCases.forEach(tc => {
-        const row = sheet.addRow(tc);
-        applyStatusStyle(row, 6, tc.status);
+      // 1. Summary tab
+      const summarySheet = wb.addWorksheet('Summary');
+      summarySheet.views = [{ showGridLines: true }];
+      summarySheet.getColumn('A').width = 25;
+      summarySheet.getColumn('B').width = 30;
+
+      summarySheet.getCell('A1').value = 'Metric';
+      summarySheet.getCell('B1').value = 'Value';
+
+      const total = testCases.length;
+      const passed = testCases.filter(tc => tc.status === 'PASS').length;
+      const failed = testCases.filter(tc => tc.status === 'FAIL').length;
+      const skipped = testCases.filter(tc => tc.status === 'SKIP').length;
+      const passPercent = total > 0 ? Math.round((passed / total) * 100) + '%' : '0%';
+      const durationSum = testCases.reduce((sum, tc) => sum + parseFloat(tc.duration || 0), 0).toFixed(2) + 's';
+
+      const overviewRows = [
+        { m: 'Execution Date', v: new Date().toLocaleString() },
+        { m: 'Device Name', v: deviceName },
+        { m: 'Android Version', v: deviceVersion },
+        { m: 'Total Tests', v: total },
+        { m: 'Passed', v: passed },
+        { m: 'Failed', v: failed },
+        { m: 'Skipped', v: skipped },
+        { m: 'Pass Percentage', v: passPercent },
+        { m: 'Duration', v: durationSum }
+      ];
+
+      overviewRows.forEach((row, i) => {
+        const rowIdx = i + 2;
+        summarySheet.getCell(`A${rowIdx}`).value = row.m;
+        summarySheet.getCell(`B${rowIdx}`).value = row.v;
       });
 
-      // Style header
-      sheet.getRow(1).eachCell(cell => {
+      // Style Summary Sheet Header
+      summarySheet.getCell('A1').fill = primaryHeaderFill;
+      summarySheet.getCell('A1').font = headerFont;
+      summarySheet.getCell('A1').alignment = centerAlignment;
+      summarySheet.getCell('B1').fill = primaryHeaderFill;
+      summarySheet.getCell('B1').font = headerFont;
+      summarySheet.getCell('B1').alignment = centerAlignment;
+
+      for (let i = 0; i < overviewRows.length; i++) {
+        const rIdx = i + 2;
+        const cellA = summarySheet.getCell(`A${rIdx}`);
+        const cellB = summarySheet.getCell(`B${rIdx}`);
+
+        cellA.font = { name: 'Arial', size: 10, bold: true };
+        cellB.font = { name: 'Arial', size: 10 };
+        cellA.border = borderStyle;
+        cellB.border = borderStyle;
+        cellA.alignment = leftAlignment;
+        cellB.alignment = leftAlignment;
+
+        if (overviewRows[i].m === 'Pass Percentage') {
+          if (passed === total) {
+            cellB.font = { name: 'Arial', size: 10, bold: true, color: { argb: 'FF137333' } }; // Bold green
+          } else {
+            cellB.font = { name: 'Arial', size: 10, bold: true, color: { argb: 'FFC5221F' } }; // Bold red
+          }
+        }
+      }
+
+      // 2. Test Cases tab
+      const tcSheet = wb.addWorksheet('Test Cases');
+      tcSheet.views = [{ showGridLines: true }];
+      tcSheet.columns = [
+        { header: 'Test Case ID', key: 'id', width: 15 },
+        { header: 'Module', key: 'module', width: 18 },
+        { header: 'Description', key: 'desc', width: 45 },
+        { header: 'Expected Result', key: 'expected', width: 45 },
+        { header: 'Actual Result', key: 'actual', width: 45 },
+        { header: 'Status', key: 'status', width: 12 },
+        { header: 'Execution Time', key: 'duration', width: 16 }
+      ];
+
+      testCases.forEach(tc => {
+        tcSheet.addRow(tc);
+      });
+
+      tcSheet.getRow(1).eachCell(cell => {
         cell.fill = primaryHeaderFill;
         cell.font = headerFont;
         cell.alignment = centerAlignment;
       });
 
-      // Style data cells
-      sheet.eachRow((row, rowNumber) => {
+      tcSheet.eachRow((row, rNumber) => {
+        if (rNumber === 1) return;
         row.eachCell(cell => {
           cell.border = borderStyle;
+          cell.font = { name: 'Arial', size: 10 };
           if (cell.col === 1 || cell.col === 6 || cell.col === 7) {
+            cell.alignment = centerAlignment;
+          } else {
+            cell.alignment = leftAlignment;
+          }
+        });
+
+        const statusVal = row.getCell(6).value;
+        if (statusVal === 'PASS') {
+          row.getCell(6).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F4EA' } };
+          row.getCell(6).font = { name: 'Arial', size: 10, color: { argb: 'FF137333' }, bold: true };
+        } else if (statusVal === 'FAIL') {
+          row.getCell(6).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFCE8E6' } };
+          row.getCell(6).font = { name: 'Arial', size: 10, color: { argb: 'FFC5221F' }, bold: true };
+        }
+      });
+
+      // 3. Failed Tests tab
+      const failedSheet = wb.addWorksheet('Failed Tests');
+      failedSheet.views = [{ showGridLines: true }];
+      failedSheet.columns = [
+        { header: 'Test Case ID', key: 'id', width: 15 },
+        { header: 'Module', key: 'module', width: 18 },
+        { header: 'Description', key: 'desc', width: 45 },
+        { header: 'Failure Message', key: 'failureMessage', width: 50 },
+        { header: 'Stack Trace', key: 'stackTrace', width: 60 }
+      ];
+
+      const failedTests = testCases.filter(tc => tc.status === 'FAIL');
+      if (failedTests.length === 0) {
+        failedSheet.addRow({
+          id: 'N/A',
+          module: 'N/A',
+          desc: 'All tests passed successfully.',
+          failureMessage: 'No failure recorded',
+          stackTrace: 'N/A'
+        });
+      } else {
+        failedTests.forEach(ft => {
+          const match = (global.failedTestsList || []).find(f => f.id === ft.id);
+          failedSheet.addRow({
+            id: ft.id,
+            module: ft.module,
+            desc: ft.desc,
+            failureMessage: ft.actual || 'Execution failed',
+            stackTrace: match ? match.stackTrace : 'N/A'
+          });
+        });
+      }
+
+      failedSheet.getRow(1).eachCell(cell => {
+        cell.fill = primaryHeaderFill;
+        cell.font = headerFont;
+        cell.alignment = centerAlignment;
+      });
+
+      failedSheet.eachRow((row, rNumber) => {
+        if (rNumber === 1) return;
+        row.eachCell(cell => {
+          cell.border = borderStyle;
+          cell.font = { name: 'Arial', size: 10 };
+          if (cell.col === 1) {
             cell.alignment = centerAlignment;
           } else {
             cell.alignment = leftAlignment;
@@ -114,140 +231,94 @@ class Reporter {
         });
       });
 
+      // 4. Execution Logs tab
+      const logSheet = wb.addWorksheet('Execution Logs');
+      logSheet.views = [{ showGridLines: true }];
+      logSheet.columns = [
+        { header: 'Timestamp', key: 'timestamp', width: 22 },
+        { header: 'Test Module / Page Object', key: 'testName', width: 28 },
+        { header: 'Action Step / Details', key: 'step', width: 50 },
+        { header: 'Status', key: 'result', width: 12 },
+        { header: 'Remarks', key: 'remarks', width: 30 }
+      ];
+
+      logs.forEach(log => {
+        logSheet.addRow({
+          timestamp: new Date(log.timestamp).toLocaleString(),
+          testName: log.testName,
+          step: log.step,
+          result: log.result,
+          remarks: log.remarks || ''
+        });
+      });
+
+      logSheet.getRow(1).eachCell(cell => {
+        cell.fill = primaryHeaderFill;
+        cell.font = headerFont;
+        cell.alignment = centerAlignment;
+      });
+
+      logSheet.eachRow((row, rNumber) => {
+        if (rNumber === 1) return;
+        row.eachCell(cell => {
+          cell.border = borderStyle;
+          cell.font = { name: 'Arial', size: 10 };
+          if (cell.col === 1 || cell.col === 4) {
+            cell.alignment = centerAlignment;
+          } else {
+            cell.alignment = leftAlignment;
+          }
+        });
+
+        const statusVal = row.getCell(4).value;
+        if (statusVal === 'PASS') {
+          row.getCell(4).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F4EA' } };
+          row.getCell(4).font = { name: 'Arial', size: 10, color: { argb: 'FF137333' }, bold: true };
+        } else if (statusVal === 'FAIL') {
+          row.getCell(4).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFCE8E6' } };
+          row.getCell(4).font = { name: 'Arial', size: 10, color: { argb: 'FFC5221F' }, bold: true };
+        }
+      });
+
       await wb.xlsx.writeFile(filePath);
       logger.info(`Excel Report saved successfully at: ${filePath}`);
     };
 
-    // Columns structure
-    const defaultCols = [
-      { header: 'Test Case ID', key: 'id', width: 15 },
-      { header: 'Module', key: 'module', width: 18 },
-      { header: 'Description', key: 'desc', width: 45 },
-      { header: 'Expected Result', key: 'expected', width: 45 },
-      { header: 'Actual Result', key: 'actual', width: 45 },
-      { header: 'Status', key: 'status', width: 12 },
-      { header: 'Execution Time', key: 'duration', width: 16 }
-    ];
-
     // 1. Generate Selenium_Report.xlsx
-    await createIndividualWorkbook(
+    await createTabbedWorkbook(
       path.join(reportDir, 'Selenium_Report.xlsx'),
-      'Selenium Web E2E',
-      defaultCols,
-      seleniumTests
+      'Chrome Browser',
+      'N/A',
+      seleniumTests,
+      executionLogs.filter(log => log.suite === 'selenium')
     );
 
     // 2. Generate Security_Report.xlsx
-    await createIndividualWorkbook(
+    await createTabbedWorkbook(
       path.join(reportDir, 'Security_Report.xlsx'),
-      'Security Vulnerability',
-      defaultCols,
-      securityTests
+      'Security Vulnerability Scanner',
+      'N/A',
+      securityTests,
+      executionLogs.filter(log => log.suite === 'security')
     );
 
     // 3. Generate Appium_Report.xlsx
-    await createIndividualWorkbook(
+    await createTabbedWorkbook(
       path.join(reportDir, 'Appium_Report.xlsx'),
-      'Appium Mobile E2E',
-      defaultCols,
-      appiumTests
+      'Android Device',
+      '14.0',
+      appiumTests,
+      executionLogs.filter(log => log.suite === 'appium')
     );
 
     // 4. Generate Master_Report.xlsx
-    const masterWb = new ExcelJS.Workbook();
-    masterWb.creator = 'Smart Budget v3 QA Reporter';
-    masterWb.created = new Date();
-
-    // Sheet 4.1: Summary
-    const summarySheet = masterWb.addWorksheet('Overview Summary');
-    summarySheet.views = [{ showGridLines: true }];
-    summarySheet.columns = [
-      { header: 'QA Testing Metrics', key: 'metric', width: 28 },
-      { header: 'Execution Values / Metrics', key: 'val', width: 32 }
-    ];
-
-    const overviewRows = [
-      { metric: 'Execution Run Timestamp', val: summary.date },
-      { metric: 'Selenium E2E Passed', val: summary.selenium.passed },
-      { metric: 'Selenium E2E Failed', val: summary.selenium.failed },
-      { metric: 'Security Check Passed', val: summary.security.passed },
-      { metric: 'Security Check Failed', val: summary.security.failed },
-      { metric: 'Appium Mobile Passed', val: summary.appium.passed },
-      { metric: 'Appium Mobile Failed', val: summary.appium.failed },
-      { metric: 'Total Executed testCases', val: summary.total },
-      { metric: 'Total Execution Passes', val: summary.passed },
-      { metric: 'Total Execution Failures', val: summary.failed },
-      { metric: 'Overall Success Rate', val: summary.successRate }
-    ];
-    overviewRows.forEach(row => summarySheet.addRow(row));
-    summarySheet.getRow(1).eachCell(cell => {
-      cell.fill = primaryHeaderFill;
-      cell.font = headerFont;
-      cell.alignment = centerAlignment;
-    });
-    summarySheet.eachRow((row, rowNumber) => {
-      row.eachCell(cell => { cell.border = borderStyle; });
-      row.getCell(1).font = { bold: true };
-    });
-
-    // Sheet 4.2: Selenium E2E Tests
-    const selSheet = masterWb.addWorksheet('Selenium Web Tests');
-    selSheet.views = [{ showGridLines: true }];
-    selSheet.columns = defaultCols;
-    seleniumTests.forEach(tc => {
-      const row = selSheet.addRow(tc);
-      applyStatusStyle(row, 6, tc.status);
-    });
-    selSheet.getRow(1).eachCell(cell => {
-      cell.fill = primaryHeaderFill;
-      cell.font = headerFont;
-      cell.alignment = centerAlignment;
-    });
-    selSheet.eachRow(row => row.eachCell(cell => {
-      cell.border = borderStyle;
-      if (cell.col === 1 || cell.col === 6 || cell.col === 7) cell.alignment = centerAlignment;
-    }));
-
-    // Sheet 4.3: Security Tests
-    const secSheet = masterWb.addWorksheet('Security Tests');
-    secSheet.views = [{ showGridLines: true }];
-    secSheet.columns = defaultCols;
-    securityTests.forEach(tc => {
-      const row = secSheet.addRow(tc);
-      applyStatusStyle(row, 6, tc.status);
-    });
-    secSheet.getRow(1).eachCell(cell => {
-      cell.fill = primaryHeaderFill;
-      cell.font = headerFont;
-      cell.alignment = centerAlignment;
-    });
-    secSheet.eachRow(row => row.eachCell(cell => {
-      cell.border = borderStyle;
-      if (cell.col === 1 || cell.col === 6 || cell.col === 7) cell.alignment = centerAlignment;
-    }));
-
-    // Sheet 4.4: Appium Mobile Tests
-    const appSheet = masterWb.addWorksheet('Appium Mobile Tests');
-    appSheet.views = [{ showGridLines: true }];
-    appSheet.columns = defaultCols;
-    appiumTests.forEach(tc => {
-      const row = appSheet.addRow(tc);
-      applyStatusStyle(row, 6, tc.status);
-    });
-    appSheet.getRow(1).eachCell(cell => {
-      cell.fill = primaryHeaderFill;
-      cell.font = headerFont;
-      cell.alignment = centerAlignment;
-    });
-    appSheet.eachRow(row => row.eachCell(cell => {
-      cell.border = borderStyle;
-      if (cell.col === 1 || cell.col === 6 || cell.col === 7) cell.alignment = centerAlignment;
-    }));
-
-    const masterPath = path.join(reportDir, 'Master_Report.xlsx');
-    await masterWb.xlsx.writeFile(masterPath);
-    logger.info(`Excel Master Report saved successfully at: ${masterPath}`);
-
+    await createTabbedWorkbook(
+      path.join(reportDir, 'Master_Report.xlsx'),
+      'Consolidated QA System',
+      'N/A',
+      [...seleniumTests, ...securityTests, ...appiumTests],
+      executionLogs
+    );
 
     // 5. Generate Master HTML Dashboard
     const htmlPath = path.join(reportDir, 'index.html');
@@ -479,12 +550,12 @@ class Reporter {
   <div class="container">
     <header>
       <div>
-        <h1>Smart Budget v3 consolidated QA Dashboard</h1>
+        <h1>Smart Budget v3 Consolidated QA Dashboard</h1>
         <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 0.25rem;">Automated Execution Metrics (Selenium E2E, Vulnerability Scans & Appium Mobile)</p>
       </div>
       <div class="meta-badges">
         <div class="badge">Run Timestamp: <strong>${summary.date}</strong></div>
-        <div class="badge">Overall success: <strong>${summary.successRate}</strong></div>
+        <div class="badge">Overall Success: <strong>${summary.successRate}</strong></div>
       </div>
     </header>
 

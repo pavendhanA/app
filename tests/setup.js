@@ -90,6 +90,16 @@ before(async function () {
 beforeEach(function () {
   this.currentTest.startTime = Date.now();
   logger.info(`STARTING: "${this.currentTest.fullTitle()}"`);
+
+  // Detect suite type for log routing
+  const testFilePath = this.currentTest.file || '';
+  if (testFilePath.includes('security')) {
+    global.currentSuiteType = 'security';
+  } else if (testFilePath.includes('appium')) {
+    global.currentSuiteType = 'appium';
+  } else {
+    global.currentSuiteType = 'selenium';
+  }
 });
 
 afterEach(async function () {
