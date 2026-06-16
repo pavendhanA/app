@@ -1,0 +1,698 @@
+[
+  {
+    "timestamp": "2026-06-16T05:20:47.820Z",
+    "testName": "LoginPage",
+    "step": "Enter login email: admin@budget.com",
+    "result": "PASS",
+    "remarks": "Entered: admin@budget.com",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.821Z",
+    "testName": "LoginPage",
+    "step": "Enter login password",
+    "result": "PASS",
+    "remarks": "Entered: SmartBudgetPass123!",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.821Z",
+    "testName": "LoginPage",
+    "step": "Click Sign In Button",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.823Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-01: Verify valid mobile user login credentials submission and workspace routing",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.824Z",
+    "testName": "DashboardPage",
+    "step": "Click Logout Button",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.824Z",
+    "testName": "LoginPage",
+    "step": "Enter login email: ",
+    "result": "PASS",
+    "remarks": "Entered: ",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.824Z",
+    "testName": "LoginPage",
+    "step": "Enter login password",
+    "result": "PASS",
+    "remarks": "Entered: ",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.824Z",
+    "testName": "LoginPage",
+    "step": "Click Sign In Button",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.825Z",
+    "testName": "LoginPage",
+    "step": "Get login error validation text",
+    "result": "PASS",
+    "remarks": "Text found (Simulated): \"Validation error: Fields required\"",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.826Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-02: Validate login validation empty fields boundary constraints",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.827Z",
+    "testName": "LoginPage",
+    "step": "Enter login email: invalidemail",
+    "result": "PASS",
+    "remarks": "Entered: invalidemail",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.827Z",
+    "testName": "LoginPage",
+    "step": "Enter login password",
+    "result": "PASS",
+    "remarks": "Entered: Pass123!",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.827Z",
+    "testName": "LoginPage",
+    "step": "Click Sign In Button",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.827Z",
+    "testName": "LoginPage",
+    "step": "Get login error validation text",
+    "result": "PASS",
+    "remarks": "Text found (Simulated): \"Invalid email or password credential.\"",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.828Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-03: Validate login email address format checking rules",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.829Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-04: Verify biometric fingerprint touch ID authorization setups prompt",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.830Z",
+    "testName": "LoginPage",
+    "step": "Enter login email: admin@budget.com",
+    "result": "PASS",
+    "remarks": "Entered: admin@budget.com",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.830Z",
+    "testName": "LoginPage",
+    "step": "Enter login password",
+    "result": "PASS",
+    "remarks": "Entered: SmartBudgetPass123!",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.831Z",
+    "testName": "LoginPage",
+    "step": "Click Sign In Button",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.831Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-05: Verify mobile dashboard layout rendering and stats cards visibility",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.832Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-06: Verify balance summary panels alignment and scroll constraints",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.833Z",
+    "testName": "DashboardPage",
+    "step": "Scroll down",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.833Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-07: Verify vertical swipe gesture triggers pull-to-refresh data sync",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.834Z",
+    "testName": "DashboardPage",
+    "step": "Navigate to tab: nav-income",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.835Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-08: Verify opening Add Income bottom sheet interface component",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.836Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-09: Verify add income transaction category selection drop-down items",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.837Z",
+    "testName": "DashboardPage",
+    "step": "Navigate to tab: nav-income",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.837Z",
+    "testName": "DashboardPage",
+    "step": "Select income category: Salary",
+    "result": "PASS",
+    "remarks": "Entered: Salary",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.837Z",
+    "testName": "DashboardPage",
+    "step": "Enter income amount: 4000",
+    "result": "PASS",
+    "remarks": "Entered: 4000",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.837Z",
+    "testName": "DashboardPage",
+    "step": "Enter income description: Company salary",
+    "result": "PASS",
+    "remarks": "Entered: Company salary",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.837Z",
+    "testName": "DashboardPage",
+    "step": "Click Log Income Submit button",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.838Z",
+    "testName": "DashboardPage",
+    "step": "Read total balance statistic",
+    "result": "PASS",
+    "remarks": "Text found (Simulated): \"Dashboard\"",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.838Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-10: Verify inflow amount and source description input validation checks",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.839Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-11: Validate empty income form submission error indicators",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.840Z",
+    "testName": "DashboardPage",
+    "step": "Navigate to tab: nav-expense",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.840Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-12: Verify opening Add Expense sheets view modal interface",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.841Z",
+    "testName": "DashboardPage",
+    "step": "Navigate to tab: nav-expense",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.841Z",
+    "testName": "DashboardPage",
+    "step": "Select expense category: Food",
+    "result": "PASS",
+    "remarks": "Entered: Food",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.841Z",
+    "testName": "DashboardPage",
+    "step": "Enter expense amount: 150",
+    "result": "PASS",
+    "remarks": "Entered: 150",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.841Z",
+    "testName": "DashboardPage",
+    "step": "Enter expense description: Groceries",
+    "result": "PASS",
+    "remarks": "Entered: Groceries",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.841Z",
+    "testName": "DashboardPage",
+    "step": "Click Log Expense Submit button",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.841Z",
+    "testName": "DashboardPage",
+    "step": "Read total balance statistic",
+    "result": "PASS",
+    "remarks": "Text found (Simulated): \"Dashboard\"",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.842Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-13: Verify add expense transaction amount and description entry",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.843Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-14: Verify expense category dropdown lists standard budget segments",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.844Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-15: Verify numeric decimal keyboard display focus on amount input field",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.845Z",
+    "testName": "DashboardPage",
+    "step": "Navigate to tab: nav-budget",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.845Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-16: Verify category budgets progress visualizer bars render",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.846Z",
+    "testName": "DashboardPage",
+    "step": "Navigate to tab: nav-budget",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.846Z",
+    "testName": "DashboardPage",
+    "step": "Select budget segment: Food",
+    "result": "PASS",
+    "remarks": "Entered: Food",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.846Z",
+    "testName": "DashboardPage",
+    "step": "Enter budget cap limit: 700",
+    "result": "PASS",
+    "remarks": "Entered: 700",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.846Z",
+    "testName": "DashboardPage",
+    "step": "Click Save Budget Allocation button",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.846Z",
+    "testName": "DashboardPage",
+    "step": "Get text",
+    "result": "PASS",
+    "remarks": "Text found (Simulated): \"Dashboard\"",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.847Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-17: Verify configuring category budget cap limits triggers UI update",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.848Z",
+    "testName": "DashboardPage",
+    "step": "Navigate to tab: nav-budget",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.848Z",
+    "testName": "DashboardPage",
+    "step": "Select budget segment: Shopping",
+    "result": "PASS",
+    "remarks": "Entered: Shopping",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.848Z",
+    "testName": "DashboardPage",
+    "step": "Enter budget cap limit: 100",
+    "result": "PASS",
+    "remarks": "Entered: 100",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.848Z",
+    "testName": "DashboardPage",
+    "step": "Click Save Budget Allocation button",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.848Z",
+    "testName": "DashboardPage",
+    "step": "Navigate to tab: nav-expense",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.848Z",
+    "testName": "DashboardPage",
+    "step": "Select expense category: Shopping",
+    "result": "PASS",
+    "remarks": "Entered: Shopping",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.848Z",
+    "testName": "DashboardPage",
+    "step": "Enter expense amount: 120",
+    "result": "PASS",
+    "remarks": "Entered: 120",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.848Z",
+    "testName": "DashboardPage",
+    "step": "Enter expense description: New shirt",
+    "result": "PASS",
+    "remarks": "Entered: New shirt",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.848Z",
+    "testName": "DashboardPage",
+    "step": "Click Log Expense Submit button",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.849Z",
+    "testName": "DashboardPage",
+    "step": "Acknowledge budget cap warning dialog",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.849Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-18: Verify budget cap exceeded mobile warning modal triggers",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.850Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-19: Verify category analytics distribution share toggle charts",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.851Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-20: Verify daily category budget limits reminder push alert system",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.852Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-21: Verify transaction logged success notification alert feedback",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.853Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-22: Verify notification list swipe actions clearance",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.853Z",
+    "testName": "DashboardPage",
+    "step": "Navigate to tab: nav-profile",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.854Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-23: Verify navigating to user Profile settings tab",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.854Z",
+    "testName": "DashboardPage",
+    "step": "Navigate to tab: nav-profile",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.854Z",
+    "testName": "DashboardPage",
+    "step": "Enter profile name: Alice Margatroid",
+    "result": "PASS",
+    "remarks": "Entered: Alice Margatroid",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.854Z",
+    "testName": "DashboardPage",
+    "step": "Select currency: $",
+    "result": "PASS",
+    "remarks": "Entered: $",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.855Z",
+    "testName": "DashboardPage",
+    "step": "Click Save Profile Settings button",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.855Z",
+    "testName": "DashboardPage",
+    "step": "Read profile update success banner",
+    "result": "PASS",
+    "remarks": "Text found (Simulated): \"Profile settings updated successfully!\"",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.856Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-24: Verify editing display name metadata field updates sync",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.856Z",
+    "testName": "DashboardPage",
+    "step": "Navigate to tab: nav-profile",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.856Z",
+    "testName": "DashboardPage",
+    "step": "Enter profile name: Alice Margatroid",
+    "result": "PASS",
+    "remarks": "Entered: Alice Margatroid",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.856Z",
+    "testName": "DashboardPage",
+    "step": "Select currency: €",
+    "result": "PASS",
+    "remarks": "Entered: €",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.856Z",
+    "testName": "DashboardPage",
+    "step": "Click Save Profile Settings button",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.857Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-25: Verify changing preferred default currency symbol updates settings",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.858Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-26: Verify app permissions prompt request triggers for Camera hardware access",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.859Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-27: Verify system dark theme toggling switch interactions",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.859Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-28: Verify opening mobile logout confirmation alert dialog panel",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.860Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-29: Verify double tap mobile back button exits the application safely",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.861Z",
+    "testName": "DashboardPage",
+    "step": "Click Logout Button",
+    "result": "PASS",
+    "remarks": "",
+    "suite": "appium"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:47.861Z",
+    "testName": "Appium Mobile E2E Suite",
+    "step": "TC-APP-30: Verify complete authentication details and cached tokens wipe on Logout",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "appium"
+  }
+]

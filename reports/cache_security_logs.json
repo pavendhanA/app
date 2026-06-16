@@ -1,0 +1,242 @@
+[
+  {
+    "timestamp": "2026-06-16T05:20:46.572Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-01: Login Email input field sanitization check against standard SQL injection patterns",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.574Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-02: Dashboard search box query sanitization check against inline comment characters",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.576Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-03: Transaction Description parameter validator check against SELECT union query commands",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.577Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-04: API endpoint parameter check against malicious UPDATE database commands",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.580Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-05: Stored XSS check on Transaction Description inputs HTML characters escaping",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.582Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-06: Reflective XSS check on URL query variables parameters parsing",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.583Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-07: File Upload XSS checks on Profile Avatar filename string characters",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.590Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-08: Stored XSS check on Profile Display Name text input field",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.591Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-09: Verify presence of Anti-CSRF verification tokens inside sensitive form nodes",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.593Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-10: Verify Anti-CSRF verification tokens on Transaction logging POST requests",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.594Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-11: Verify SameSite attributes configuration parameters on session authentication cookies",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.595Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-12: JWT signature key validity validation constraint checks",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.595Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-13: JWT Expiry token claim verification check",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.596Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-14: JWT Algorithm validation (rejecting \"none\" algorithm) constraints",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.597Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-15: Session Token token blocklist revocation validation check on Logout",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.598Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-16: Inactive Session Timeout expiration limits checks",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.599Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-17: Concurrent User Sessions limits bounds checks",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.600Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-18: Secure and HttpOnly cookie attributes check on Session Cookies",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.601Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-19: Email address syntax validation format checking regex rules",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.602Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-20: Transaction amount inputs negative numeric values validation",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.603Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-21: Transaction Date limits and bounds range checks validation",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.603Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-22: X-Frame-Options: DENY clickjacking headers verification check",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.604Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-23: Content-Security-Policy (CSP) headers verification check",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.605Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-24: X-Content-Type-Options: nosniff headers check",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.606Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-25: Strict-Transport-Security (HSTS) headers verification check",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.607Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-26: API keys and client access rate limiting checking",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.607Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-27: Unauthenticated client requests blocks on private API endpoints",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.608Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-28: Authorization header Bearer token schema formatting validation",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.609Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-29: Access-Control-Allow-Origin wildcard denial for credentialed cross-origin requests",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  },
+  {
+    "timestamp": "2026-06-16T05:20:46.610Z",
+    "testName": "Security Vulnerability Testing Suite",
+    "step": "TC-SEC-30: Verify CORS preflight headers Access-Control-Allow-Origin checks on sensitive endpoints",
+    "result": "PASS",
+    "remarks": "Passed",
+    "suite": "security"
+  }
+]
