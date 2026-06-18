@@ -16,13 +16,15 @@ class Reporter {
     const seleniumTests = payload.selenium || [];
     const securityTests = payload.security || [];
     const appiumTests = payload.appium || [];
+    const loadTests = payload.load || [];
     const executionLogs = payload.executionLogs || [];
 
-    const suites = ['selenium', 'security', 'appium'];
+    const suites = ['selenium', 'security', 'appium', 'load'];
     const mergedTests = {
       selenium: seleniumTests,
       security: securityTests,
-      appium: appiumTests
+      appium: appiumTests,
+      load: loadTests
     };
     let mergedLogs = executionLogs.length > 0 ? [...executionLogs] : [];
 
@@ -67,7 +69,7 @@ class Reporter {
     mergedLogs.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
 
     // Helper to generate a report with 4 tabs: Summary, Test Cases, Failed Tests, Execution Logs
-    const createTabbedWorkbook = async (filePath, deviceName, deviceVersion, testCases, logs) => {
+    const createTabbedWorkbook = async (filePath, deviceName, deviceVersion, testCases, logs, isLoad = false) => {
       const wb = new ExcelJS.Workbook();
       wb.creator = 'Smart Budget v3 QA Reporter';
       wb.created = new Date();
@@ -159,15 +161,32 @@ class Reporter {
       // 2. Test Cases tab
       const tcSheet = wb.addWorksheet('Test Cases');
       tcSheet.views = [{ showGridLines: true }];
-      tcSheet.columns = [
-        { header: 'Test Case ID', key: 'id', width: 15 },
-        { header: 'Module', key: 'module', width: 18 },
-        { header: 'Description', key: 'desc', width: 45 },
-        { header: 'Expected Result', key: 'expected', width: 45 },
-        { header: 'Actual Result', key: 'actual', width: 45 },
-        { header: 'Status', key: 'status', width: 12 },
-        { header: 'Execution Time', key: 'duration', width: 16 }
-      ];
+      if (isLoad) {
+        tcSheet.columns = [
+          { header: 'Test Case ID', key: 'id', width: 15 },
+          { header: 'Module', key: 'module', width: 18 },
+          { header: 'Description', key: 'desc', width: 45 },
+          { header: 'Load Profile', key: 'profile', width: 15 },
+          { header: 'Expected Result', key: 'expected', width: 45 },
+          { header: 'Actual Result', key: 'actual', width: 45 },
+          { header: 'Status', key: 'status', width: 12 },
+          { header: 'Execution Time', key: 'duration', width: 16 },
+          { header: 'Average Response Time', key: 'avg', width: 20 },
+          { header: 'Peak Response Time', key: 'peak', width: 20 },
+          { header: 'Throughput', key: 'tps', width: 15 },
+          { header: 'Error Rate', key: 'err', width: 15 }
+        ];
+      } else {
+        tcSheet.columns = [
+          { header: 'Test Case ID', key: 'id', width: 15 },
+          { header: 'Module', key: 'module', width: 18 },
+          { header: 'Description', key: 'desc', width: 45 },
+          { header: 'Expected Result', key: 'expected', width: 45 },
+          { header: 'Actual Result', key: 'actual', width: 45 },
+          { header: 'Status', key: 'status', width: 12 },
+          { header: 'Execution Time', key: 'duration', width: 16 }
+        ];
+      }
 
       testCases.forEach(tc => {
         tcSheet.addRow(tc);
@@ -184,20 +203,24 @@ class Reporter {
         row.eachCell(cell => {
           cell.border = borderStyle;
           cell.font = { name: 'Arial', size: 10 };
-          if (cell.col === 1 || cell.col === 6 || cell.col === 7) {
+          const isCenterCol = isLoad 
+            ? (cell.col === 1 || cell.col === 7 || cell.col === 8 || cell.col === 11 || cell.col === 12)
+            : (cell.col === 1 || cell.col === 6 || cell.col === 7);
+          if (isCenterCol) {
             cell.alignment = centerAlignment;
           } else {
             cell.alignment = leftAlignment;
           }
         });
 
-        const statusVal = row.getCell(6).value;
+        const statusColIdx = isLoad ? 7 : 6;
+        const statusVal = row.getCell(statusColIdx).value;
         if (statusVal === 'PASS') {
-          row.getCell(6).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F4EA' } };
-          row.getCell(6).font = { name: 'Arial', size: 10, color: { argb: 'FF137333' }, bold: true };
+          row.getCell(statusColIdx).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE6F4EA' } };
+          row.getCell(statusColIdx).font = { name: 'Arial', size: 10, color: { argb: 'FF137333' }, bold: true };
         } else if (statusVal === 'FAIL') {
-          row.getCell(6).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFCE8E6' } };
-          row.getCell(6).font = { name: 'Arial', size: 10, color: { argb: 'FFC5221F' }, bold: true };
+          row.getCell(statusColIdx).fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFCE8E6' } };
+          row.getCell(statusColIdx).font = { name: 'Arial', size: 10, color: { argb: 'FFC5221F' }, bold: true };
         }
       });
 
@@ -336,6 +359,26 @@ class Reporter {
         '14.0',
         mergedTests.appium,
         mergedLogs.filter(log => log.suite === 'appium')
+      );
+    }
+
+    // Generate/Update load_report.xlsx & Load_Test_Report.xlsx if data exists
+    if (mergedTests.load.length > 0) {
+      await createTabbedWorkbook(
+        path.join(reportDir, 'load_report.xlsx'),
+        'K6 Load Generator',
+        'N/A',
+        mergedTests.load,
+        mergedLogs.filter(log => log.suite === 'load'),
+        true
+      );
+      await createTabbedWorkbook(
+        path.join(reportDir, 'Load_Test_Report.xlsx'),
+        'K6 Load Generator',
+        'N/A',
+        mergedTests.load,
+        mergedLogs.filter(log => log.suite === 'load'),
+        true
       );
     }
   }
