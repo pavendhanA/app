@@ -64,10 +64,9 @@ jobs:
           # Retry loop to fetch, checkout branch, restore report, and push
           for i in {1..5}; do
             echo "Attempt $i to sync branch $BRANCH_NAME and push Appium report..."
-            git reset --hard HEAD
             git fetch origin $BRANCH_NAME
             git checkout $BRANCH_NAME || git checkout -b $BRANCH_NAME origin/$BRANCH_NAME
-            git pull origin $BRANCH_NAME
+            git reset --hard origin/$BRANCH_NAME || git reset --hard HEAD
             
             # Restore the report
             mkdir -p reports

@@ -62,28 +62,33 @@ jobs:
           mkdir -p ../temp_reports
           cp reports/*.xlsx ../temp_reports/
           
-          # Pull latest branch state
-          git reset --hard HEAD
-          git fetch origin $BRANCH_NAME
-          git checkout $BRANCH_NAME || git checkout -b $BRANCH_NAME origin/$BRANCH_NAME
-          git pull origin $BRANCH_NAME
-          
-          # Restore Excel reports
-          mkdir -p reports
-          cp ../temp_reports/*.xlsx reports/
-          
-          # Stage, check changes, and commit
-          git add reports/*.xlsx
-          if git diff --cached --quiet; then
-            echo "No modifications detected in reports. Skipping commit."
-            exit 0
-          else
-            git commit -m "Auto-update Consolidated QA Spreadsheets [skip ci]"
-            if git push origin HEAD:$BRANCH_NAME; then
-              echo "Excel QA reports successfully pushed!"
+          # Retry loop to fetch, checkout branch, restore report, and push
+          for i in {1..5}; do
+            echo "Attempt $i to sync branch $BRANCH_NAME and push Consolidated reports..."
+            git fetch origin $BRANCH_NAME
+            git checkout $BRANCH_NAME || git checkout -b $BRANCH_NAME origin/$BRANCH_NAME
+            git reset --hard origin/$BRANCH_NAME || git reset --hard HEAD
+            
+            # Restore Excel reports
+            mkdir -p reports
+            cp ../temp_reports/*.xlsx reports/
+            
+            # Stage, check changes, and commit
+            git add reports/*.xlsx
+            if git diff --cached --quiet; then
+              echo "No modifications detected in reports. Skipping commit."
               exit 0
+            else
+              git commit -m "Auto-update Consolidated QA Spreadsheets [skip ci]"
+              if git push origin HEAD:$BRANCH_NAME; then
+                echo "Excel QA reports successfully pushed!"
+                exit 0
+              fi
             fi
-          fi
+            echo "Push failed, retrying in 3 seconds..."
+            sleep 3
+          done
+          echo "Failed to commit and push Consolidated QA reports after 5 attempts."
           exit 1
         shell: bash
         env:
