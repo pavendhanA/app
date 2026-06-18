@@ -72,3 +72,4 @@ playwright-report/
 
 # Cache files for E2E reports
 reports/*.json
+compileReports.js

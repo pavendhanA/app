@@ -1,4 +1,4 @@
-name: Selenium E2E
+name: Load testing
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 jobs:
-  selenium-testing:
+  load-testing:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,19 +28,21 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: 3. Run Selenium Web QA Test Suite
-        run: mvn test -Dtest=SeleniumTest
+      - name: 3. Run Load Performance QA Test Suite
+        run: mvn test -Dtest=LoadTest
         continue-on-error: true # TestNG runs intentional failures, so we don't want the pipeline step to fail completely before reporting.
 
-      - name: 4. Upload Selenium Report
+      - name: 4. Upload Load Reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: selenium-execution-report
-          path: reports/Selenium_Report.xlsx
+          name: load-performance-reports
+          path: |
+            reports/load_report.xlsx
+            reports/Load_Test_Report.xlsx
           retention-days: 14
 
-      - name: 5. Commit Selenium Report to Repository
+      - name: 5. Commit Load Reports to Repository
         if: always()
         run: |
           git config --global user.name "github-actions[bot]"
@@ -53,44 +55,46 @@ jobs:
           fi
           echo "Target branch is $BRANCH_NAME"
           
-          # Save the generated report
-          if [ -f reports/Selenium_Report.xlsx ]; then
-            cp reports/Selenium_Report.xlsx ../Selenium_Report.xlsx
+          # Save the generated reports
+          if [ -f reports/load_report.xlsx ]; then
+            cp reports/load_report.xlsx ../load_report.xlsx
+            cp reports/Load_Test_Report.xlsx ../Load_Test_Report.xlsx
           else
-            echo "Selenium_Report.xlsx not found, skipping commit."
+            echo "Load reports not found, skipping commit."
             exit 0
           fi
           
           # Retry loop to fetch, checkout branch, restore report, and push
           for i in {1..5}; do
-            echo "Attempt $i to sync branch $BRANCH_NAME and push Selenium report..."
+            echo "Attempt $i to sync branch $BRANCH_NAME and push Load reports..."
             git reset --hard HEAD
             git fetch origin $BRANCH_NAME
             git checkout $BRANCH_NAME || git checkout -b $BRANCH_NAME origin/$BRANCH_NAME
             git pull origin $BRANCH_NAME
             
-            # Restore the report
+            # Restore the reports
             mkdir -p reports
-            cp ../Selenium_Report.xlsx reports/Selenium_Report.xlsx
+            cp ../load_report.xlsx reports/load_report.xlsx
+            cp ../Load_Test_Report.xlsx reports/Load_Test_Report.xlsx
             
-            # Stage it
-            git add reports/Selenium_Report.xlsx
+            # Stage them
+            git add reports/load_report.xlsx reports/Load_Test_Report.xlsx
             
             # Check if there are differences to commit
             if git diff --cached --quiet; then
-              echo "No changes in Selenium report. Skipping push."
+              echo "No changes in Load reports. Skipping push."
               exit 0
             else
-              git commit -m "Auto-update Selenium QA Report [skip ci]"
+              git commit -m "Auto-update Load QA Reports [skip ci]"
               if git push origin HEAD:$BRANCH_NAME; then
-                echo "Successfully pushed Selenium report!"
+                echo "Successfully pushed Load reports!"
                 exit 0
               fi
             fi
             echo "Push failed, retrying in 3 seconds..."
             sleep 3
           done
-          echo "Failed to commit and push Selenium report after 5 attempts."
+          echo "Failed to commit and push Load reports after 5 attempts."
           exit 1
         shell: bash
         env:
