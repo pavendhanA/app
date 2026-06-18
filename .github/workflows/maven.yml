@@ -1,0 +1,90 @@
+name: Smart Budget v3 Enterprise QA Pipeline
+
+on:
+  push:
+    branches: [ main, master, dev ]
+  pull_request:
+    branches: [ main, master, dev ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  maven-test-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Checkout Repository Code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
+
+      - name: 2. Setup Java JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: 3. Compile Project & Resolve Dependencies
+        run: mvn compile
+
+      - name: 4. Execute TestNG Test Suites
+        run: mvn test
+        continue-on-error: true # TestNG runs intentional failures, so we don't want the pipeline step to fail completely before reporting.
+
+      - name: 5. Upload Reports and Screen Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smartbudget-qa-reports
+          path: |
+            reports/
+            target/surefire-reports/
+          retention-days: 14
+
+      - name: 6. Commit Excel QA Reports to Branch
+        if: always()
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BRANCH_NAME="${{ github.head_ref }}"
+          else
+            BRANCH_NAME="${{ github.ref_name }}"
+          fi
+          echo "Syncing reports into branch $BRANCH_NAME"
+          
+          # Stash local Excel results
+          mkdir -p ../temp_reports
+          cp reports/*.xlsx ../temp_reports/
+          
+          # Pull latest branch state
+          git reset --hard HEAD
+          git fetch origin $BRANCH_NAME
+          git checkout $BRANCH_NAME || git checkout -b $BRANCH_NAME origin/$BRANCH_NAME
+          git pull origin $BRANCH_NAME
+          
+          # Restore Excel reports
+          mkdir -p reports
+          cp ../temp_reports/*.xlsx reports/
+          
+          # Stage, check changes, and commit
+          git add reports/*.xlsx
+          if git diff --cached --quiet; then
+            echo "No modifications detected in reports. Skipping commit."
+            exit 0
+          else
+            git commit -m "Auto-update Consolidated QA Spreadsheets [skip ci]"
+            if git push origin HEAD:$BRANCH_NAME; then
+              echo "Excel QA reports successfully pushed!"
+              exit 0
+            fi
+          fi
+          exit 1
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

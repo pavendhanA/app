@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Smart Budget v3 QA Automation Suite" parallel="classes" thread-count="4">
+    <test name="Enterprise QA Modules">
+        <classes>
+            <class name="com.smartbudget.tests.SeleniumTest"/>
+            <class name="com.smartbudget.tests.SecurityTest"/>
+            <class name="com.smartbudget.tests.AppiumTest"/>
+            <class name="com.smartbudget.tests.ApiTest"/>
+            <class name="com.smartbudget.tests.PerformanceTest"/>
+            <class name="com.smartbudget.tests.AccessibilityTest"/>
+            <class name="com.smartbudget.tests.CrossBrowserTest"/>
+            <class name="com.smartbudget.tests.DataValidationTest"/>
+        </classes>
+    </test>
+</suite>
