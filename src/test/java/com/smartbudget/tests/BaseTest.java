@@ -31,8 +31,9 @@ public class BaseTest {
         }
         ExtentTest test = extent.createTest(testName);
         ExtentManager.setTest(test);
-        if (params != null && params.length >= 4) {
-            test.info("Scenario: " + params[3]); // Description
+        
+        if (params != null && params.length >= 3) {
+            test.info("Scenario: " + params[2]); // Description is at index 2 for both standard and load
         }
     }
 
@@ -65,20 +66,43 @@ public class BaseTest {
         }
 
         // Capture data-driven parameters and store in Excel reporter
-        if (params != null && params.length >= 11) {
-            String id = (String) params[0];
-            String suite = (String) params[1];
-            String module = (String) params[2];
-            String desc = (String) params[3];
-            String expected = (String) params[4];
-            String duration = (String) params[7];
-            String browser = (String) params[8];
-            String platform = (String) params[9];
-            String environment = (String) params[10];
+        if (params != null) {
+            if (params.length >= 12) {
+                // Load Test
+                String id = (String) params[0];
+                String module = (String) params[1];
+                String desc = (String) params[2];
+                String loadProfile = (String) params[3];
+                String expected = (String) params[4];
+                String duration = (String) params[7];
+                String avgResponse = (String) params[8];
+                String peakResponse = (String) params[9];
+                String throughput = (String) params[10];
+                String errorRate = (String) params[11];
 
-            ExcelReporter.addResult(new ExcelReporter.TestResult(
-                    id, suite, module, desc, expected, actualResult, status, duration, browser, platform, environment
-            ));
+                ExcelReporter.addResult(new ExcelReporter.TestResult(
+                        id, "load", module, desc, loadProfile, expected, actualResult, status, duration, avgResponse, peakResponse, throughput, errorRate
+                ));
+            } else if (params.length >= 7) {
+                // Standard Test (Selenium, Security, Appium)
+                String id = (String) params[0];
+                String module = (String) params[1];
+                String desc = (String) params[2];
+                String expected = (String) params[3];
+                String duration = (String) params[6];
+                
+                // Determine suite type based on parameter ID prefix
+                String suite = "selenium";
+                if (id.startsWith("TC-SEC")) {
+                    suite = "security";
+                } else if (id.startsWith("TC-APP")) {
+                    suite = "appium";
+                }
+
+                ExcelReporter.addResult(new ExcelReporter.TestResult(
+                        id, suite, module, desc, expected, actualResult, status, duration
+                ));
+            }
         }
     }
 

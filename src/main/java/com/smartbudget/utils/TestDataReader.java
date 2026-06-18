@@ -15,6 +15,8 @@ public class TestDataReader {
     public static Object[][] getTestData(String sheetName) {
         String path = ConfigReader.getProperty("excel.testdata.path");
         List<Object[]> dataList = new ArrayList<>();
+        boolean isLoad = sheetName.equalsIgnoreCase("Load");
+        int columnCount = isLoad ? 12 : 7;
         
         try {
             File file = new File(path);
@@ -39,19 +41,11 @@ public class TestDataReader {
                 Row row = sheet.getRow(i);
                 if (row == null) continue;
                 
-                String id = getCellValue(row.getCell(0));
-                String suite = getCellValue(row.getCell(1));
-                String module = getCellValue(row.getCell(2));
-                String desc = getCellValue(row.getCell(3));
-                String expected = getCellValue(row.getCell(4));
-                String actual = getCellValue(row.getCell(5));
-                String status = getCellValue(row.getCell(6));
-                String duration = getCellValue(row.getCell(7));
-                String browser = getCellValue(row.getCell(8));
-                String platform = getCellValue(row.getCell(9));
-                String environment = getCellValue(row.getCell(10));
-                
-                dataList.add(new Object[]{id, suite, module, desc, expected, actual, status, duration, browser, platform, environment});
+                Object[] rowData = new Object[columnCount];
+                for (int j = 0; j < columnCount; j++) {
+                    rowData[j] = getCellValue(row.getCell(j));
+                }
+                dataList.add(rowData);
             }
             workbook.close();
             fis.close();
@@ -59,7 +53,7 @@ public class TestDataReader {
             LoggerUtil.error("Error reading sheet '" + sheetName + "': " + e.getMessage());
         }
         
-        Object[][] dataArray = new Object[dataList.size()][11];
+        Object[][] dataArray = new Object[dataList.size()][columnCount];
         for (int i = 0; i < dataList.size(); i++) {
             dataArray[i] = dataList.get(i);
         }
@@ -75,7 +69,11 @@ public class TestDataReader {
             if (DateUtil.isCellDateFormatted(cell)) {
                 return cell.getDateCellValue().toString();
             }
-            return String.valueOf(cell.getNumericCellValue());
+            double val = cell.getNumericCellValue();
+            if (val == (long) val) {
+                return String.valueOf((long) val);
+            }
+            return String.valueOf(val);
         } else if (type == CellType.BOOLEAN) {
             return String.valueOf(cell.getBooleanCellValue());
         } else {

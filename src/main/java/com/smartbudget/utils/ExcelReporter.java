@@ -6,6 +6,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -17,16 +19,19 @@ public class ExcelReporter {
         public String suite;
         public String module;
         public String desc;
+        public String loadProfile;
         public String expected;
         public String actual;
         public String status;
         public String duration;
-        public String browser;
-        public String platform;
-        public String environment;
+        public String avgResponse;
+        public String peakResponse;
+        public String throughput;
+        public String errorRate;
 
+        // Constructor for standard tests
         public TestResult(String id, String suite, String module, String desc, String expected, String actual,
-                          String status, String duration, String browser, String platform, String environment) {
+                          String status, String duration) {
             this.id = id;
             this.suite = suite;
             this.module = module;
@@ -35,9 +40,30 @@ public class ExcelReporter {
             this.actual = actual;
             this.status = status;
             this.duration = duration;
-            this.browser = browser;
-            this.platform = platform;
-            this.environment = environment;
+            this.loadProfile = "";
+            this.avgResponse = "";
+            this.peakResponse = "";
+            this.throughput = "";
+            this.errorRate = "";
+        }
+
+        // Constructor for load tests
+        public TestResult(String id, String suite, String module, String desc, String loadProfile, String expected,
+                          String actual, String status, String duration, String avgResponse, String peakResponse,
+                          String throughput, String errorRate) {
+            this.id = id;
+            this.suite = suite;
+            this.module = module;
+            this.desc = desc;
+            this.loadProfile = loadProfile;
+            this.expected = expected;
+            this.actual = actual;
+            this.status = status;
+            this.duration = duration;
+            this.avgResponse = avgResponse;
+            this.peakResponse = peakResponse;
+            this.throughput = throughput;
+            this.errorRate = errorRate;
         }
     }
 
@@ -59,21 +85,28 @@ public class ExcelReporter {
             dir.mkdirs();
         }
 
-        LoggerUtil.info("ExcelReporter: Starting sheet compiles inside dir: " + reportsDir);
+        LoggerUtil.info("ExcelReporter: Generating spreadsheets...");
 
-        // Individual sheet generations
-        writeIndividualReport(reportsDir + "/Selenium_Report.xlsx", "Selenium Web Tests", filterBySuite("selenium"));
-        writeIndividualReport(reportsDir + "/Security_Report.xlsx", "Security Tests", filterBySuite("security"));
-        writeIndividualReport(reportsDir + "/Appium_Report.xlsx", "Appium Mobile Tests", filterBySuite("appium"));
-        writeIndividualReport(reportsDir + "/API_Report.xlsx", "API Tests", filterBySuite("api"));
-        writeIndividualReport(reportsDir + "/LoadTest_Report.xlsx", "Performance Load Tests", filterBySuite("performance"));
-        writeIndividualReport(reportsDir + "/Accessibility_Report.xlsx", "Accessibility Tests", filterBySuite("accessibility"));
-        writeIndividualReport(reportsDir + "/CrossBrowser_Report.xlsx", "Cross Browser Tests", filterBySuite("crossbrowser"));
-        writeIndividualReport(reportsDir + "/DataValidation_Report.xlsx", "Data Validation Tests", filterBySuite("datavalidation"));
+        // Generate standard sheets
+        writeStandardReport(reportsDir + "/Selenium_Report.xlsx", "Selenium Web Tests", filterBySuite("selenium"));
+        writeStandardReport(reportsDir + "/Security_Report.xlsx", "Security Tests", filterBySuite("security"));
+        writeStandardReport(reportsDir + "/Appium_Report.xlsx", "Appium Mobile Tests", filterBySuite("appium"));
+        
+        // Generate load sheets
+        writeLoadReport(reportsDir + "/load_report.xlsx", "Performance Load Tests", filterBySuite("load"));
 
-        // Consolidated Master report compilation
+        // Copy/duplicate load report to also support Load_Test_Report.xlsx if requested
+        try {
+            File source = new File(reportsDir + "/load_report.xlsx");
+            File dest = new File(reportsDir + "/Load_Test_Report.xlsx");
+            Files.copy(source.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            LoggerUtil.error("Failed to duplicate load report: " + e.getMessage());
+        }
+
+        // Generate Master report
         writeMasterReport(reportsDir + "/Master_Report.xlsx");
-        LoggerUtil.info("ExcelReporter: All Excel sheets successfully generated.");
+        LoggerUtil.info("ExcelReporter: Spreadsheets compilation finalized.");
     }
 
     private static List<TestResult> filterBySuite(String suiteName) {
@@ -86,88 +119,54 @@ public class ExcelReporter {
         return filtered;
     }
 
-    private static void writeIndividualReport(String path, String title, List<TestResult> results) {
+    private static void writeStandardReport(String path, String title, List<TestResult> results) {
         Workbook workbook = new XSSFWorkbook();
-        createTabbedWorkbook(workbook, title, results);
+        createSummaryTab(workbook, title, results);
+        createStandardTestCasesSheet(workbook, "Test Cases", results);
+        createFailedCasesSheetForResults(workbook, "Failed Tests", results);
+        saveWorkbook(workbook, path);
+    }
+
+    private static void writeLoadReport(String path, String title, List<TestResult> results) {
+        Workbook workbook = new XSSFWorkbook();
+        createSummaryTab(workbook, title, results);
+        createLoadTestCasesSheet(workbook, "Test Cases", results);
+        createFailedCasesSheetForResults(workbook, "Failed Tests", results);
         saveWorkbook(workbook, path);
     }
 
     private static void writeMasterReport(String path) {
         Workbook workbook = new XSSFWorkbook();
         
-        // Tab 1: Summary Dashboard
-        createSummaryDashboardSheet(workbook);
+        // Tab 1: Executive summary dashboard
+        createSummaryTab(workbook, "Consolidated Executive QA Dashboard", allResults);
 
         // Tab 2: Selenium
-        createTestCasesSheet(workbook, "Selenium Web Tests", filterBySuite("selenium"));
+        createStandardTestCasesSheet(workbook, "Selenium Web Tests", filterBySuite("selenium"));
 
         // Tab 3: Security
-        createTestCasesSheet(workbook, "Security Tests", filterBySuite("security"));
+        createStandardTestCasesSheet(workbook, "Security Tests", filterBySuite("security"));
 
         // Tab 4: Appium
-        createTestCasesSheet(workbook, "Appium Mobile Tests", filterBySuite("appium"));
+        createStandardTestCasesSheet(workbook, "Appium Mobile Tests", filterBySuite("appium"));
 
-        // Tab 5: API
-        createTestCasesSheet(workbook, "API Tests", filterBySuite("api"));
+        // Tab 5: Load
+        createLoadTestCasesSheet(workbook, "Performance Load Tests", filterBySuite("load"));
 
-        // Tab 6: Performance
-        createTestCasesSheet(workbook, "Performance Load Tests", filterBySuite("performance"));
-
-        // Tab 7: Accessibility
-        createTestCasesSheet(workbook, "Accessibility Tests", filterBySuite("accessibility"));
-
-        // Tab 8: CrossBrowser
-        createTestCasesSheet(workbook, "Cross Browser Tests", filterBySuite("crossbrowser"));
-
-        // Tab 9: DataValidation
-        createTestCasesSheet(workbook, "Data Validation Tests", filterBySuite("datavalidation"));
-
-        // Tab 10: Failed Cases Summary
+        // Tab 6: Failures
         createFailedCasesSheet(workbook);
 
         saveWorkbook(workbook, path);
-    }
-
-    private static void createTabbedWorkbook(Workbook wb, String tabTitle, List<TestResult> results) {
-        createSummaryTab(wb, tabTitle, results);
-        createTestCasesSheet(wb, "Test Cases", results);
-        createFailedCasesSheetForResults(wb, "Failed Tests", results);
     }
 
     private static void createSummaryTab(Workbook wb, String title, List<TestResult> results) {
         Sheet sheet = wb.createSheet("Summary");
         sheet.setDisplayGridlines(true);
 
-        // Cell styles
         CellStyle headerStyle = createHeaderStyle(wb, "1B365D");
-        CellStyle labelStyle = wb.createCellStyle();
-        Font labelFont = wb.createFont();
-        labelFont.setName("Arial");
-        labelFont.setBold(true);
-        labelStyle.setFont(labelFont);
-        labelStyle.setBorderBottom(BorderStyle.THIN);
-        labelStyle.setBottomBorderColor(IndexedColors.GREY_25_PERCENT.getIndex());
-        labelStyle.setBorderLeft(BorderStyle.THIN);
-        labelStyle.setLeftBorderColor(IndexedColors.GREY_25_PERCENT.getIndex());
-        labelStyle.setBorderRight(BorderStyle.THIN);
-        labelStyle.setRightBorderColor(IndexedColors.GREY_25_PERCENT.getIndex());
-        labelStyle.setBorderTop(BorderStyle.THIN);
-        labelStyle.setTopBorderColor(IndexedColors.GREY_25_PERCENT.getIndex());
+        CellStyle labelStyle = createLabelStyle(wb);
+        CellStyle valStyle = createValueStyle(wb);
 
-        CellStyle valStyle = wb.createCellStyle();
-        Font valFont = wb.createFont();
-        valFont.setName("Arial");
-        valStyle.setFont(valFont);
-        valStyle.setBorderBottom(BorderStyle.THIN);
-        valStyle.setBottomBorderColor(IndexedColors.GREY_25_PERCENT.getIndex());
-        valStyle.setBorderLeft(BorderStyle.THIN);
-        valStyle.setLeftBorderColor(IndexedColors.GREY_25_PERCENT.getIndex());
-        valStyle.setBorderRight(BorderStyle.THIN);
-        valStyle.setRightBorderColor(IndexedColors.GREY_25_PERCENT.getIndex());
-        valStyle.setBorderTop(BorderStyle.THIN);
-        valStyle.setTopBorderColor(IndexedColors.GREY_25_PERCENT.getIndex());
-
-        // Header Row
         Row header = sheet.createRow(0);
         header.setHeightInPoints(24);
         Cell h0 = header.createCell(0);
@@ -180,6 +179,7 @@ public class ExcelReporter {
         int total = results.size();
         int passed = 0;
         int failed = 0;
+        int skipped = 0;
         double durationSum = 0;
 
         for (TestResult r : results) {
@@ -187,29 +187,32 @@ public class ExcelReporter {
                 passed++;
             } else if (r.status.equalsIgnoreCase("FAIL")) {
                 failed++;
+            } else if (r.status.equalsIgnoreCase("SKIP")) {
+                skipped++;
             }
             try {
                 durationSum += Double.parseDouble(r.duration.replace("s", "").trim());
             } catch (Exception e) {}
         }
 
-        String passPercent = total > 0 ? Math.round(((double) passed / total) * 100) + "%" : "0%";
+        String passPercent = (passed + failed) > 0 ? Math.round(((double) passed / (passed + failed)) * 100) + "%" : "0%";
 
         String[][] data = {
-                {"Execution Date", new java.util.Date().toString()},
-                {"Test Suite Title", title},
-                {"Target Browser", "Chrome (Multi-headless)"},
-                {"Platform Env", "QA-Staging"},
-                {"Total Executed", String.valueOf(total)},
+                {"Execution Timestamp", new java.util.Date().toString()},
+                {"Test Suite / Scope", title},
+                {"Target Environment", "QA-Staging"},
+                {"Total Test Cases", String.valueOf(total)},
                 {"Passed", String.valueOf(passed)},
                 {"Failed", String.valueOf(failed)},
-                {"Pass Percentage", passPercent},
-                {"Duration Sum", String.format("%.2fs", durationSum)}
+                {"Skipped", String.valueOf(skipped)},
+                {"Success Rate (Pass/Fail)", passPercent},
+                {"Total Execution Duration", String.format("%.2fs", durationSum)}
         };
 
         for (int i = 0; i < data.length; i++) {
             Row r = sheet.createRow(i + 1);
             r.setHeightInPoints(20);
+            
             Cell c0 = r.createCell(0);
             c0.setCellValue(data[i][0]);
             c0.setCellStyle(labelStyle);
@@ -218,7 +221,7 @@ public class ExcelReporter {
             c1.setCellValue(data[i][1]);
             c1.setCellStyle(valStyle);
 
-            if (data[i][0].equals("Pass Percentage")) {
+            if (data[i][0].equals("Success Rate (Pass/Fail)")) {
                 CellStyle prcStyle = wb.createCellStyle();
                 prcStyle.cloneStyleFrom(valStyle);
                 Font prcFont = wb.createFont();
@@ -234,16 +237,11 @@ public class ExcelReporter {
             }
         }
 
-        sheet.setColumnWidth(0, 7000);
-        sheet.setColumnWidth(1, 9000);
+        sheet.setColumnWidth(0, 7500);
+        sheet.setColumnWidth(1, 9500);
     }
 
-    private static void createSummaryDashboardSheet(Workbook wb) {
-        // Compile summary variables over all results
-        createSummaryTab(wb, "Consolidated Master Dashboard", allResults);
-    }
-
-    private static void createTestCasesSheet(Workbook wb, String tabName, List<TestResult> results) {
+    private static void createStandardTestCasesSheet(Workbook wb, String tabName, List<TestResult> results) {
         Sheet sheet = wb.createSheet(tabName);
         sheet.setDisplayGridlines(true);
 
@@ -251,11 +249,10 @@ public class ExcelReporter {
         CellStyle borderStyle = createBorderedStyle(wb);
         CellStyle passStyle = createStatusStyle(wb, "E6F4EA", "137333");
         CellStyle failStyle = createStatusStyle(wb, "FCE8E6", "C5221F");
+        CellStyle skipStyle = createStatusStyle(wb, "FFEAECEE", "FF7F8C8D");
 
         String[] headers = {
-                "Test Case ID", "Test Suite", "Module", "Description",
-                "Expected Result", "Actual Result", "Status", "Execution Time",
-                "Browser", "Platform", "Environment"
+                "Test Case ID", "Module", "Description", "Expected Result", "Actual Result", "Status", "Execution Time"
         };
 
         Row headerRow = sheet.createRow(0);
@@ -272,9 +269,65 @@ public class ExcelReporter {
             row.setHeightInPoints(20);
 
             createCell(row, 0, r.id, borderStyle);
-            createCell(row, 1, r.suite, borderStyle);
-            createCell(row, 2, r.module, borderStyle);
-            createCell(row, 3, r.desc, borderStyle);
+            createCell(row, 1, r.module, borderStyle);
+            createCell(row, 2, r.desc, borderStyle);
+            createCell(row, 3, r.expected, borderStyle);
+            createCell(row, 4, r.actual, borderStyle);
+
+            Cell statusCell = row.createCell(5);
+            statusCell.setCellValue(r.status);
+            if (r.status.equalsIgnoreCase("PASS")) {
+                statusCell.setCellStyle(passStyle);
+            } else if (r.status.equalsIgnoreCase("FAIL")) {
+                statusCell.setCellStyle(failStyle);
+            } else {
+                statusCell.setCellStyle(skipStyle);
+            }
+
+            createCell(row, 6, r.duration, borderStyle);
+        }
+
+        sheet.setColumnWidth(0, 3500);
+        sheet.setColumnWidth(1, 5000);
+        sheet.setColumnWidth(2, 11000);
+        sheet.setColumnWidth(3, 11000);
+        sheet.setColumnWidth(4, 11000);
+        sheet.setColumnWidth(5, 3000);
+        sheet.setColumnWidth(6, 4000);
+    }
+
+    private static void createLoadTestCasesSheet(Workbook wb, String tabName, List<TestResult> results) {
+        Sheet sheet = wb.createSheet(tabName);
+        sheet.setDisplayGridlines(true);
+
+        CellStyle headerStyle = createHeaderStyle(wb, "1B365D");
+        CellStyle borderStyle = createBorderedStyle(wb);
+        CellStyle passStyle = createStatusStyle(wb, "E6F4EA", "137333");
+        CellStyle failStyle = createStatusStyle(wb, "FCE8E6", "C5221F");
+
+        String[] headers = {
+                "Test Case ID", "Module", "Description", "Load Profile", "Expected Result",
+                "Actual Result", "Status", "Execution Time", "Average Response Time",
+                "Peak Response Time", "Throughput", "Error Rate"
+        };
+
+        Row headerRow = sheet.createRow(0);
+        headerRow.setHeightInPoints(24);
+        for (int i = 0; i < headers.length; i++) {
+            Cell cell = headerRow.createCell(i);
+            cell.setCellValue(headers[i]);
+            cell.setCellStyle(headerStyle);
+        }
+
+        int rIndex = 1;
+        for (TestResult r : results) {
+            Row row = sheet.createRow(rIndex++);
+            row.setHeightInPoints(20);
+
+            createCell(row, 0, r.id, borderStyle);
+            createCell(row, 1, r.module, borderStyle);
+            createCell(row, 2, r.desc, borderStyle);
+            createCell(row, 3, r.loadProfile, borderStyle);
             createCell(row, 4, r.expected, borderStyle);
             createCell(row, 5, r.actual, borderStyle);
 
@@ -283,19 +336,24 @@ public class ExcelReporter {
             statusCell.setCellStyle(r.status.equalsIgnoreCase("PASS") ? passStyle : failStyle);
 
             createCell(row, 7, r.duration, borderStyle);
-            createCell(row, 8, r.browser, borderStyle);
-            createCell(row, 9, r.platform, borderStyle);
-            createCell(row, 10, r.environment, borderStyle);
+            createCell(row, 8, r.avgResponse, borderStyle);
+            createCell(row, 9, r.peakResponse, borderStyle);
+            createCell(row, 10, r.throughput, borderStyle);
+            createCell(row, 11, r.errorRate, borderStyle);
         }
 
-        // Auto-sizing columns
-        for (int i = 0; i < headers.length; i++) {
-            if (i == 3 || i == 4 || i == 5) {
-                sheet.setColumnWidth(i, 11000); // Give description columns substantial space
-            } else {
-                sheet.setColumnWidth(i, 4500);
-            }
-        }
+        sheet.setColumnWidth(0, 3500);
+        sheet.setColumnWidth(1, 5000);
+        sheet.setColumnWidth(2, 11000);
+        sheet.setColumnWidth(3, 4000);
+        sheet.setColumnWidth(4, 11000);
+        sheet.setColumnWidth(5, 11000);
+        sheet.setColumnWidth(6, 3000);
+        sheet.setColumnWidth(7, 4000);
+        sheet.setColumnWidth(8, 4500);
+        sheet.setColumnWidth(9, 4500);
+        sheet.setColumnWidth(10, 4000);
+        sheet.setColumnWidth(11, 3500);
     }
 
     private static void createFailedCasesSheet(Workbook wb) {
@@ -308,11 +366,11 @@ public class ExcelReporter {
         createFailedCasesSheetForResults(wb, "Failed Tests Summary", failed);
     }
 
-    private static void createFailedCasesSheetForResults(Workbook wb, String sheetTitle, List<TestResult> failed) {
-        Sheet sheet = wb.createSheet(sheetTitle);
+    private static void createFailedCasesSheetForResults(Workbook wb, String title, List<TestResult> failed) {
+        Sheet sheet = wb.createSheet(title);
         sheet.setDisplayGridlines(true);
 
-        CellStyle headerStyle = createHeaderStyle(wb, "B71C1C"); // Crimson Red warning header
+        CellStyle headerStyle = createHeaderStyle(wb, "B71C1C"); // Red warning header
         CellStyle borderStyle = createBorderedStyle(wb);
         CellStyle reasonStyle = wb.createCellStyle();
         reasonStyle.cloneStyleFrom(borderStyle);
@@ -340,8 +398,8 @@ public class ExcelReporter {
             createCell(row, 0, "N/A", borderStyle);
             createCell(row, 1, "N/A", borderStyle);
             createCell(row, 2, "N/A", borderStyle);
-            createCell(row, 3, "All validation checkpoints passed successfully.", borderStyle);
-            createCell(row, 4, "No failures recorded.", borderStyle);
+            createCell(row, 3, "All validation checkpoints completed successfully.", borderStyle);
+            createCell(row, 4, "No failures detected.", borderStyle);
         } else {
             for (TestResult r : failed) {
                 Row row = sheet.createRow(rIndex++);
@@ -351,7 +409,7 @@ public class ExcelReporter {
                 createCell(row, 1, r.suite, borderStyle);
                 createCell(row, 2, r.module, borderStyle);
                 createCell(row, 3, r.desc, borderStyle);
-                createCell(row, 4, r.actual, reasonStyle); // Actual is the error stack trace description
+                createCell(row, 4, r.actual, reasonStyle);
             }
         }
 
@@ -376,7 +434,6 @@ public class ExcelReporter {
         font.setColor(IndexedColors.WHITE.getIndex());
         style.setFont(font);
 
-        // Deep Indigo/Navy or Crimson Red fills
         byte[] rgb = hexToRgb(hexArgb);
         style.setFillForegroundColor(wb.getCreationHelper().createExtendedColor());
         if (style instanceof org.apache.poi.xssf.usermodel.XSSFCellStyle) {
@@ -415,7 +472,6 @@ public class ExcelReporter {
         CellStyle style = createBorderedStyle(wb);
         style.setAlignment(HorizontalAlignment.CENTER);
 
-        // Background fill
         if (style instanceof org.apache.poi.xssf.usermodel.XSSFCellStyle) {
             org.apache.poi.xssf.usermodel.XSSFCellStyle xssfStyle = (org.apache.poi.xssf.usermodel.XSSFCellStyle) style;
             xssfStyle.setFillForegroundColor(new org.apache.poi.xssf.usermodel.XSSFColor(hexToRgb(fillHex), null));
@@ -427,6 +483,41 @@ public class ExcelReporter {
             font.setColor(new org.apache.poi.xssf.usermodel.XSSFColor(hexToRgb(textHex), null));
             xssfStyle.setFont(font);
         }
+        return style;
+    }
+
+    private static CellStyle createLabelStyle(Workbook wb) {
+        CellStyle style = wb.createCellStyle();
+        Font font = wb.createFont();
+        font.setName("Arial");
+        font.setBold(true);
+        style.setFont(font);
+        style.setBorderBottom(BorderStyle.THIN);
+        style.setBottomBorderColor(IndexedColors.GREY_25_PERCENT.getIndex());
+        style.setBorderLeft(BorderStyle.THIN);
+        style.setLeftBorderColor(IndexedColors.GREY_25_PERCENT.getIndex());
+        style.setBorderRight(BorderStyle.THIN);
+        style.setRightBorderColor(IndexedColors.GREY_25_PERCENT.getIndex());
+        style.setBorderTop(BorderStyle.THIN);
+        style.setTopBorderColor(IndexedColors.GREY_25_PERCENT.getIndex());
+        style.setVerticalAlignment(VerticalAlignment.CENTER);
+        return style;
+    }
+
+    private static CellStyle createValueStyle(Workbook wb) {
+        CellStyle style = wb.createCellStyle();
+        Font font = wb.createFont();
+        font.setName("Arial");
+        style.setFont(font);
+        style.setBorderBottom(BorderStyle.THIN);
+        style.setBottomBorderColor(IndexedColors.GREY_25_PERCENT.getIndex());
+        style.setBorderLeft(BorderStyle.THIN);
+        style.setLeftBorderColor(IndexedColors.GREY_25_PERCENT.getIndex());
+        style.setBorderRight(BorderStyle.THIN);
+        style.setRightBorderColor(IndexedColors.GREY_25_PERCENT.getIndex());
+        style.setBorderTop(BorderStyle.THIN);
+        style.setTopBorderColor(IndexedColors.GREY_25_PERCENT.getIndex());
+        style.setVerticalAlignment(VerticalAlignment.CENTER);
         return style;
     }
 

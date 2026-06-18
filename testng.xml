@@ -6,11 +6,7 @@
             <class name="com.smartbudget.tests.SeleniumTest"/>
             <class name="com.smartbudget.tests.SecurityTest"/>
             <class name="com.smartbudget.tests.AppiumTest"/>
-            <class name="com.smartbudget.tests.ApiTest"/>
-            <class name="com.smartbudget.tests.PerformanceTest"/>
-            <class name="com.smartbudget.tests.AccessibilityTest"/>
-            <class name="com.smartbudget.tests.CrossBrowserTest"/>
-            <class name="com.smartbudget.tests.DataValidationTest"/>
+            <class name="com.smartbudget.tests.LoadTest"/>
         </classes>
     </test>
 </suite>
