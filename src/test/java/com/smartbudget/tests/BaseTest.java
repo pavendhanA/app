@@ -56,6 +56,13 @@ public class BaseTest {
                 test.skip("Test skipped");
             }
         } else {
+            if (params != null) {
+                if (params.length >= 12) {
+                    actualResult = (String) params[5];
+                } else if (params.length >= 7) {
+                    actualResult = (String) params[4];
+                }
+            }
             if (test != null) {
                 test.pass("Test passed successfully.");
             }
