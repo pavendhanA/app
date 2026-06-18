@@ -11,7 +11,8 @@
     "test:flutter": "cross-env AUTOMATION_NAME=Flutter npm run test",
     "test:native": "cross-env AUTOMATION_NAME=UiAutomator2 npm run test",
     "test:ai": "node src/utils/AiTestingAgent.js",
-    "test:web": "playwright test"
+    "test:web": "playwright test",
+    "test:k6": "node tests/run-k6.js"
   },
   "dependencies": {
     "firebase": "^12.14.0",

@@ -1,0 +1,107 @@
+name: K6 Load Testing
+
+on:
+  push:
+    branches: [ main, master, dev ]
+  pull_request:
+    branches: [ main, master, dev ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  k6-load-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 1. Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: true
+
+      - name: 2. Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          cache: 'npm'
+
+      - name: 3. Install NPM Dependencies
+        run: npm ci
+
+      - name: 4. Install K6 CLI
+        run: |
+          curl -sLO https://github.com/grafana/k6/releases/download/v0.51.0/k6-v0.51.0-linux-amd64.tar.gz
+          tar -xzf k6-v0.51.0-linux-amd64.tar.gz
+          sudo mv k6-v0.51.0-linux-amd64/k6 /usr/local/bin/k6
+          k6 version
+
+      - name: 5. Run K6 Load Test Suite
+        run: npm run test:k6
+        env:
+          CI: "true"
+
+      - name: 6. Upload K6 Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: k6-load-test-report
+          path: reports/K6_Report.xlsx
+          retention-days: 14
+
+      - name: 7. Commit K6 Report to Repository
+        if: always()
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BRANCH_NAME="${{ github.head_ref }}"
+          else
+            BRANCH_NAME="${{ github.ref_name }}"
+          fi
+          echo "Target branch is $BRANCH_NAME"
+          
+          # Save the generated report
+          if [ -f reports/K6_Report.xlsx ]; then
+            cp reports/K6_Report.xlsx ../K6_Report.xlsx
+          else
+            echo "K6_Report.xlsx not found, skipping commit."
+            exit 0
+          fi
+          
+          # Retry loop to fetch, checkout branch, restore report, and push
+          for i in {1..5}; do
+            echo "Attempt $i to sync branch $BRANCH_NAME and push K6 report..."
+            git reset --hard HEAD
+            git fetch origin $BRANCH_NAME
+            git checkout $BRANCH_NAME || git checkout -b $BRANCH_NAME origin/$BRANCH_NAME
+            git pull origin $BRANCH_NAME
+            
+            # Restore the report
+            mkdir -p reports
+            cp ../K6_Report.xlsx reports/K6_Report.xlsx
+            
+            # Stage it
+            git add reports/K6_Report.xlsx
+            
+            # Check if there are differences to commit
+            if git diff --cached --quiet; then
+              echo "No changes in K6 report. Skipping push."
+              exit 0
+            else
+              git commit -m "Auto-update K6 Load Test Report [skip ci]"
+              if git push origin HEAD:$BRANCH_NAME; then
+                echo "Successfully pushed K6 report!"
+                exit 0
+              fi
+            fi
+            echo "Push failed, retrying in 3 seconds..."
+            sleep 3
+          done
+          echo "Failed to commit and push K6 report after 5 attempts."
+          exit 1
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

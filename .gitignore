@@ -71,4 +71,4 @@ test-results/
 playwright-report/
 
 # Cache files for E2E reports
-reports/cache_*.json
+reports/*.json
